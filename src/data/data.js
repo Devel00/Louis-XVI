@@ -3,6 +3,8 @@ import logo from "../Image/main_logo.png";
 import Problems from "../Components/Problems";
 import carousel_problem from "../Image/Problems/markus-winkler-aYPtEknQmXE-unsplash.jpg";
 import filter from "../Image/Problems/geojango-maps-Z8UgB80_46w-unsplash.jpg";
+import card_image from "../Image/card-top.jpg";
+import library from "../Image/Problems/declan-sun-aon-6I6Y6uQ-unsplash.jpg"
 export const data = [
   {
     id: "mohammad",
@@ -13,6 +15,7 @@ export const data = [
     image: logo,
   },
   {
+
     id: "cp1",
     image: carousel_problem,
   },
@@ -20,4 +23,11 @@ export const data = [
     id: "cp2",
     image: filter,
   },
+    id:"ss",
+    image:card_image
+  },
+  {
+    id:"library",
+    image:library
+  }
 ];
