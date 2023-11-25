@@ -1,5 +1,5 @@
 import card from "../Image/me.jpg";
-import logo from "../Image/29722995_3-removebg-preview.png";
+import logo from "../Image/main_logo.png";
 
 export const data = [
   {
