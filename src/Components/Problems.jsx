@@ -28,7 +28,7 @@ const Problems = () => {
         <Card />
         <Card />
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
