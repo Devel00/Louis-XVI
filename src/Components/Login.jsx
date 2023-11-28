@@ -9,8 +9,8 @@ const Login = () => {
 
   async function handleLogin() {
     let login = {
-      phone_number: { username },
-      password: { password },
+      phone_number: username,
+      password: password,
     };
 
     await fetch("https://biglybigly.iran.liara.run/api/v1/auth/login/", {
@@ -19,10 +19,7 @@ const Login = () => {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify({
-        phone_number: { username },
-        password: { password },
-      }),
+      body: JSON.stringify(login),
     })
       .then((res) => res.json())
       .then((json) => console.log(json));
