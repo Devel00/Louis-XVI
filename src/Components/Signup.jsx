@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { data } from "../data/data";
 
 const Login = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone_number, setPhone_number] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function handleSignup() {
+    let Signup = {
+      first_name: firstName,
+      last_name: lastName,
+      phone_number: phone_number,
+      email: "",
+      password: password,
+    };
+
+    await fetch("https://biglybigly.iran.liara.run/api/v1/auth/signup/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(Signup),
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+  }
+
   return (
     <div className="h-screen bg-white font-main flex flex-col  justify-center items-center ">
       <div className="w-[35%] h-screen left-0 top-0 absolute bg-accent-100/80" />
@@ -28,6 +54,8 @@ const Login = () => {
               className=" w-[80%] sm:w-[215px] px-2 font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "
               type="text"
               placeholder="first name ..."
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
             ></input>
           </div>
 
@@ -38,33 +66,39 @@ const Login = () => {
               className=" sm:w-[215px] w-[80%] px-2 font-normal placeholder:text-[15px] text-[20px] rounded-[8px] placeholder:text-bg-300  py-2 border border-bg-200 shadow-md "
               type="text"
               placeholder="last name  ..."
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
             ></input>
           </div>
         </div>
         <div className="sm:flex sm:flex-row flex-col sm:pl-11 items-center justify-center ">
           <div className=" px-2  py-8 flex flex-col items-start gap-2">
-            <label className="  font-main ">نام کاربری :</label>
+            <label className="  font-main ">شماره همراه :</label>
             <input
               dir="ltr"
               className=" w-[80%] sm:w-[215px] px-2 font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "
               type="text"
               placeholder="username ..."
+              value={phone_number}
+              onChange={(e) => setPhone_number(e.target.value)}
             ></input>
           </div>
           <div className="  px-2   pt-4 pb-10 sm:py-8 flex flex-col items-start gap-2">
-            <label className="  font-main ">نام خانوادگی :</label>
+            <label className="  font-main ">رمز عبور :</label>
             <input
               dir="ltr"
               className=" sm:w-[215px] w-[80%] px-2 font-normal placeholder:text-[15px] text-[20px] rounded-[8px] placeholder:text-bg-300  py-2 border border-bg-200 shadow-md "
               type="text"
               placeholder="last name  ..."
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             ></input>
           </div>
         </div>
 
         <div className=" px-10 ml-12 bg-accent-100 w-[61%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
           <div className="   ">
-            <button className="">
+            <button onClick={handleSignup} className="">
               <span className=" text-[18px]">ورود</span>
             </button>
           </div>

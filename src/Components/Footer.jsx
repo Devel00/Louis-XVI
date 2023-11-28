@@ -7,7 +7,7 @@ import { RiTwitterXLine } from "react-icons/ri";
 
 const Footer = () => {
   return (
-    <div className=" w-full absolute bottom-0 h-[300px] bg-bg-200/80 shadow-[5px_3px_40px_-15px_rgba(0,0,0,0.3)] flex items-center justify-center">
+    <div className=" w-full mt-20 bottom-0 h-[300px] bg-bg-200/80 shadow-[5px_3px_40px_-15px_rgba(0,0,0,0.3)] flex items-center justify-center">
       <img
         className=" mr-8 w-[160px] h-[160px] ml-2 "
         src={data[1].image}
@@ -46,11 +46,19 @@ const Footer = () => {
           </span>
         </div>
       </div>
-      <div className=" flex flex-col gap-5 justify-center items-center ">
-        <FaTelegram size={25} className=" text-primary-100 " />
-        <BsInstagram size={25} className=" text-primary-100" />
-        <AiOutlineYoutube size={30} className=" text-primary-100" />
-        <RiTwitterXLine size={25} className=" text-primary-100" />
+      <div className=" flex  gap-5 justify-center items-center ">
+        <div className=" bg-bg-100 p-2 rounded-full shadow-md hover:cursor-pointer hover:scale-105">
+          <FaTelegram size={25} className=" text-primary-100 " />
+        </div>
+        <div className=" bg-bg-100 p-2 rounded-full shadow-md hover:cursor-pointer hover:scale-105">
+          <BsInstagram size={25} className=" text-[#C13584]" />
+        </div>
+        <div className=" bg-bg-100 p-2 rounded-full shadow-md hover:cursor-pointer hover:scale-105">
+          <AiOutlineYoutube size={28} className=" text-[#CD201e]" />
+        </div>
+        <div className=" bg-bg-100 p-2 rounded-full shadow-md hover:cursor-pointer hover:scale-105">
+          <RiTwitterXLine size={22} className="" />
+        </div>
       </div>
     </div>
   );
