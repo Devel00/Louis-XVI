@@ -54,7 +54,7 @@ const Footer = () => {
           <BsInstagram size={25} className=" text-[#C13584]" />
         </div>
         <div className=" bg-bg-100 p-2 rounded-full shadow-md hover:cursor-pointer hover:scale-105">
-          <AiOutlineYoutube size={28} className=" text-[#CD201F]" />
+          <AiOutlineYoutube size={28} className=" text-[#CD201e]" />
         </div>
         <div className=" bg-bg-100 p-2 rounded-full shadow-md hover:cursor-pointer hover:scale-105">
           <RiTwitterXLine size={22} className="" />
