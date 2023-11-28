@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { RiEqualizerFill } from "react-icons/ri";
+import { MdOutlineErrorOutline } from "react-icons/md";
 
 import { BsChat } from "react-icons/bs";
 import { PiHandshake } from "react-icons/pi";
@@ -132,8 +133,8 @@ const Navbar = () => {
               پروفایل شما
             </li>
             <li className="py-4 px-2 rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start items-center gap-2">
-              <MdOutlineFavoriteBorder size={22} />
-              علاقه مندی ها
+              <MdOutlineErrorOutline size={25} />
+              مشکلات
             </li>
 
             <li className="py-4 px-2 rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start  items-center gap-2">
