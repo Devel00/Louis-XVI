@@ -5,6 +5,8 @@ import { RiEqualizerFill } from "react-icons/ri";
 
 import { BsChat } from "react-icons/bs";
 import { PiHandshake } from "react-icons/pi";
+import { MdOutlineErrorOutline } from "react-icons/md";
+
 import {
   MdOutlineManageAccounts,
   MdOutlineFavoriteBorder,
@@ -13,7 +15,12 @@ import {
 import { FiSettings } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { data } from "../data/data";
+
 const Navbar = () => {
+  const User = "";
+
+  // User = localStorage.getItem();
+
   const [nav, setNav] = useState(false);
   const [account, setAcount] = useState(false);
 
@@ -61,7 +68,7 @@ const Navbar = () => {
       </div>
       {/* {exit or signup_login} */}
 
-      {!account ? (
+      {!User ? (
         <div className=" shadow-sm group hover:cursor-pointer bg-bg-100/50 hover:text-bg-100  hover:bg-primary-200 hover:transform hover:translate-x-2  hover:origin-left hover:duration-700  py-2 px-4 rounded-[8px] flex text-center justify-center items-center gap-1 group-hover:font-bold">
           <Link to="/Login">
             <span className=" group-hover:cursor-pointer   font-thin">
@@ -131,14 +138,16 @@ const Navbar = () => {
               <MdOutlineManageAccounts size={25} className="" />
               پروفایل شما
             </li>
-            <li className="py-4 px-2 rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start items-center gap-2">
-              <MdOutlineFavoriteBorder size={22} />
-              علاقه مندی ها
-            </li>
+            <Link to="/Problem">
+              <li className="py-4 px-2 rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start items-center gap-2">
+                <MdOutlineErrorOutline size={25} />
+                مشکلات
+              </li>
+            </Link>
 
             <li className="py-4 px-2 rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start  items-center gap-2">
               <PiHandshake size={25} />
-              هم مسیر{" "}
+              هم مسیر
             </li>
             <li className="py-4 px-2 rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start items-center gap-2">
               <BsChat size={20} />

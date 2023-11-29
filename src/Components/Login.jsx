@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { data } from "../data/data";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   async function handleLogin() {
     let login = {
@@ -22,7 +24,14 @@ const Login = () => {
       body: JSON.stringify(login),
     })
       .then((res) => res.json())
-      .then((json) => console.log(json));
+      .then((json) => {
+        localStorage.setItem("token", "JWT " + json.data.access);
+        console.log("token: ", json.data.access);
+        navigate("/");
+      })
+      .catch((e) => {
+        console.log("login erorr ==>>> ", e);
+      });
   }
 
   return (
