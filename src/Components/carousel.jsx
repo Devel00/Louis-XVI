@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { data } from "../data/data";
 
-const Carousel = () => {
+const MainCarousel = () => {
   const [current, setCurrent] = useState(data[2].image);
 
   return (
@@ -36,4 +36,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default MainCarousel;

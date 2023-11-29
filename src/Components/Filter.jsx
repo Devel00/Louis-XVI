@@ -32,9 +32,7 @@ const Filter = () => {
               className=" absolute w-[100%] hover:bg-text-100/10 h-full max-h-[500px]
             bg-text-100/40 rounded-[10px] flex flex-col justify-center "
             >
-              <span className=" text-primary-300 text-[40px]">
-                محدوده مکانی
-              </span>
+              <span className=" text-primary-300 text-[40px]">صنفی</span>
             </div>
 
             <img
@@ -51,7 +49,7 @@ const Filter = () => {
               className=" absolute hover:bg-text-100/10 w-[100%] h-full max-h-[500px]
             bg-text-100/40 flex rounded-[10px] flex-col justify-center "
             >
-              <span className=" text-primary-300 text-[40px]">آموزش</span>
+              <span className=" text-primary-300 text-[40px]">تغذیه</span>
             </div>
 
             <img
