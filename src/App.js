@@ -8,6 +8,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Problems from "./Components/Problems";
 import HomePage from "./Components/HomePage";
+import Profile from "./Components/Profile";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <BrowserRouter>
         {/* <Navbar /> */}
         <Routes>
-          <Route path="/" exact element={<HomePage />} />
+          <Route path="/" exact element={<Profile />} />
           <Route path="/Problem" exact element={<Problems />} />
           <Route path="/Login" exact element={<Login />} />
           <Route path="/Signup" element={<Signup />} />

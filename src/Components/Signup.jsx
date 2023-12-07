@@ -31,9 +31,9 @@ const Login = () => {
       .then((res) => res.json())
       .then((json) => {
         localStorage.setItem("token", "JWT " + json.data.access);
-        console.log("token: ", json.data.access);
+        console.log("token: ", json.data);
         setAcount();
-        navigate("/");
+        navigate("/login");
       })
       .catch((e) => {
         console.log("login erorr ==>>> ", e);
@@ -91,7 +91,7 @@ const Login = () => {
                 dir="ltr"
                 className=" w-[80%] sm:w-[215px] px-2 font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "
                 type="text"
-                placeholder=""
+                placeholder="phone number ..."
                 value={phone_number}
                 onChange={(e) => setPhone_number(e.target.value)}
               ></input>
@@ -109,13 +109,13 @@ const Login = () => {
             </div>
           </div>
 
-          <div className=" px-10 ml-12 bg-accent-100 w-[61%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
-            <div className="   ">
-              <button onClick={handleSignup} className="">
+          <button onClick={handleSignup} className="">
+            <div className=" px-10 ml-12 bg-accent-100 w-[61%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
+              <div className="   ">
                 <span className=" text-[18px]">ورود</span>
-              </button>
+              </div>
             </div>
-          </div>
+          </button>
         </div>
       </MyContext.Provider>
     </div>
