@@ -151,24 +151,10 @@ const Profile = () => {
                   </div>
                 </div>
               </Link>
-              {/* هم پاهای من */}
-              <Link to="/Problem">
-                <div className=" bg-bg-100 w-[80%] group hover:bg-accent-100 sm:mr-12 mr-4   mt-6 px-5 py-3 rounded-[8px] shadow-md">
-                  <div className=" flex justify-between items-center ">
-                    <span className=" group-hover:text-bg-100 text-accent-200 sm:text-[16px] text-[10px] font-bold">
-                      هم پاهای من
-                    </span>
-                    <IoIosArrowBack
-                      className=" group-hover:text-bg-100 text-accent-200"
-                      size={25}
-                    />
-                  </div>
-                </div>
-              </Link>
             </div>
             {/* پایان هم پا */}
             {/*ویرایش اطلاعات */}
-            <div className="  w-[100%] mt-10 mb-5 flex-col justify-center items-center">
+            <div className="  w-[100%] mt-1 mb-5 flex-col justify-center items-center">
               <div className=" flex justify-start mr-5 sm:gap-4 gap-2 mb-10 items-center w-[100%]">
                 <span className=" text-primary-100 sm:text-[16px] text-[14px] ">
                   تنطیمات
