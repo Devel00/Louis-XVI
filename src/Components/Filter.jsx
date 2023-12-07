@@ -3,7 +3,7 @@ import { data } from "../data/data";
 
 const Filter = () => {
   return (
-    <div>
+    <div className=" scale-90">
       <div className=" flex justify-center items-center">
         <div className=" border-b-2 border-bg-300/30 w-[90%]"></div>
       </div>
