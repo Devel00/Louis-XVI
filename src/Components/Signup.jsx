@@ -55,7 +55,7 @@ const Login = () => {
 
           <div className=" pt-4">
             <span className=" text-text-100 font-black sm:text-[26px] text-[18px] px-2 ">
-              ورود به صفحه کاربری
+              ثبت نام
             </span>
           </div>
 
