@@ -43,7 +43,11 @@ const Problems = () => {
           <MdKeyboardArrowLeft size={25} />
         </div>
       </div>
-      <Carousel className=" scale-90 ml-4 h-[500px]" responsive={responsive}>
+      <Carousel
+        showDots
+        className=" scale-90 ml-4 h-[500px]"
+        responsive={responsive}
+      >
         <div>
           <Card />
         </div>
@@ -83,7 +87,11 @@ const Problems = () => {
           <MdKeyboardArrowLeft size={25} />
         </div>
       </div>
-      <Carousel className="scale-90 ml-4 h-[500px]" responsive={responsive}>
+      <Carousel
+        showDots
+        className="scale-90 ml-4 h-[500px]"
+        responsive={responsive}
+      >
         <div>
           <Card />
         </div>
