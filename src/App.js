@@ -7,8 +7,8 @@ import Manager from "./Components/manage_problems";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Problems from "./Components/Problems";
-import HomePage from "./Components/HomePage";
-import Profile from "./Components/Profile";
+import { HomePage } from "./Components/HomePage";
+import { Profile } from "./Components/Profile";
 import Increase from "./Components/Increase";
 
 function App() {
