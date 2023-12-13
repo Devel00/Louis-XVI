@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, createContext, useContext } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import { data } from "../data/data";
 import Footer from "./Footer";
@@ -6,42 +6,32 @@ import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 import Increase from "./Increase";
+import { MyContext1 } from "./Login";
+
 const MyContext = createContext();
 const Profile = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  // const [id, setId] = useContext(MyContext1);
+  const contextValue = useContext(MyContext1);
+  console.log(contextValue);
 
   useEffect(() => {
-    // Fetch user information when the component mounts
-    const fetchUserInfo = async () => {
-      const userToken = localStorage.getItem("userToken");
-
+    const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://biglybigly.iran.liara.run/api/v1/auth/signup/",
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${userToken}`,
-              "Content-Type": "application/json",
-            },
-          }
+          "https://biglybigly.iran.liara.run/api/v1/user/2/"
         );
-
-        if (response.ok) {
-          const data = await response.json();
-          setUserInfo(data);
-        } else {
-          // Handle non-OK responses
-          console.error("Error fetching user information:", response.status);
-        }
+        const result = await response.json();
+        console.log(result);
+        setUserInfo(result);
       } catch (error) {
-        // Handle fetch errors
-        console.error("Error fetching user information:", error);
+        console.error("Error fetching data:", error);
+      } finally {
       }
     };
 
-    fetchUserInfo();
+    fetchData();
   }, []);
 
   return (
@@ -102,7 +92,7 @@ const Profile = () => {
               </div>
               <div>
                 <span className=" text-accent-200 font-normal text-[22px]">
-                  محمد حسین اکبری
+                  {userInfo.first_name + " " + userInfo.last_name}{" "}
                 </span>
               </div>
             </div>
@@ -270,10 +260,10 @@ const Profile = () => {
                   {/* item4 */}
                   <div className=" bg-bg-100 shadow-md  rounded-[8px]  mt-16 mr-6 w-[80%] gap-4 flex flex-col justify-center items-center">
                     <div className=" bg-bg-200 text-[18px] font-bold p-2 px-5 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
-                      <span className=" text-[22px]">5+</span>
+                      <span className=" text-[22px]">{userInfo.balance}</span>
                     </div>
                     <span className=" text-[18px] font-bold mb-2 text-accent-100">
-                      سرمایه گذاری های من
+                      موجودی
                     </span>
                   </div>
                 </div>
