@@ -1,7 +1,20 @@
-import React from "react";
+import React,{useState} from "react";
 import { data } from "../data/data";
+import {send_udata_f_signup} from "../services/signup";
 
 const Login = () => {
+  const [firstname , setFirstname] = useState("")
+  const [lastname , setLastName] = useState("")
+  const [phonenumber, setPhonenumber] = useState("")
+  const [email , setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  async function handlesignup(){
+
+    console.log({"first_name":firstname, "last_name":lastname,"phone_number":phonenumber,"email":email , "password":password})
+    await send_udata_f_signup({"first_name":firstname, "last_name":lastname,"phone_number":phonenumber,"email":email , "password":password})
+  }
+
+
   return (
     <div className="h-screen bg-white font-main flex flex-col  justify-center items-center ">
       <div className="w-[35%] h-screen left-0 top-0 absolute bg-accent-100/80" />

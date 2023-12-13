@@ -1,8 +1,19 @@
-import React from "react";
+import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import { data } from "../data/data";
+import {send_udata_f_login} from "../services/login"
 
 const Login = () => {
+
+  const [username , setUsername] = useState("")
+  const [password , setPassword] = useState("")
+
+  async function handlelogin(){
+
+    console.log({"phone_number":username, "password":password})
+    await send_udata_f_login({"phone_number":username, "password":password})
+  }
+
   return (
     <div className="h-screen bg-white font-main flex flex-col justify-center items-center ">
       <div className="w-[35%] h-screen left-0 top-0 absolute bg-accent-100/80" />
@@ -27,6 +38,8 @@ const Login = () => {
             className=" w-[80%] sm:w-[400px] font-normal text-[20px] placeholder:text-[15px] rounded-[8px]  px-2 py-2 border border-bg-200 shadow-md "
             type="text"
             placeholder="Username ..."
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           ></input>
         </div>
 
@@ -37,11 +50,13 @@ const Login = () => {
             className="w-[80%] sm:w-[400px] px-2 font-normal placeholder:text-[15px] rounded-[8px] text-[20px]  py-2 border border-bg-200 shadow-md "
             type="password"
             placeholder="password ..."
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
         <div className=" px-10 ml-[50px] group bg-accent-100 w-[59%] sm:w-[400px] pt-3 mt-5 pb-3 flex rounded-[8px] flex-col items-center gap-2">
           <div className="  ">
-            <button className="">
+            <button onClick={handlelogin} className="">
               <span className=" text-[16px] sm:text-[16px]">ورود</span>
             </button>
           </div>
