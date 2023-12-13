@@ -1,12 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import { data } from "../data/data";
 import Footer from "./Footer";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
+import Increase from "./Increase";
 
 const Profile = () => {
+  const [userInfo, setUserInfo] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    // Fetch user information when the component mounts
+    const fetchUserInfo = async () => {
+      const userToken = localStorage.getItem("userToken");
+
+      try {
+        const response = await fetch(
+          "https://biglybigly.iran.liara.run/api/v1/auth/signup/",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${userToken}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          setUserInfo(data);
+        } else {
+          // Handle non-OK responses
+          console.error("Error fetching user information:", response.status);
+        }
+      } catch (error) {
+        // Handle fetch errors
+        console.error("Error fetching user information:", error);
+      }
+    };
+
+    fetchUserInfo();
+  }, []);
+
   return (
     <div className="">
       <div className=" bg-bg-200 w-full h-[80px] ">
@@ -114,7 +151,7 @@ const Profile = () => {
                 </div>
               </Link>
               {/* مدیریت سرمایه گذاری ها */}
-              <Link to="/Problem">
+              <Link to="/Increase">
                 <div className=" bg-bg-100 w-[80%] group hover:bg-accent-100 sm:mr-12 mr-4   mt-6 px-5 py-3 rounded-[8px] shadow-md">
                   <div className=" flex justify-between items-center ">
                     <span className=" group-hover:text-bg-100 sm:text-[16px] text-[10px] text-accent-200 font-bold">
@@ -271,6 +308,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+
       <Footer />
     </div>
   );
