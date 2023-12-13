@@ -1,7 +1,7 @@
 import "./App.css";
 //import Navbar from "./Components/Navbar";
 import Signup from "./Components/Signup";
-import Login from "./Components/Login";
+import { Login } from "./Components/Login";
 import Card from "./Components/Card";
 import Manager from "./Components/manage_problems";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
