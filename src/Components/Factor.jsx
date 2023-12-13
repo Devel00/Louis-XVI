@@ -1,7 +1,14 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { data } from "../data/data";
 
 const Factor = () => {
+
+    const navigate = useNavigate();
+    function returnPage(){
+        navigate("/Profile");
+    }
+
   return (
     <div className="bg-[#ffffff] flex flex-row justify-center w-full">
       <div className="bg-[#ffffff] overflow-hidden w-[1440px] h-[1024px] relative">
@@ -19,9 +26,9 @@ const Factor = () => {
                 src={data[9].image}
                 alt=""
               ></img>
-          <div className="h-[63px] top-[345px] left-[600px] [font-family:'Vazirmatn-Regular',Helvetica] font-normal text-accent-200 text-[40px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
+          <span className="h-[63px] top-[345px] left-[600px] [font-family:'Vazirmatn-Regular',Helvetica] font-normal text-accent-200 text-[40px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
             محمد حسین اکبری
-          </div>
+          </span>
           <img
                 className=" absolute top-[520px] left-[15%] w-[900px] h-[120px]"
                 src={data[10].image}
@@ -42,10 +49,11 @@ const Factor = () => {
         </div>
         <div className="absolute w-[525px] h-[81px] top-[778px] left-[470px]">
           <div className="relative w-[588px] h-[81px] left-[-25px]">
-            <div className="w-[588px] h-[81px] top-0 left-0 absolute bg-accent-100" />
-            <div className="h-[47px] top-[25px] left-[256px] [font-family:'Vazirmatn-Medium',Helvetica] text-white text-[30px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
+            <button onClick={returnPage} className="w-[588px] h-[81px] top-0 left-0 absolute bg-accent-100">
+            <span className="h-[47px] top-[25px] left-[256px] [font-family:'Vazirmatn-Medium',Helvetica] text-white text-[30px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
               بازگشت
-            </div>
+            </span>
+            </button>
           </div>
         </div>
       </div>
