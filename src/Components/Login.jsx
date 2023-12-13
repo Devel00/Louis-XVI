@@ -27,6 +27,7 @@ const Login = () => {
       .then((json) => {
         localStorage.setItem("token", "JWT " + json.data.access);
         console.log("token: ", json.data.access);
+
         navigate("/");
       })
       .catch((e) => {
