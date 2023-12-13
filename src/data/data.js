@@ -1,5 +1,8 @@
 import card from "../Image/me.jpg";
 import logo from "../Image/main_logo.png";
+import AvatarUser from "../Image/AvatarUser.png";
+import line from "../Image/line-1.svg";
+import tick from "../Image/blue_tick.png";
 import Problems from "../Components/Problems";
 import carousel_problem from "../Image/Problems/markus-winkler-aYPtEknQmXE-unsplash.jpg";
 import filter from "../Image/Problems/geojango-maps-Z8UgB80_46w-unsplash.jpg";
@@ -45,5 +48,17 @@ export const data = [
   {
     id: "landing2",
     image: landing3,
+  },
+  {
+    id: "avatar",
+    image: AvatarUser,
+  },
+  {
+    id: "line",
+    image: line,
+  },
+  {
+    id: "tick",
+    image: tick,
   },
 ];
