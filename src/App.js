@@ -11,6 +11,7 @@ import { HomePage } from "./Components/HomePage";
 import { Profile } from "./Components/Profile";
 import Increase from "./Components/Increase";
 import Factor from "./Components/Factor";
+import IdeaCategory from "./Components/IdeaCategory";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/Manager" element={<Manager />} />
           <Route path="/Increase" element={<Increase />} />
           <Route path="/Factor" element={<Factor />} />
+          <Route path="/Cat" element={<IdeaCategory />} />
         </Routes>
       </BrowserRouter>
     </div>

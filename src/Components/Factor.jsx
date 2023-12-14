@@ -26,7 +26,7 @@ const Factor = () => {
                 src={data[9].image}
                 alt=""
               ></img>
-          <span className="h-[63px] top-[345px] left-[600px] [font-family:'Vazirmatn-Regular',Helvetica] font-normal text-accent-200 text-[40px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
+          <span className="h-[63px] top-[345px] left-[600px] font-main text-accent-200 text-[40px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
             محمد حسین اکبری
           </span>
           <img
@@ -35,7 +35,7 @@ const Factor = () => {
                 alt=""
               ></img>        </div>
         <div className="absolute w-[582px] h-[90px] top-[478px] left-[397px]">
-          <p className="h-[109px] w-[900px] top-[26px] left-[-160px] [font-family:'Vazirmatn-Black',Helvetica] font-black text-accent-200 text-[40px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
+          <p className="h-[109px] w-[900px] top-[26px] left-[-160px] font-bold text-accent-200 text-[40px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
             خرید شما با موفقیت انجام شد
           </p>
           <img
