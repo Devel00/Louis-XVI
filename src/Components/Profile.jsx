@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useState, createContext } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import { data } from "../data/data";
 import Footer from "./Footer";
@@ -6,46 +6,18 @@ import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 import Increase from "./Increase";
+// import { InfoContext } from "./Login";
+
 const MyContext = createContext();
 const Profile = () => {
-  const [userInfo, setUserInfo] = useState(null);
+  const [userInfo, setUserInfo] = useState(
+    JSON.parse(localStorage.getItem("Info"))
+  );
   const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    // Fetch user information when the component mounts
-    const fetchUserInfo = async () => {
-      const userToken = localStorage.getItem("userToken");
-
-      try {
-        const response = await fetch(
-          "https://biglybigly.iran.liara.run/api/v1/auth/signup/",
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${userToken}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        if (response.ok) {
-          const data = await response.json();
-          setUserInfo(data);
-        } else {
-          // Handle non-OK responses
-          console.error("Error fetching user information:", response.status);
-        }
-      } catch (error) {
-        // Handle fetch errors
-        console.error("Error fetching user information:", error);
-      }
-    };
-
-    fetchUserInfo();
-  }, []);
 
   return (
     <MyContext.Provider value={[showModal, setShowModal]}>
+      (
       <div className=" w-[100%] ">
         {showModal && <Increase />}
         <div>
@@ -86,23 +58,23 @@ const Profile = () => {
           </div>
           <div className=" scale-90 felx justify-center item-center gap-10 flex-col">
             <div className=" flex flex-col justify-center items-center  ">
-              <div class="relative w-[108px] h-[100px] overflow-hidden bg-bg-200 rounded-full dark:bg-gray-600 m-4">
+              <div className="relative w-[108px] h-[100px] overflow-hidden bg-bg-200 rounded-full dark:bg-gray-600 m-4">
                 <svg
-                  class="absolute w-[115px] h-[112px] text-accent-100 -left-1 "
+                  className="absolute w-[115px] h-[112px] text-accent-100 -left-1 "
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </div>
               <div>
                 <span className=" text-accent-200 font-normal text-[22px]">
-                  محمد حسین اکبری
+                  {userInfo.first_name + " " + userInfo.last_name}{" "}
                 </span>
               </div>
             </div>
@@ -270,10 +242,10 @@ const Profile = () => {
                   {/* item4 */}
                   <div className=" bg-bg-100 shadow-md  rounded-[8px]  mt-16 mr-6 w-[80%] gap-4 flex flex-col justify-center items-center">
                     <div className=" bg-bg-200 text-[18px] font-bold p-2 px-5 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
-                      <span className=" text-[22px]">5+</span>
+                      <span className=" text-[22px]">{userInfo.balance}</span>
                     </div>
                     <span className=" text-[18px] font-bold mb-2 text-accent-100">
-                      سرمایه گذاری های من
+                      موجودی
                     </span>
                   </div>
                 </div>
@@ -334,6 +306,7 @@ const Profile = () => {
           <Footer />
         </div>
       </div>
+      )
     </MyContext.Provider>
   );
 };
