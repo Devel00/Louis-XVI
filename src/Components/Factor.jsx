@@ -21,11 +21,13 @@ const Factor = () => {
             ></img>
           </div>
           <img
-            className=" absolute top-[300px] left-[32%] w-[120px] h-[120px]"
-            src={data[9].image}
-            alt=""
-          ></img>
-          <span className="h-[63px] top-[345px] left-[600px] font-main font-normal text-accent-200 text-[40px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
+
+                className=" absolute top-[300px] left-[32%] w-[120px] h-[120px]"
+                src={data[9].image}
+                alt=""
+              ></img>
+          <span className="h-[63px] top-[345px] left-[600px] font-main text-accent-200 text-[40px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
+
             محمد حسین اکبری
           </span>
           <img
@@ -35,7 +37,9 @@ const Factor = () => {
           ></img>{" "}
         </div>
         <div className="absolute w-[582px] h-[90px] top-[478px] left-[397px]">
+
           <p className="h-[109px] w-[900px] top-[26px] left-[-160px] font-main font-black text-accent-200 text-[40px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
+
             خرید شما با موفقیت انجام شد
           </p>
           <img
@@ -44,18 +48,19 @@ const Factor = () => {
             alt=""
           ></img>
         </div>
+
         <div className="absolute h-[47px] top-[639px] left-[540px] font-main font-bold text-accent-100 text-[30px] text-center tracking-[0] leading-[normal] [direction:rtl]">
+
           شماره پیگیری : 231313
         </div>
         <div className="absolute w-[525px] h-[81px] top-[778px] left-[470px]">
           <div className="relative w-[588px] h-[81px] left-[-25px]">
-            <button
-              onClick={returnPage}
-              className="w-[588px] h-[81px] top-0 left-0 absolute bg-accent-100"
-            >
-              <span className="h-[47px] top-[25px] left-[256px] font-main text-bg-100 text-[30px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
-                بازگشت
-              </span>
+
+            <button onClick={returnPage} className="w-[588px] h-[81px] top-0 left-0 absolute bg-accent-100">
+            <span className="h-[47px] top-[20px] left-[256px] font-main text-[#ffffff] text-[30px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
+              بازگشت
+            </span>
+
             </button>
           </div>
         </div>

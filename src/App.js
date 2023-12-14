@@ -12,6 +12,7 @@ import { Profile } from "./Components/Profile";
 import Increase from "./Components/Increase";
 import AddProblem from "./Components/AddProblem";
 import Factor from "./Components/Factor";
+import IdeaCategory from "./Components/IdeaCategory";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/Increase" element={<Increase />} />
           <Route path="/AddProblem" element={<AddProblem />} />
           <Route path="/Factor" element={<Factor />} />
+          <Route path="/IdeaCategory" element={<IdeaCategory />} />
         </Routes>
       </BrowserRouter>
     </div>
