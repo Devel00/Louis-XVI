@@ -18,12 +18,15 @@ import { Link } from "react-router-dom";
 import { data } from "../data/data";
 
 const Navbar = () => {
-  const User = "";
+  const [user, setUser] = useState(false);
+
+  // if (localStorage.getItem("ID")) {
+  //   setUser(true);
+  // }
 
   // User = localStorage.getItem();
 
   const [nav, setNav] = useState(false);
-  const [account, setAcount] = useState(false);
 
   return (
     <div className=" max-w-[1640px] bg-bg-200/80 shadow-sm border border-b-2 border-bg-300/10 flex items-center justify-between mx-auto p-5">
@@ -69,7 +72,7 @@ const Navbar = () => {
       </div>
       {/* {exit or signup_login} */}
 
-      {!User ? (
+      {!user ? (
         <div className=" shadow-sm group hover:cursor-pointer bg-bg-100/50 hover:text-bg-100  hover:bg-primary-200 hover:transform hover:translate-x-2  hover:origin-left hover:duration-700  py-2 px-4 rounded-[8px] flex text-center justify-center items-center gap-1 group-hover:font-bold">
           <Link to="/Login">
             <span className=" group-hover:cursor-pointer   font-thin">

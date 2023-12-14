@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext, useContext } from "react";
+import React, { useState, createContext } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import { data } from "../data/data";
 import Footer from "./Footer";
@@ -6,36 +6,18 @@ import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 import Increase from "./Increase";
-import { MyContext1 } from "./Login";
+// import { InfoContext } from "./Login";
 
 const MyContext = createContext();
 const Profile = () => {
-  const [userInfo, setUserInfo] = useState(null);
+  const [userInfo, setUserInfo] = useState(
+    JSON.parse(localStorage.getItem("Info"))
+  );
   const [showModal, setShowModal] = useState(false);
-  // const [id, setId] = useContext(MyContext1);
-  const contextValue = useContext(MyContext1);
-  console.log(contextValue);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://biglybigly.iran.liara.run/api/v1/user/2/"
-        );
-        const result = await response.json();
-        console.log(result);
-        setUserInfo(result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-      }
-    };
-
-    fetchData();
-  }, []);
 
   return (
     <MyContext.Provider value={[showModal, setShowModal]}>
+      (
       <div className=" w-[100%] ">
         {showModal && <Increase />}
         <div>
@@ -76,17 +58,17 @@ const Profile = () => {
           </div>
           <div className=" scale-90 felx justify-center item-center gap-10 flex-col">
             <div className=" flex flex-col justify-center items-center  ">
-              <div class="relative w-[108px] h-[100px] overflow-hidden bg-bg-200 rounded-full dark:bg-gray-600 m-4">
+              <div className="relative w-[108px] h-[100px] overflow-hidden bg-bg-200 rounded-full dark:bg-gray-600 m-4">
                 <svg
-                  class="absolute w-[115px] h-[112px] text-accent-100 -left-1 "
+                  className="absolute w-[115px] h-[112px] text-accent-100 -left-1 "
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </div>
@@ -324,6 +306,7 @@ const Profile = () => {
           <Footer />
         </div>
       </div>
+      )
     </MyContext.Provider>
   );
 };
