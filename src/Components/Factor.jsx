@@ -44,13 +44,13 @@ const Factor = () => {
                 alt=""
               ></img>
         </div>
-        <div className="absolute h-[47px] top-[639px] left-[540px] [font-family:'Vazirmatn-Bold',Helvetica] font-bold text-accent-100 text-[30px] text-center tracking-[0] leading-[normal] [direction:rtl]">
+        <div className="absolute h-[47px] top-[639px] left-[540px] font-bold text-accent-100 text-[30px] text-center tracking-[0] leading-[normal] [direction:rtl]">
           شماره پیگیری : 231313
         </div>
         <div className="absolute w-[525px] h-[81px] top-[778px] left-[470px]">
           <div className="relative w-[588px] h-[81px] left-[-25px]">
             <button onClick={returnPage} className="w-[588px] h-[81px] top-0 left-0 absolute bg-accent-100">
-            <span className="h-[47px] top-[25px] left-[256px] [font-family:'Vazirmatn-Medium',Helvetica] text-white text-[30px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
+            <span className="h-[47px] top-[20px] left-[256px] font-main text-[#ffffff] text-[30px] absolute text-center tracking-[0] leading-[normal] [direction:rtl]">
               بازگشت
             </span>
             </button>

@@ -29,7 +29,7 @@ function App() {
           <Route path="/Manager" element={<Manager />} />
           <Route path="/Increase" element={<Increase />} />
           <Route path="/Factor" element={<Factor />} />
-          <Route path="/Cat" element={<IdeaCategory />} />
+          <Route path="/IdeaCategory" element={<IdeaCategory />} />
         </Routes>
       </BrowserRouter>
     </div>
