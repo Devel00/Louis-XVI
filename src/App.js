@@ -10,6 +10,7 @@ import Problems from "./Components/Problems";
 import { HomePage } from "./Components/HomePage";
 import { Profile } from "./Components/Profile";
 import Increase from "./Components/Increase";
+import AddProblem from "./Components/AddProblem";
 import Factor from "./Components/Factor";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Manager" element={<Manager />} />
           <Route path="/Increase" element={<Increase />} />
+          <Route path="/AddProblem" element={<AddProblem />} />
           <Route path="/Factor" element={<Factor />} />
         </Routes>
       </BrowserRouter>

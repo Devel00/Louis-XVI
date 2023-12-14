@@ -17,21 +17,26 @@ const Profile = () => {
 
   return (
     <MyContext.Provider value={[showModal, setShowModal]}>
+
       (
       <div className=" absolute top-0 w-[100%] ">
+
         {showModal && <Increase />}
         <div>
-          {" "}
-          <div className=" bg-bg-200 z-10 w-full h-[80px] ">
-            <div>
+          <div className=" bg-bg-200 w-full h-[10%] ">
+            <div className="flex flex-col justify-center items-center">
               <img
+
                 className=" absolute top-1 left-[48%] w-[60px] h-[60px]"
+
                 src={data[1].image}
                 alt=""
               ></img>
             </div>
             <Link to="/">
+ readproblems
               <div className=" hover:scale-105 absolute left-8 top-[1%] text-primary-100 ">
+
                 <IoHomeOutline
                   className=" hover:scale-105  hover:duration-[900ms]"
                   size={30}

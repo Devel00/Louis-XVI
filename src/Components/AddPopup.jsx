@@ -27,7 +27,7 @@ const AddPopup = () => {
             </div>
             <div className=" flex justify-between items-center">
               {/* add 1 */}
-              <Link to="/">
+              <Link to="/AddProblem">
                 <div className=" flex h-[200px] gap-6 m-6 flex-col group shadow-lg hover:bg-accent-100 hover:cursor-pointer justify-center bg-bg-100   items-center ">
                   <div className=" group-hover:scale-110 mx-4 shadow-lg group-hover:bg-bg-100 rounded-full p-2 ">
                     <HiOutlinePlus className="  text-accent-100 " size={40} />
