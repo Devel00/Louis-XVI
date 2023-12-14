@@ -27,7 +27,6 @@ const Navbar = () => {
   // User = localStorage.getItem();
 
   const [nav, setNav] = useState(false);
-  const [account, setAcount] = useState(false);
 
   return (
     <div className=" max-w-[1640px] bg-bg-200/80 shadow-sm border border-b-2 border-bg-300/10 flex items-center justify-between mx-auto p-5">
