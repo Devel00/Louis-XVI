@@ -114,7 +114,7 @@ const HomePage = () => {
                   و روش سرمایه گذاری انجام بشه{" "}
                 </span>
               </div>
-              <Link to="/">
+              <Link to="/IdeaCategory">
                 <button className=" py-3 px-16 mb-6 font-bold rounded-[8px] hover:scale-105 hover:duration-[900ms] bg-accent-100 text-bg-100">
                   ورود به صفحه جذب سرمایه{" "}
                 </button>
