@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { data } from "../data/data";
-import axios from "axios";
-import { Navigate } from "react-router-dom";
-
+const InfoContext = createContext();
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [userInfo, setUserInfo] = useState(null);
+
   const navigate = useNavigate();
 
   async function handleLogin() {
@@ -14,7 +14,6 @@ const Login = () => {
       phone_number: username,
       password: password,
     };
-
     await fetch("https://biglybigly.iran.liara.run/api/v1/auth/login/", {
       method: "POST",
       headers: {
@@ -26,16 +25,57 @@ const Login = () => {
       .then((res) => res.json())
       .then((json) => {
         localStorage.setItem("token", "JWT " + json.data.access);
-        console.log("token: ", json.data.access);
+        localStorage.setItem("ID", json.data.id);
+        const Id = localStorage.getItem("ID");
+        // console.log(Id);
+        // console.log(json.data.id);
+        // console.log("token: ", json.data.access);
+        // console.log(json.data);
 
-        navigate("/");
+        json.data.access && navigate("/");
       })
       .catch((e) => {
         console.log("login erorr ==>>> ", e);
       });
+    getUserInformation();
+
+    // try {
+    //   const response = await fetch(
+    //     `https://biglybigly.iran.liara.run/api/v1/user/${localStorage.getItem(
+    //       "ID"
+    //     )}/`
+    //   );
+    //   const result = await response.json();
+    //   // console.log(result);
+    //   setUserInfo(result.id);
+    //   localStorage.setItem("Info", result);
+    //   console.log(localStorage.getItem("Info"));
+    //   console.log(userInfo);
+    //   // setUserInfo(result);
+    //   // setSuccess(true);
+    // } catch (error) {
+    //   console.error("Error fetching data:", error);
+    // } finally {
+    // }
+  }
+
+  async function getUserInformation() {
+    try {
+      const response = await fetch(
+        `https://biglybigly.iran.liara.run/api/v1/user/${localStorage.getItem(
+          "ID"
+        )}/`
+      );
+      const result = await response.json();
+      localStorage.setItem("Info", JSON.stringify(result));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+    }
   }
 
   return (
+    // <InfoContext.Provider value={[userInfo, setUserInfo]}>
     <div className="h-screen bg-white font-main flex flex-col justify-center items-center ">
       <div className="w-[35%] h-screen left-0 top-0 absolute bg-accent-100/80" />
       <div className="w-[55%] h-[65%]  flex flex-col items-center justify-center z-30  bg-bg-100 bg-opacity-0 shadow-[-18px_10px_80px_-5px_rgba(5,5,5,0.3)] shadow-text-200/60">
@@ -78,8 +118,8 @@ const Login = () => {
           ></input>
         </div>
         <div className=" px-10 ml-[50px] group bg-accent-100 w-[59%] sm:w-[400px] pt-3 mt-5 pb-3 flex rounded-[8px] flex-col items-center gap-2">
-          <div className="  ">
-            <button onClick={handleLogin} className="">
+          <div onClick={handleLogin} className="  ">
+            <button className="">
               <span className=" text-[16px] sm:text-[16px]">ورود</span>
             </button>
           </div>
@@ -96,7 +136,8 @@ const Login = () => {
         </div>
       </div>
     </div>
+    // </InfoContext.Provider>
   );
 };
 
-export default Login;
+export { Login };

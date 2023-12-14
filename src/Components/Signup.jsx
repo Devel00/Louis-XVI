@@ -101,7 +101,7 @@ const Login = () => {
               <input
                 dir="ltr"
                 className=" sm:w-[215px] w-[80%] px-2 font-normal placeholder:text-[15px] text-[20px] rounded-[8px] placeholder:text-bg-300  py-2 border border-bg-200 shadow-md "
-                type="text"
+                type="password"
                 placeholder="password ..."
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -112,7 +112,7 @@ const Login = () => {
           <button onClick={handleSignup} className="">
             <div className=" px-10 ml-12 bg-accent-100 w-[61%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
               <div className="   ">
-                <span className=" text-[18px]">ورود</span>
+                <span className=" text-[18px]">ثبت</span>
               </div>
             </div>
           </button>
