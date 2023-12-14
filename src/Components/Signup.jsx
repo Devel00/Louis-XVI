@@ -101,7 +101,7 @@ const Login = () => {
               <input
                 dir="ltr"
                 className=" sm:w-[215px] w-[80%] px-2 font-normal placeholder:text-[15px] text-[20px] rounded-[8px] placeholder:text-bg-300  py-2 border border-bg-200 shadow-md "
-                type="text"
+                type="password"
                 placeholder="password ..."
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

@@ -1,8 +1,52 @@
-import React, { useContext } from "react";
+import React, { useState, createContext } from "react";
 import { data } from "../data/data";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AddProblem = () => {
+    const [title, setTitle] = useState("")
+    const [file, setFile] = useState([])
+    const [image, setImage] = useState([])
+    const [description, setDescription] = useState("")
+    const [money, setMoney] = useState("")
+    const [userInfo, setUserInfo] = useState(
+        JSON.parse(localStorage.getItem("Info"))
+    );
+    const onChangeFile = e => {
+        setImage(image, e.target.files[0])
+        file = 
+        {
+            id : 0,
+            image : image[0],
+            problem_id : 1
+        };
+        setFile([file, e.target.files[0]]);
+        console.log('file : ', file);
+    };
+    const navigate = useNavigate(); //why????
+    async function handelCreateProblem() {
+        let Problems = {
+            title: title,
+            description: description,
+            financial_amount: money,
+            // problem_images:file ,
+            is_done: false,
+            creator: userInfo.id
+        };
+        console.log(Problems)
+        await fetch("https://biglybigly.iran.liara.run/api/v1/problems/problems/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: JSON.stringify(Problems),
+        })
+        .then(() => {
+            navigate("/Profile");
+            console.log("sucess");
+        })
+        .catch((e) => {console.log(e);})
+    }
 
     return (
         <div class="flex items-center justify-center p-5">
@@ -23,6 +67,8 @@ const AddProblem = () => {
                                 className=" sm:w-[100%] px-2 font-main font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "
                                 type="text"
                                 placeholder="عنوان"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
                             ></input>
                         </div>
                     </div>
@@ -35,7 +81,23 @@ const AddProblem = () => {
                                 type="text"
                                 rows="5"
                                 placeholder="توضیح"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
                             ></textarea>
+                        </div>
+                    </div>
+                    <div className="sm:w-[100%] sm:h-max sm:flex sm:flex-row  flex-col  items-center justify-center ">
+                        <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
+                            <label className="  font-main ">تخمین پول مورد نیاز برای حل مشکل :</label>
+                            <input
+                                dir="rtl"
+                                className=" sm:w-[100%] px-2 font-main font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "
+                                type="number"
+                                rows="5"
+                                placeholder="به تومان"
+                                value={money}
+                                onChange={(e) => setMoney(e.target.value)}
+                            ></input>
                         </div>
                     </div>
                     <div className="w-full h-full flex flex-col justify-center items-center gap-2">
@@ -51,12 +113,17 @@ const AddProblem = () => {
                                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-main font-semibold">Click to upload</span> or drag and drop</p>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                                 </div>
-                                <input id="dropzone-file" type="file" class="hidden" />
+                                <input 
+                                id="dropzone-file" 
+                                type="file" 
+                                class="hidden" 
+                                onChange={onChangeFile}
+                                />
                             </label>
                         </div>
                     </div>
                     <div className=" py-5 px-5 flex flex-col justify-center items-center ">
-                        <button className="">
+                        <button className="" onClick={handelCreateProblem}>
                             <div className=" bg-accent-100 hover:bg-primary-100 hover:text-bg-100 hover:font-bold w-[100%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
                                 <div className="">
                                     <span className="font-main text-[18px]">اضافه کردن</span>
