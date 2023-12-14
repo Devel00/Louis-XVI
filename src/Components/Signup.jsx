@@ -112,7 +112,7 @@ const Login = () => {
           <button onClick={handleSignup} className="">
             <div className=" px-10 ml-12 bg-accent-100 w-[61%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
               <div className="   ">
-                <span className=" text-[18px]">ورود</span>
+                <span className=" text-[18px]">ثبت</span>
               </div>
             </div>
           </button>

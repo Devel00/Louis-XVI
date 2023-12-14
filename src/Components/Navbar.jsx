@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { RiEqualizerFill } from "react-icons/ri";
@@ -24,6 +24,14 @@ const Navbar = () => {
   //   setUser(true);
   // }
 
+  useEffect(() => {
+    const handleuser = () => {
+      if (localStorage.getItem("ID")) {
+        setUser(true);
+      }
+    };
+    handleuser();
+  }, []);
   // User = localStorage.getItem();
 
   const [nav, setNav] = useState(false);
@@ -81,31 +89,33 @@ const Navbar = () => {
           </Link>
         </div>
       ) : (
-        <div className="group hover:bg-bg-300/40 hover:rounded-[8px] hover:cursor-pointer p-2">
-          <div class="relative w-10 h-10 overflow-hidden bg-bg-300 rounded-full dark:bg-gray-600">
-            <svg
-              class="absolute w-12 h-12 text-bg-100 -left-1"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </div>
-          <div className=" group ">
-            <span
-              className="transition-all duration-100 invisible group-hover:visible  left-14   absolute  origin-left w-auto p-2 m-2 min-w-max  rounded-md shadow-md
+        <Link to="/Profile">
+          <div className="group hover:bg-bg-300/40 hover:rounded-[8px] hover:cursor-pointer p-2">
+            <div class="relative w-10 h-10 overflow-hidden bg-bg-300 rounded-full dark:bg-gray-600">
+              <svg
+                class="absolute w-12 h-12 text-bg-100 -left-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+            <div className=" group ">
+              <span
+                className="transition-all duration-100 invisible group-hover:visible  left-14   absolute  origin-left w-auto p-2 m-2 min-w-max  rounded-md shadow-md
         text-[#ffffff] bg-[#23272a] 
          text-[10px] font-main "
-            >
-              {data[0].id}
-            </span>
+              >
+                {data[0].id}
+              </span>
+            </div>
           </div>
-        </div>
+        </Link>
       )}
 
       {/* Overlay */}

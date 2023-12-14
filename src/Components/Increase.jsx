@@ -1,13 +1,35 @@
-import React, { useContext, useNavigate } from "react";
+import React, { useContext, useNavigate, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import { MyContext } from "../Components/Profile";
+import { data } from "../data/data";
 
 const Increase = () => {
   const [showModal, setShowModal] = useContext(MyContext);
-
+  const [balance, setBalance] = useState();
+  async function handleUpdate() {
+    let update = {
+      add_balance: balance,
+    };
+    await fetch("https://biglybigly.iran.liara.run/api/v1/user/balance", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(update),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json.data);
+      })
+      .catch((e) => {
+        console.log("login erorr ==>>> ", e);
+      });
+  }
   return (
     <div className=" flex w-full fixed h-full bg-text-100/30 z-50  flex-col justify-center items-center">
       <div className=" fixed inset-10 top-[80px] right-[10%]  w-[80%] z-50 bg-bg-200 h-[600px]">
@@ -26,14 +48,18 @@ const Increase = () => {
                 افزایش
               </span>
               <input
+                onChange={(e) => setBalance(e.target.value)}
                 className=" shadow-md border border-bg-300/50 mb-10 rounded-[8px] mt-1 text-text-100 py-2 px-6 w-[400px] "
                 type="text"
               ></input>
             </div>
-            <Link to="/">
-              <div className=" mt-6 mb-10 w-[400px] py-2 rounded-[8px] bg-accent-100 text-bg-100 font-semibold ">
+            <Link to="/Factor">
+              <button
+                onClick={handleUpdate}
+                className=" mt-6 mb-10 w-[400px] py-2 rounded-[8px] bg-accent-100 text-bg-100 font-semibold "
+              >
                 افزایش
-              </div>
+              </button>
             </Link>
           </div>
         </div>
