@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 #root {
-    font-family:  Vazir !important;
+    font-family:  Vazirmatn !important;
   }
   @layer components{
 
