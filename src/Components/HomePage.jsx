@@ -11,16 +11,16 @@ const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <MyContext.Provider value={[showModal, setShowModal]} >
+    <MyContext.Provider value={[showModal, setShowModal]}>
       <div className="">
-        {showModal && <AddPopup/>}
+        {showModal && <AddPopup />}
         <div
           onClick={() => setShowModal(true)}
-          className=" hover:scale-110 fixed left-10 hover:cursor-pointer bottom-10"
+          className=" hover:scale-110 animate-bounce fixed left-10 hover:cursor-pointer bottom-10"
         >
           <HiOutlinePlus
-            className=" p-1 rounded-full w-[50px] h-[50px] bg-bg-100 shadow-xl text-primary-100"
-            size={25}
+            className=" p-1 rounded-full  bg-bg-100 shadow-xl text-primary-100"
+            size={90}
           />
         </div>
         <Navbar />

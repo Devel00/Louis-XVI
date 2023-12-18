@@ -120,7 +120,7 @@ const Navbar = () => {
 
       {/* Overlay */}
       {nav ? (
-        <div className=" bg-bg-300 w-full h-screen z-10 top-0 right-0 fixed"></div>
+        <div className=" bg-bg-100  w-full h-screen z-10 top-0 right-0 fixed"></div>
       ) : (
         ""
       )}
@@ -129,8 +129,8 @@ const Navbar = () => {
       <div
         className={
           nav
-            ? "z-10 fixed top-0 right-0 w-[200px] h-screen bg-bg-100 duration-400"
-            : "z-10 fixed top-0 left-[-100%] w-[200px] h-screen bg-white duration-400"
+            ? "z-10 fixed top-0 right-0 w-[200px] h-screen border-l border-bg-300/50 shadow-md  duration-400"
+            : "z-10 fixed top-0 left-[-100%] w-[200px] h-screen bg-white shadow-md duration-400"
         }
       >
         <div className="p-4">
@@ -166,10 +166,10 @@ const Navbar = () => {
               هم مسیر
             </li>
             <Link to="/IdeaCategory">
-            <li className="py-4 px-2 rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start items-center gap-2">
-              <PiPlant size={25} />
-              ایده
-            </li>
+              <li className="py-4 px-2 rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start items-center gap-2">
+                <PiPlant size={25} />
+                ایده
+              </li>
             </Link>
             <li className="py-4 px-2  rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start   items-center gap-2">
               <MdOutlineContactSupport size={22} />
