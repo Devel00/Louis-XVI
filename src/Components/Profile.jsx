@@ -18,7 +18,7 @@ const Profile = () => {
   return (
     <MyContext.Provider value={[showModal, setShowModal]}>
       (
-      <div className=" absolute top-0 w-[100%] ">
+      <div className="">
         {showModal && <Increase />}
         <div>
           <div className=" bg-bg-200 w-full h-[10%] ">
