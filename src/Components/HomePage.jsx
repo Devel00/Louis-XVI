@@ -8,14 +8,14 @@ import AddPopup from "./AddPopup";
 const MyContext = createContext();
 
 const HomePage = () => {
-  const [popup, setPopup] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
-    <MyContext.Provider value={[popup, setPopup]}>
+    <MyContext.Provider value={[showModal, setShowModal]} >
       <div className="">
-        {popup && <AddPopup />}
+        {showModal && <AddPopup/>}
         <div
-          onClick={() => setPopup(true)}
+          onClick={() => setShowModal(true)}
           className=" hover:scale-110 fixed left-10 hover:cursor-pointer bottom-10"
         >
           <HiOutlinePlus

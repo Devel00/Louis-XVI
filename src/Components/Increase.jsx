@@ -31,21 +31,21 @@ const Increase = () => {
       });
   }
   return (
-    <div className=" flex w-full fixed h-full bg-text-100/30 z-50  flex-col justify-center items-center">
-      <div className=" fixed inset-10 top-[80px] right-[10%]  w-[80%] z-50 bg-bg-200 h-[600px]">
-        <div className=" hover:scale-105 absolute  right-1 top-1 p-4">
-          <AiOutlineClose
-            size={30}
-            onClick={() => setShowModal(false)}
-            className="   shadow-md p-1 rounded-full  bg-bg-100  cursor-pointer text-primary-100"
-          />
-        </div>
-        <div className=" flex flex-col  justify-center items-center">
-          <div className=" shadow-lg flex flex-col w-[50%]  mt-16 mb-10  justify-center items-center">
+    <div>
+    <div
+              onClick={(e) => {
+                if (e.target.id === 'myname') {
+                  setShowModal(false);
+                }
+              }}
+              id='myname'
+              className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            >
+          <div className=" bg-bg-200 rounded-lg w-[45%] shadow-lg flex flex-col justify-center items-center">
             <div className=" bg-accent-100 w-full h-[80px] "></div>
             <div className=" flex flex-col items-start justify-center mt-6 ">
               <span className=" text-text-100 text-[16px] pr-2 font-semibold mb-1">
-                افزایش
+                میزان افزایش :
               </span>
               <input
                 onChange={(e) => setBalance(e.target.value)}
@@ -56,15 +56,16 @@ const Increase = () => {
             <Link to="/Factor">
               <button
                 onClick={handleUpdate}
-                className=" mt-6 mb-10 w-[400px] py-2 rounded-[8px] bg-accent-100 text-bg-100 font-semibold "
+                className=" mt-6 mb-10 w-[400px] py-2 px-4 rounded-[8px] bg-accent-100 text-bg-100 font-semibold "
               >
                 افزایش
               </button>
             </Link>
           </div>
         </div>
+        <div className="opacity-40 fixed inset-0 z-40 bg-text-100"></div>
       </div>
-    </div>
+
   );
 };
 
