@@ -14,6 +14,7 @@ import AddProblem from "./Components/AddProblem";
 import Factor from "./Components/Factor";
 import IdeaCategory from "./Components/IdeaCategory";
 import IdeaDetail from "./Components/IdeaDetail";
+import ProblemDetail from "./Components/ProblemDetail";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/AddProblem" element={<AddProblem />} />
           <Route path="/Factor" element={<Factor />} />
           <Route path="/IdeaCategory" element={<IdeaCategory />} />
+          <Route path="/ProblemDetail" element={<ProblemDetail />} />
         </Routes>
       </BrowserRouter>
     </div>
