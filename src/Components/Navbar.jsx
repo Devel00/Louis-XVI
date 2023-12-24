@@ -83,7 +83,7 @@ const Navbar = () => {
       {!user ? (
         <div className=" shadow-sm group hover:cursor-pointer bg-bg-100/50 hover:text-bg-100  hover:bg-primary-200 hover:transform hover:translate-x-2  hover:origin-left hover:duration-700  py-2 px-4 rounded-[8px] flex text-center justify-center items-center gap-1 group-hover:font-bold">
           <Link to="/Login">
-            <span className=" group-hover:cursor-pointer   font-thin">
+            <span className=" group-hover:cursor-pointer font-main">
               ورود|ثبت نام
             </span>
           </Link>

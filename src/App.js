@@ -13,6 +13,7 @@ import Increase from "./Components/Increase";
 import AddProblem from "./Components/AddProblem";
 import Factor from "./Components/Factor";
 import IdeaCategory from "./Components/IdeaCategory";
+import IdeaDetail from "./Components/IdeaDetail";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
       <BrowserRouter>
         {/* <Navbar /> */}
         <Routes>
-          <Route path="/" exact element={<HomePage />} />
+          <Route path="/" exact element={<IdeaDetail />} />
           <Route path="/Problem" exact element={<Problems />} />
           <Route path="/Profile" exact element={<Profile />} />
           <Route path="/Login" exact element={<Login />} />
