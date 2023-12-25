@@ -37,7 +37,7 @@ const Navbar = () => {
   const [nav, setNav] = useState(false);
 
   return (
-    <div className=" max-w-[1640px] bg-bg-200/80 shadow-sm border border-b-2 border-bg-300/10 flex items-center justify-between mx-auto p-5">
+    <div className=" w-full bg-bg-200/80 shadow-sm border border-b-2 border-bg-300/10 flex items-center justify-between mx-auto p-5">
       {/* Left Side  */}
 
       <div className="flex items-center ">
@@ -120,7 +120,7 @@ const Navbar = () => {
 
       {/* Overlay */}
       {nav ? (
-        <div className=" bg-bg-100  w-full h-screen z-10 top-0 right-0 fixed"></div>
+        <div className="   w-full h-screen  top-0 right-0 fixed"></div>
       ) : (
         ""
       )}
@@ -129,7 +129,7 @@ const Navbar = () => {
       <div
         className={
           nav
-            ? "z-10 fixed top-0 right-0 w-[200px] h-screen border-l border-bg-300/50 shadow-md  duration-400"
+            ? "z-10 fixed top-0 right-0 w-[200px] h-screen border-l border-bg-300/50 shadow-md bg-bg-200/30  duration-400"
             : "z-10 fixed top-0 left-[-100%] w-[200px] h-screen bg-white shadow-md duration-400"
         }
       >
