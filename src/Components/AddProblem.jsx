@@ -1,10 +1,10 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { data } from "../data/data";
 import { Link, useNavigate } from "react-router-dom";
 
 const AddProblem = () => {
     const [title, setTitle] = useState("")
-    const [file, setFile] = useState([])
+    const [file, setFile] = useState(null)
     const [image, setImage] = useState([])
     const [description, setDescription] = useState("")
     const [money, setMoney] = useState("")
@@ -12,40 +12,39 @@ const AddProblem = () => {
         JSON.parse(localStorage.getItem("Info"))
     );
     const onChangeFile = e => {
-        setImage(image, e.target.files[0])
-        file = 
-        {
-            id : 0,
-            image : image[0],
-            problem_id : 1
-        };
-        setFile([file, e.target.files[0]]);
-        console.log('file : ', file);
+        // const test = []
+        // test.append(e.target.files[0])
+        // console.log(e.target.files)
+        // console.log("null",e.target.files[0])
+        setImage([...image, e.target.files[0]]);
+        // console.log(image);
     };
     const navigate = useNavigate(); //why????
+    useEffect(() => { console.log(image) }, [image])
     async function handelCreateProblem() {
-        let Problems = {
-            title: title,
-            description: description,
-            financial_amount: money,
-            // problem_images:file ,
-            is_done: false,
-            creator: userInfo.id
-        };
-        console.log(Problems)
+        const formdata = new FormData();
+        formdata.append('title',title)
+        formdata.append('description',description)
+        formdata.append('financial_amount',money)
+        formdata.append('main_image',image[0])
+        formdata.append('is_done',false)
+        formdata.append('creator',userInfo.id)
+        for (var pair of formdata.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
         await fetch("https://biglybigly.iran.liara.run/api/v1/problems/problems/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
             },
-            body: JSON.stringify(Problems),
+            body: formdata,
         })
-        .then(() => {
-            navigate("/Profile");
-            console.log("sucess");
-        })
-        .catch((e) => {console.log(e);})
+            .then(() => {
+                navigate("/Profile");
+                console.log("sucess");
+            })
+            .catch((e) => { console.log(e); })
     }
 
     return (
@@ -113,14 +112,19 @@ const AddProblem = () => {
                                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-main font-semibold">Click to upload</span> or drag and drop</p>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                                 </div>
-                                <input 
-                                id="dropzone-file" 
-                                type="file" 
-                                class="hidden" 
-                                onChange={onChangeFile}
+                                <input
+                                    id="dropzone-file"
+                                    type="file"
+                                    class="hidden"
+                                    onChange={onChangeFile}
                                 />
                             </label>
                         </div>
+                        <ul>
+                            fdsfdsfs
+                            {image.map(x => {return<li> <img src={URL.createObjectURL(x)} alt="" /></li> })
+                            }
+                        </ul>
                     </div>
                     <div className=" py-5 px-5 flex flex-col justify-center items-center ">
                         <button className="" onClick={handelCreateProblem}>
