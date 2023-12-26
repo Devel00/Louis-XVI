@@ -3,6 +3,7 @@ import { data } from "../data/data";
 import { Link, useNavigate } from "react-router-dom";
 
 const AddProblem = () => {
+
     const [title, setTitle] = useState("")
     const [file, setFile] = useState(null)
     const [image, setImage] = useState([])
@@ -135,11 +136,29 @@ const AddProblem = () => {
                             </div>
                         </button>
                     </div>
+
                 </div>
+                <input
+                  id="dropzone-file"
+                  type="file"
+                  class="hidden"
+                  onChange={onChangeFile}
+                />
+              </label>
             </div>
+          </div>
+          <div className=" py-5 px-5 flex flex-col justify-center items-center ">
+            <button className="" onClick={handelCreateProblem}>
+              <div className=" bg-accent-100 hover:bg-primary-100 hover:text-bg-100 hover:font-bold w-[100%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
+                <div className="">
+                  <span className="font-main text-[18px]">اضافه کردن</span>
+                </div>
+              </div>
+            </button>
+          </div>
         </div>
-    );
-
-
+      </div>
+    </div>
+  );
 };
 export default AddProblem;

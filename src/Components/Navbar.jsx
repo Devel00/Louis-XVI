@@ -37,7 +37,7 @@ const Navbar = () => {
   const [nav, setNav] = useState(false);
 
   return (
-    <div className=" max-w-[1640px] bg-bg-200/80 shadow-sm border border-b-2 border-bg-300/10 flex items-center justify-between mx-auto p-5">
+    <div className=" w-full bg-bg-200/80 shadow-sm border border-b-2 border-bg-300/10 flex items-center justify-between mx-auto p-5">
       {/* Left Side  */}
 
       <div className="flex items-center ">
@@ -90,7 +90,7 @@ const Navbar = () => {
         </div>
       ) : (
         <Link to="/Profile">
-          <div className="group hover:bg-bg-300/40 hover:rounded-[8px] hover:cursor-pointer p-2">
+          <div className="group hover:scale-125 duration-700 hover:rounded-[8px] hover:cursor-pointer p-2">
             <div class="relative w-10 h-10 overflow-hidden bg-bg-300 rounded-full dark:bg-gray-600">
               <svg
                 class="absolute w-12 h-12 text-bg-100 -left-1"
@@ -105,22 +105,13 @@ const Navbar = () => {
                 ></path>
               </svg>
             </div>
-            <div className=" group ">
-              <span
-                className="transition-all duration-100 invisible group-hover:visible  left-14   absolute  origin-left w-auto p-2 m-2 min-w-max  rounded-md shadow-md
-        text-[#ffffff] bg-[#23272a] 
-         text-[10px] font-main "
-              >
-                {data[0].id}
-              </span>
-            </div>
           </div>
         </Link>
       )}
 
       {/* Overlay */}
       {nav ? (
-        <div className=" bg-bg-100  w-full h-screen z-10 top-0 right-0 fixed"></div>
+        <div className="   w-full h-screen  top-0 right-0 fixed"></div>
       ) : (
         ""
       )}
@@ -129,7 +120,7 @@ const Navbar = () => {
       <div
         className={
           nav
-            ? "z-10 fixed top-0 right-0 w-[200px] h-screen border-l border-bg-300/50 shadow-md  duration-400"
+            ? "z-10 fixed top-0 right-0 w-[200px] h-screen border-l border-bg-300/50 shadow-md bg-bg-200/30  duration-400"
             : "z-10 fixed top-0 left-[-100%] w-[200px] h-screen bg-white shadow-md duration-400"
         }
       >
