@@ -15,6 +15,8 @@ import bulb from "../Image/IdeaCategory/bulb.png";
 import vector from "../Image/IdeaCategory/vector.png";
 import video from "../v1.mp4";
 // import video1 from "../Image/idea_detail/sohrabi.mp4";
+import problemImage from "../Image/Problems/mosala.jpg";
+
 
 export const data = [
   {
@@ -76,5 +78,9 @@ export const data = [
   {
     id: "video_idea_detail",
     image: video,
+  },
+  {
+    id: "problemImage",
+    image: problemImage,
   },
 ];
