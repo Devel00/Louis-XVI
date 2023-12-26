@@ -90,7 +90,7 @@ const Navbar = () => {
         </div>
       ) : (
         <Link to="/Profile">
-          <div className="group hover:bg-bg-300/40 hover:rounded-[8px] hover:cursor-pointer p-2">
+          <div className="group hover:scale-125 duration-700 hover:rounded-[8px] hover:cursor-pointer p-2">
             <div class="relative w-10 h-10 overflow-hidden bg-bg-300 rounded-full dark:bg-gray-600">
               <svg
                 class="absolute w-12 h-12 text-bg-100 -left-1"
@@ -104,15 +104,6 @@ const Navbar = () => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-            </div>
-            <div className=" group ">
-              <span
-                className="transition-all duration-100 invisible group-hover:visible  left-14   absolute  origin-left w-auto p-2 m-2 min-w-max  rounded-md shadow-md
-        text-[#ffffff] bg-[#23272a] 
-         text-[10px] font-main "
-              >
-                {data[0].id}
-              </span>
             </div>
           </div>
         </Link>

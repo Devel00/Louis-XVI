@@ -63,10 +63,10 @@ const Login = () => {
             <div className=" px-2  pt-4 pb-2 flex flex-col items-start gap-2">
               <label className="  font-main ">نام :</label>
               <input
-                dir="ltr"
+                dir="rtl"
                 className=" w-[80%] sm:w-[215px] px-2 font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "
                 type="text"
-                placeholder="first name ..."
+                placeholder="مثلا : محمد حسین"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               ></input>
@@ -75,10 +75,10 @@ const Login = () => {
             <div className="  px-2  pt-4 pb-2 flex flex-col items-start gap-2">
               <label className="  font-main ">نام خانوادگی :</label>
               <input
-                dir="ltr"
+                dir="rtl"
                 className=" sm:w-[215px] w-[80%] px-2 font-normal placeholder:text-[15px] text-[20px] rounded-[8px] placeholder:text-bg-300  py-2 border border-bg-200 shadow-md "
                 type="text"
-                placeholder="last name  ..."
+                placeholder="مثلا : اکبری"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               ></input>
@@ -88,10 +88,10 @@ const Login = () => {
             <div className=" px-2  py-8 flex flex-col items-start gap-2">
               <label className="  font-main ">شماره همراه :</label>
               <input
-                dir="ltr"
+                dir="rtl"
                 className=" w-[80%] sm:w-[215px] px-2 font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "
                 type="text"
-                placeholder="phone number ..."
+                placeholder="مثلا : 09012725754"
                 value={phone_number}
                 onChange={(e) => setPhone_number(e.target.value)}
               ></input>
@@ -99,19 +99,19 @@ const Login = () => {
             <div className="  px-2   pt-4 pb-10 sm:py-8 flex flex-col items-start gap-2">
               <label className="  font-main ">رمز عبور :</label>
               <input
-                dir="ltr"
+                dir="rtl"
                 className=" sm:w-[215px] w-[80%] px-2 font-normal placeholder:text-[15px] text-[20px] rounded-[8px] placeholder:text-bg-300  py-2 border border-bg-200 shadow-md "
                 type="password"
-                placeholder="password ..."
+                placeholder="مثلا : 12345"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               ></input>
             </div>
           </div>
 
-          <button onClick={handleSignup} className="">
-            <div className=" px-10 ml-12 bg-accent-100 w-[61%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
-              <div className="   ">
+          <button onClick={handleSignup} className="hover:cursor-pointer">
+            <div className=" px-10 ml-12 bg-accent-100 text-bg-100 hover:scale-105 duration-700 w-[61%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
+              <div className="">
                 <span className=" text-[18px]">ثبت</span>
               </div>
             </div>

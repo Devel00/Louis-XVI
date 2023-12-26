@@ -1,10 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import { data } from "../data/data";
 import { Accordion } from "@material-tailwind/react";
 import Acordion from "./Acordion";
+import { useParams } from "react-router-dom";
 
 const IdeaDetail = () => {
+  const { id } = useParams();
+
+  useEffect(() => {
+    const ShowProblems = async () => {
+      try {
+        const response = await fetch(
+          `https://biglybigly.iran.liara.run/api/v1/idea/idea/${id}/`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+        );
+        const result = await response.json();
+        console.log(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+      }
+    };
+    ShowProblems();
+    //   ShowProblems();
+  }, [id]);
+
   return (
     <div className="  w-full">
       <Navbar />
