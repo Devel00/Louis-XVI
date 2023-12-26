@@ -14,15 +14,7 @@ const HomePage = () => {
     <MyContext.Provider value={[showModal, setShowModal]}>
       <div className="">
         {showModal && <AddPopup />}
-        <div
-          onClick={() => setShowModal(true)}
-          className=" hover:scale-110 animate-bounce fixed left-10 hover:cursor-pointer bottom-10"
-        >
-          <HiOutlinePlus
-            className=" p-1 rounded-full  bg-bg-100 shadow-xl text-primary-100"
-            size={90}
-          />
-        </div>
+
         <Navbar />
         <div className=" scale-90  flex flex-col justify-center items-center">
           {/* item1 */}
@@ -128,6 +120,11 @@ const HomePage = () => {
             </button>
           </Link>
         </div>
+        <HiOutlinePlus
+          onClick={() => setShowModal(true)}
+          className=" animate-bounce fixed left-12 hover:cursor-pointer bottom-10 p-1 rounded-full  bg-bg-100 shadow-md text-primary-100"
+          size={100}
+        />
         <Footer />
       </div>
     </MyContext.Provider>
