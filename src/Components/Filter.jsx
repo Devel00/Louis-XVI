@@ -3,7 +3,7 @@ import { data } from "../data/data";
 
 const Filter = () => {
   return (
-    <div>
+    <div className=" scale-90">
       <div className=" flex justify-center items-center">
         <div className=" border-b-2 border-bg-300/30 w-[90%]"></div>
       </div>
@@ -32,9 +32,7 @@ const Filter = () => {
               className=" absolute w-[100%] hover:bg-text-100/10 h-full max-h-[500px]
             bg-text-100/40 rounded-[10px] flex flex-col justify-center "
             >
-              <span className=" text-primary-300 text-[40px]">
-                محدوده مکانی
-              </span>
+              <span className=" text-primary-300 text-[40px]">صنفی</span>
             </div>
 
             <img
@@ -51,7 +49,7 @@ const Filter = () => {
               className=" absolute hover:bg-text-100/10 w-[100%] h-full max-h-[500px]
             bg-text-100/40 flex rounded-[10px] flex-col justify-center "
             >
-              <span className=" text-primary-300 text-[40px]">آموزش</span>
+              <span className=" text-primary-300 text-[40px]">تغذیه</span>
             </div>
 
             <img

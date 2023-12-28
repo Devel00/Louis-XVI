@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { data } from "../data/data";
 
-const Carousel = () => {
+const MainCarousel = () => {
   const [current, setCurrent] = useState(data[2].image);
 
   return (
-    <div className=" w-full flex justify-center items-center mx-auto p-4">
+    <div className=" scale-95 w-full flex justify-center items-center mx-auto p-4">
       <div className="max-h-[500px] w-full flex justify-center relative">
         {/*Overlay */}
         <div
@@ -36,4 +36,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default MainCarousel;
