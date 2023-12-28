@@ -95,23 +95,23 @@ const Login = () => {
         <div className=" px-10 ml-10  pt-4 pb-4 flex flex-col items-start gap-2">
           <label className="font-main ">شماره همراه :</label>
           <input
-            dir="rtl"
-            className=" w-[80%] sm:w-[400px] font-normal text-[20px] placeholder:text-[15px] rounded-[8px]  px-2 py-2 border border-bg-200 shadow-md "
+            dir="ltr"
+            className=" w-[80%] sm:w-[400px] font-normal text-[15px] placeholder:text-[15px] rounded-[8px]  px-2 py-2 border border-bg-200 shadow-md "
             type="text"
-            placeholder="مثلا : 09012725754"
+            placeholder="09012725754"
             required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
         </div>
 
-        <div className=" px-10 ml-12  pt-4 pb-8 flex flex-col items-start gap-2">
+        <div className="  px-10 ml-12  pt-4 pb-8 flex flex-col items-start gap-2">
           <label className="  font-main ">رمز عبور :</label>
           <input
-            dir="rtl"
-            className="w-[80%] sm:w-[400px] px-2 font-normal placeholder:text-[15px] rounded-[8px] text-[20px]  py-2 border border-bg-200 shadow-md "
+            dir="ltr"
+            className="w-[80%] sm:w-[400px] px-2 font-normal placeholder:text-[15px] rounded-[8px] text-[15px]  py-2 border border-bg-200 shadow-md "
             type="password"
-            placeholder="مثلا : 12345"
+            placeholder="12345"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}

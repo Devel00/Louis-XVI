@@ -2,10 +2,10 @@ import React, { useState, useContext, useEffect } from "react";
 import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { RiEqualizerFill } from "react-icons/ri";
+import { MdOutlineErrorOutline } from "react-icons/md";
 
 import { BsChat } from "react-icons/bs";
 import { PiHandshake } from "react-icons/pi";
-import { MdOutlineErrorOutline } from "react-icons/md";
 import { PiPlant } from "react-icons/pi";
 
 import {
@@ -139,7 +139,7 @@ const Navbar = () => {
 
         <nav className=" container">
           <ul className="felx flex-col py-8 px-6 pt-10 gap-4 text-text-200 hover:text-text-100 ">
-            <Link to="/Profile">
+            <Link to={user ? "/Profile" : "/login"}>
               <li className="py-4 px-2  rounded-full  cursor-pointer hover:bg-bg-300/30 flex text-[16px]  justify-start items-center gap-2">
                 <MdOutlineManageAccounts size={25} className="" />
                 پروفایل شما
