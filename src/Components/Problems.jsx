@@ -11,6 +11,7 @@ import { LuMoreHorizontal } from "react-icons/lu";
 import { data } from "../data/data";
 import { AiOutlineLike } from "react-icons/ai";
 import { MdOutlineVolunteerActivism } from "react-icons/md";
+// import "src/style.css";
 
 const Problems = () => {
   const [problems, setProblems] = useState();
@@ -53,6 +54,8 @@ const Problems = () => {
     },
   };
 
+  const customDotListClass = "custom-dot-list";
+
   return (
     <div className="">
       <Navbar />
@@ -68,8 +71,9 @@ const Problems = () => {
       </div>
       <Carousel
         showDots
-        className=" scale-90 ml-4 mt-10 h-[500px]"
+        className=" scale-90 ml-4 mt-10 h-[600px]"
         responsive={responsive}
+        dotListClass="custom-dot-list"
       >
         {success &&
           problems.map((item, index) => (
@@ -109,17 +113,18 @@ const Problems = () => {
           </div>
         </div>
       </Carousel>
-      {/* <div className=" pt-6 flex justify-start gap-4 items-center">
+      <div className=" pt-6 flex justify-start gap-4 items-center">
         <span className=" text-accent-200  text-[20px] pr-4">پر مشارکت ها</span>
         <div className=" border-b-2 border-bg-300/40 w-[80%]"></div>
         <div className=" flex justify-center items-center">
           <span className=" text-accent-200 pr-6">مشاهده همه</span>
           <MdKeyboardArrowLeft size={25} />
         </div>
-      </div> */}
-      {/* <Carousel
+      </div>
+      <Carousel
         showDots
-        className="scale-90 ml-4 h-[500px]"
+        dotListClass="custom-dot-list"
+        className="scale-90 ml-4 h-[600px] "
         responsive={responsive}
       >
         <div>
@@ -152,7 +157,14 @@ const Problems = () => {
             مشاهده همه کارت ها
           </div>
         </div>
-      </Carousel> */}
+        <style>
+          {`
+          .${customDotListClass} {
+            margin-bottom: 0px; 
+          }
+        `}
+        </style>
+      </Carousel>
 
       <Footer />
     </div>
