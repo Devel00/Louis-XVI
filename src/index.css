@@ -17,3 +17,14 @@
          
     }
   }
+
+  @layer components{
+
+    .custom-dot-list{
+        @apply p-10;
+  
+         
+    }
+  }
+
+

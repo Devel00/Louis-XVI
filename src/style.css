@@ -1,0 +1,7 @@
+.custom-dot-list {
+    padding: 10px; /* Adjust the padding as needed */
+  }
+  
+  .custom-dot-active {
+    background-color: red; /* Customize the active dot style as needed */
+  }
