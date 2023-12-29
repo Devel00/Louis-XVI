@@ -42,11 +42,11 @@ const Problems = () => {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 2,
+      items: 3,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 2,
+      items: 3,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
@@ -78,9 +78,9 @@ const Problems = () => {
         {success &&
           problems.map((item, index) => (
             <div key={index} className=" mb-14">
-              <div className=" w-[85%] h-[500px] bg-bg-200 hover:bg-bg-300/70 rounded-[24px]  shadow-xl flex flex-col  justify-center items-center">
+              <div className=" w-[80%] hover:scale-105 duration-700 hover:cursor-pointer h-[500px] bg-bg-200 hover:bg-bg-300/40 rounded-[24px]  shadow-xl flex flex-col  justify-center items-center">
                 <img
-                  className="  w-[95%] h-[70%] mt-16 rounded-[16px]"
+                  className=" object-cover  w-[100%] h-[70%] mt-0 rounded-[16px]"
                   src={data[3].image}
                   alt="library"
                 />
@@ -112,8 +112,15 @@ const Problems = () => {
             مشاهده همه کارت ها
           </div>
         </div>
+        <style>
+          {`
+          .${customDotListClass} {
+            margin-bottom: 10px; 
+          }
+        `}
+        </style>
       </Carousel>
-      <div className=" pt-6 flex justify-start gap-4 items-center">
+      {/* <div className=" pt-6 flex justify-start gap-4 items-center">
         <span className=" text-accent-200  text-[20px] pr-4">پر مشارکت ها</span>
         <div className=" border-b-2 border-bg-300/40 w-[80%]"></div>
         <div className=" flex justify-center items-center">
@@ -157,14 +164,7 @@ const Problems = () => {
             مشاهده همه کارت ها
           </div>
         </div>
-        <style>
-          {`
-          .${customDotListClass} {
-            margin-bottom: 0px; 
-          }
-        `}
-        </style>
-      </Carousel>
+      </Carousel> */}
 
       <Footer />
     </div>
