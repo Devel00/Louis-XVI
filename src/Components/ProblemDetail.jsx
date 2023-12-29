@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import { data } from "../data/data";
-import { Accordion } from "@material-tailwind/react";
 import Acordion from "./Acordion";
+import { useParams } from "react-router-dom";
 
-const IdeaDetail = () => {
+const ProblemDetail = () => {
+  const { id } = useParams();
+
+  useEffect(() => {
+    const ShowProblems = async () => {
+      try {
+        const response = await fetch(
+          `https://biglybigly.iran.liara.run/api/v1/problem/problem/${id}/`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+        );
+        const result = await response.json();
+        console.log(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+      }
+    };
+    ShowProblems();
+  }, [id]);
+
   return (
     <div className="  w-full">
       <Navbar />
@@ -54,4 +79,4 @@ const IdeaDetail = () => {
   );
 };
 
-export default IdeaDetail;
+export default ProblemDetail;

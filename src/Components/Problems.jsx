@@ -77,7 +77,7 @@ const Problems = () => {
               <div className=" w-[85%] h-[500px] bg-bg-200 hover:bg-bg-300/70 rounded-[24px]  shadow-xl flex flex-col  justify-center items-center">
                 <img
                   className="  w-[95%] h-[70%] mt-16 rounded-[16px]"
-                  src={data[3].image}
+                  src={data[19].image}
                   alt="library"
                 />
                 <div className="px-6 py-4">

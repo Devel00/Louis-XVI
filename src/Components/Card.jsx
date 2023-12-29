@@ -10,7 +10,7 @@ const Card = (detail) => {
     <div className="w-[85%] h-[450px] bg-bg-200 hover:bg-bg-300/70 rounded-[24px]  shadow-xl flex flex-col  justify-center items-center">
       <img
         className=" m-2 w-[90%] h-[80%] rounded-[16px]"
-        src={data[3].image}
+        src={data[17].image}
         alt="library"
       />
       <div className="px-6 py-4">

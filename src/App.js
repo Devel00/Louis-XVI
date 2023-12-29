@@ -34,10 +34,9 @@ function App() {
           <Route path="/AddProblem" element={<AddProblem />} />
           <Route path="/Factor" element={<Factor />} />
           <Route path="/IdeaCategory" element={<IdeaCategory />} />
-
-          <Route path="/ProblemDetail" element={<ProblemDetail />} />
-
+          
           <Route path="/ideas/:id" element={<IdeaDetail />} />
+          <Route path="/problems/:id" element={<ProblemDetail />} />
 
         </Routes>
       </BrowserRouter>
