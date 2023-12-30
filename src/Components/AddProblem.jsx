@@ -37,7 +37,6 @@ const AddProblem = () => {
     await fetch("https://biglybigly.iran.liara.run/api/v1/problems/problems/", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
         Accept: "application/json",
       },
       body: formdata,
