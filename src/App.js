@@ -16,6 +16,7 @@ import IdeaCategory from "./Components/IdeaCategory";
 import IdeaDetail from "./Components/IdeaDetail";
 import AddIdea from "./Components/AddIdea";
 import ProblemDetail from "./Components/ProblemDetail";
+import CRUDProblem from "./Components/CRUD_problem";
 function App() {
   return (
     <div className="App">
@@ -37,6 +38,7 @@ function App() {
           <Route path="/AddIdea" element={<AddIdea />} />
           <Route path="/ProblemDetail" element={<ProblemDetail />} />
           <Route path="/ideas/:id" element={<IdeaDetail />} />
+          <Route path="/CRUD" element={<CRUDProblem />} />
         </Routes>
       </BrowserRouter>
     </div>
