@@ -16,7 +16,7 @@ const Card = ({ detail }) => {
           alt="library"
         />
         <div className="px-6 py-4">
-          <div className=" font-main font-bold mb-2">{Detail.id}</div>
+          <div className=" font-main font-bold mb-2">{Detail.title}</div>
           <div className="flex justify-between mt-5">
             <div className=" bg-bg-100 p-2 gap-3 rounded-lg  flex  items-center justify-between">
               <span className="font-main font-bold">2k</span>

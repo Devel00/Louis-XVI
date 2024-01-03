@@ -7,10 +7,6 @@ import {
     AccordionHeader,
     AccordionBody,
 } from "@material-tailwind/react";
-const CUSTOM_ANIMATION = {
-    mount: { scale: 1 },
-    unmount: { scale: 0.9 },
-};
 const AddIdea = () => {
     const [open, setOpen] = useState(0);
     const [pertitle, setPerTitle] = useState("")

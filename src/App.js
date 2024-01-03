@@ -3,7 +3,7 @@ import "./App.css";
 import Signup from "./Components/Signup";
 import { Login } from "./Components/Login";
 import Card from "./Components/Card";
-import Manager from "./Components/manage_problems";
+import Manager from "./Components/ManageProblems";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Problems from "./Components/Problems";
