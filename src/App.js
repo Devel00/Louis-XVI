@@ -36,7 +36,7 @@ function App() {
           <Route path="/Factor" element={<Factor />} />
           <Route path="/IdeaCategory" element={<IdeaCategory />} />
           <Route path="/AddIdea" element={<AddIdea />} />
-          <Route path="/ProblemDetail" element={<ProblemDetail />} />
+          <Route path="/ProblemDetail/:id" element={<ProblemDetail />} />
           <Route path="/ideas/:id" element={<IdeaDetail />} />
           <Route path="/CRUD" element={<CRUDProblem />} />
         </Routes>
