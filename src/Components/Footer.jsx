@@ -7,7 +7,7 @@ import { RiTwitterXLine } from "react-icons/ri";
 
 const Footer = () => {
   return (
-    <div className=" w-full mt-20 bottom-0 h-[300px] bg-bg-200/80 shadow-[5px_3px_40px_-15px_rgba(0,0,0,0.3)] flex items-center justify-center">
+    <div className=" w-full mt-20 bottom-0 h-[300px] bg-bg-200/90 shadow-[5px_3px_40px_-15px_rgba(0,0,0,0.3)] flex items-center justify-center">
       <img
         className=" mr-8 w-[160px] h-[160px] ml-2 "
         src={data[1].image}
