@@ -22,7 +22,7 @@ const Profile = () => {
         {showModal && <Increase />}
         <div>
           <div className=" bg-bg-200 w-full h-[10%] ">
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col  justify-center items-center">
               <img
                 className=" absolute top-1 left-[48%] w-[60px] h-[60px]"
                 src={data[1].image}

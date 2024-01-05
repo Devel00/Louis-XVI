@@ -8,7 +8,7 @@ const Filter = () => {
         <div className=" border-b-2 border-bg-300/30 w-[90%]"></div>
       </div>
       <div className="  grid grid-cols-1  lg:grid-cols-2 gap-2 px-2 pt-4">
-        <div className=" w-full flex justify-center  items-center mx-auto p-2">
+        <div className=" hover:cursor-pointer w-full flex justify-center  items-center mx-auto p-2">
           <div className="max-h-[500px] w-full flex justify-center relative">
             {/*Overlay */}
             <div
@@ -25,7 +25,7 @@ const Filter = () => {
             ></img>
           </div>
         </div>
-        <div className=" w-full flex justify-center items-center mx-auto p-2">
+        <div className="  hover:cursor-pointer w-full flex justify-center items-center mx-auto p-2">
           <div className="max-h-[500px] w-full flex justify-center relative">
             {/*Overlay */}
             <div
@@ -42,7 +42,7 @@ const Filter = () => {
             ></img>
           </div>
         </div>
-        <div className=" w-full flex justify-center items-center mx-auto p-2">
+        <div className="  hover:cursor-pointer w-full flex justify-center items-center mx-auto p-2">
           <div className="max-h-[500px] w-full flex justify-center relative">
             {/*Overlay */}
             <div
@@ -59,7 +59,7 @@ const Filter = () => {
             ></img>
           </div>
         </div>
-        <div className=" w-full flex justify-center items-center mx-auto p-2">
+        <div className=" hover:cursor-pointer  w-full flex justify-center items-center mx-auto p-2">
           <div className="max-h-[500px] w-full flex justify-center relative">
             {/*Overlay */}
             <div

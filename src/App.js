@@ -3,7 +3,7 @@ import "./App.css";
 import Signup from "./Components/Signup";
 import { Login } from "./Components/Login";
 import Card from "./Components/Card";
-import Manager from "./Components/manage_problems";
+import Manager from "./Components/ManageProblems";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Problems from "./Components/Problems";
@@ -14,8 +14,9 @@ import AddProblem from "./Components/AddProblem";
 import Factor from "./Components/Factor";
 import IdeaCategory from "./Components/IdeaCategory";
 import IdeaDetail from "./Components/IdeaDetail";
+import AddIdea from "./Components/AddIdea";
 import ProblemDetail from "./Components/ProblemDetail";
-
+import CRUDProblem from "./Components/CRUD_problem";
 function App() {
   return (
     <div className="App">
@@ -34,10 +35,12 @@ function App() {
           <Route path="/AddProblem" element={<AddProblem />} />
           <Route path="/Factor" element={<Factor />} />
           <Route path="/IdeaCategory" element={<IdeaCategory />} />
-          
           <Route path="/ideas/:id" element={<IdeaDetail />} />
           <Route path="/problems/:id" element={<ProblemDetail />} />
-
+          <Route path="/AddIdea" element={<AddIdea />} />
+          <Route path="/ProblemDetail/:id" element={<ProblemDetail />} />
+          <Route path="/ideas/:id" element={<IdeaDetail />} />
+          <Route path="/CRUD" element={<CRUDProblem />} />
         </Routes>
       </BrowserRouter>
     </div>
