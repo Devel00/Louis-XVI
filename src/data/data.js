@@ -16,6 +16,7 @@ import vector from "../Image/IdeaCategory/vector.png";
 import video from "../v1.mp4";
 // import video1 from "../Image/idea_detail/sohrabi.mp4";
 import problemImage from "../Image/Problems/mosala.jpg";
+import footMain from "../Image/Foot/footMain.png";
 
 
 export const data = [
@@ -82,5 +83,9 @@ export const data = [
   {
     id: "problemImage",
     image: problemImage,
+  },
+  {
+    id: "footMain",
+    image: footMain,
   },
 ];
