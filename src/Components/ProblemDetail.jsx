@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { data } from "../data/data";
-import { Accordion } from "@material-tailwind/react";
 import Acordion from "./Acordion";
 import { Link, useParams } from "react-router-dom";
 import Footer from "./Footer";

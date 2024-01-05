@@ -17,6 +17,7 @@ import IdeaDetail from "./Components/IdeaDetail";
 import AddIdea from "./Components/AddIdea";
 import ProblemDetail from "./Components/ProblemDetail";
 import CRUDProblem from "./Components/CRUD_problem";
+import Feet from "./Components/FootManagement";
 function App() {
   return (
     <div className="App">
@@ -35,10 +36,13 @@ function App() {
           <Route path="/AddProblem" element={<AddProblem />} />
           <Route path="/Factor" element={<Factor />} />
           <Route path="/IdeaCategory" element={<IdeaCategory />} />
+          <Route path="/ideas/:id" element={<IdeaDetail />} />
+          <Route path="/problems/:id" element={<ProblemDetail />} />
           <Route path="/AddIdea" element={<AddIdea />} />
           <Route path="/ProblemDetail/:id" element={<ProblemDetail />} />
           <Route path="/ideas/:id" element={<IdeaDetail />} />
           <Route path="/CRUD" element={<CRUDProblem />} />
+          <Route path="/feet" element={<Feet />} />
         </Routes>
       </BrowserRouter>
     </div>
