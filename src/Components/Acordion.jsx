@@ -43,17 +43,17 @@ const Acordion = () => {
             <div className=" flex sm:flex-row flex-col  justify-start items-center m-4 ">
               <img
                 className=" m-2 w-[31.5%] h-[40%] "
-                src={data[12].image}
+                src={data[20].image}
                 alt=""
               ></img>
               <img
                 className=" m-2 w-[31.5%] h-[40%] "
-                src={data[12].image}
+                src={data[21].image}
                 alt=""
               ></img>
               <img
                 className=" m-2 w-[31.5%] h-[40%] "
-                src={data[12].image}
+                src={data[22].image}
                 alt=""
               ></img>
             </div>
@@ -99,7 +99,7 @@ const Acordion = () => {
           </AccordionItemHeading>
           <AccordionItemPanel className=" w-full">
             <div className=" flex flex-col w-full justify-center items-between">
-              <div className=" flex sm:flex-row flex-col  items-center justify-center gap-[100px] m-10 ">
+              <div className=" flex sm:flex-row flex-col  items-center justify-center gap-[50px] m-5 ">
                 <div className=" flex flex-col justify-center    bg-bg-200 shadow-md p-5 w-full items-center">
                   <span className=" font-bold text-accent-200">هزینه کل: </span>
                   <span className="mr-20 mt-4">100,000,000</span>
@@ -111,7 +111,7 @@ const Acordion = () => {
                   <span className="mr-20 mt-4">100,000,000</span>
                 </div>
               </div>
-              <div className=" flex  sm:flex-row flex-col items-center justify-center gap-[100px] m-10 ">
+              <div className=" flex  sm:flex-row flex-col items-center justify-center gap-[50px] m-5 ">
                 <div className=" flex flex-col justify-center bg-bg-200 shadow-md p-5 w-full items-center">
                   <span className=" font-bold text-accent-200">
                     هزینه تجهیزات :{" "}
@@ -125,7 +125,7 @@ const Acordion = () => {
                   <span className="mr-20 mt-4">100,000,000</span>
                 </div>
               </div>
-              <div className=" flex   sm:flex-row flex-col items-center justify-center gap-[100px] m-10 ">
+              <div className=" flex   sm:flex-row flex-col items-center justify-center gap-[50px] m-5 ">
                 <div className=" bg-bg-200 shadow-md p-5 w-full flex  flex-col  justify-center items-center">
                   <span className=" font-bold text-accent-200">
                     هزینه نیروی انسانی :{" "}
@@ -175,7 +175,7 @@ const Acordion = () => {
                 <span className=" w-full font-bold text-[25px] text-accent-200">
                   فروش خارجی :
                 </span>
-                <div className="w-[90%] flex   sm:flex-row flex-col items-center justify-center gap-[100px] m-10 ">
+                <div className="w-[90%] flex   sm:flex-row flex-col items-center justify-center gap-[50px] m-5 ">
                   <div className=" flex flex-col justify-center bg-bg-200 shadow-md p-5 w-full items-center">
                     <span className=" font-bold text-accent-200">
                       تعداد نسخه یا واحد فروش:{" "}
@@ -194,7 +194,7 @@ const Acordion = () => {
                 <span className=" w-full font-bold text-[25px] text-accent-200">
                   فروش داخلی :
                 </span>
-                <div className="w-[90%] flex sm:flex-row flex-col items-center justify-center gap-[100px] m-10 ">
+                <div className="w-[90%] flex sm:flex-row flex-col items-center justify-center gap-[50px] m-5 ">
                   <div className=" flex flex-col justify-center bg-bg-200 shadow-md p-5 w-full items-center">
                     <span className=" font-bold text-accent-200">
                       تعداد نسخه یا واحد فروش:{" "}
