@@ -36,6 +36,8 @@ function App() {
           <Route path="/AddProblem" element={<AddProblem />} />
           <Route path="/Factor" element={<Factor />} />
           <Route path="/IdeaCategory" element={<IdeaCategory />} />
+          <Route path="/ideas/:id" element={<IdeaDetail />} />
+          <Route path="/problems/:id" element={<ProblemDetail />} />
           <Route path="/AddIdea" element={<AddIdea />} />
           <Route path="/ProblemDetail/:id" element={<ProblemDetail />} />
           <Route path="/ideas/:id" element={<IdeaDetail />} />

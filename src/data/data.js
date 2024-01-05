@@ -16,6 +16,14 @@ import vector from "../Image/IdeaCategory/vector.png";
 import video from "../v1.mp4";
 // import video1 from "../Image/idea_detail/sohrabi.mp4";
 import problemImage from "../Image/Problems/mosala.jpg";
+import idea1 from "../Image/Idea/idea1.webp";
+import idea2 from "../Image/Idea/idea2.jpg";
+import idea3 from "../Image/Idea/idea3.avif";
+import idea4 from "../Image/Idea/idea4.jpeg";
+import idea5 from "../Image/Idea/idea5.webp";
+import problem1 from "../Image/Problem/problem1.webp";
+import problem2 from "../Image/Problem/problem2.jpeg";
+import problem3 from "../Image/Problem/problem3.webp";
 import footMain from "../Image/Foot/footMain.png";
 
 
@@ -83,6 +91,38 @@ export const data = [
   {
     id: "problemImage",
     image: problemImage,
+  },
+  {
+    id: "problem1",
+    image: problem1,
+  },
+  {
+    id: "problem2",
+    image: problem2,
+  },
+  {
+    id: "problem3",
+    image: problem3,
+  },
+  {
+    id: "idea1",
+    image: idea1,
+  },
+  {
+    id: "idea2",
+    image: idea2,
+  },
+  {
+    id: "idea3",
+    image: idea3,
+  },
+  {
+    id: "idea4",
+    image: idea4,
+  },
+  {
+    id: "idea5",
+    image: idea5,
   },
   {
     id: "footMain",
