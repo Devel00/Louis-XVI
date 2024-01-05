@@ -3,7 +3,6 @@ import { data } from "../data/data";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 
-
 const AddProblem = () => {
   const [title, setTitle] = useState("");
   const [file, setFile] = useState(null);
