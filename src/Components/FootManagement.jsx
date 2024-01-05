@@ -59,15 +59,18 @@ const Feet = () => {
   return (
     <div className="">
       <Navbar />
-      <div className="py-[50px] flex justify-center mb-[350px] ">
+      <div className="py-[50px] flex justify-center mb-[500px] ">
             <img
               className="absolute w-[900px] object-cover"
               alt="Absolutvision"
               src={data[16].image}
             />
-            <div className="absolute w-[900px] h-[293px] bg-[#33333333] bg-opacity-[100%]" />
-            <p className="font-bold text-[#000000] text-[30px] absolute pt-[140px]">
-              دنبال یک همراه و همپا می گردی؟ خوب جایی اومدی
+            <div className="absolute w-[900px] h-[600px] bg-[#ffffffbb] " />
+            <p className="font-bold text-[#444444] text-[35px] absolute pt-[150px]">
+              دنبال یک همراه و همپا می گردی؟  
+            </p>
+            <p className="font-bold text-[#444444] text-[60px] absolute pt-[220px]">
+              خوب جایی اومدی
             </p>
           </div>
       <Filter />
