@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Card from "./Card";
 import { CiCirclePlus } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 const ManageProblems = () => {
   const [userInfo, setUserInfo] = useState(
@@ -12,6 +13,7 @@ const ManageProblems = () => {
   console.log(userInfo.id)
   const [problems, setProblems] = useState();
   const [success, setSuccess] = useState(false);
+  let i = 0;
   // console.log(localStorage.getItem("token"))
   useEffect(() => {
     const ShowProblems = async () => {
@@ -42,12 +44,14 @@ const ManageProblems = () => {
     <div className="">
       <Navbar />
       <div>
-        <div className=" scale-90 m-2 grid grid-cols-3 gap-y-6">
         {success &&
-          problems.data.map((item, index) => (
+        <div className=" scale-90 m-2 grid grid-cols-3 gap-y-6  animate-fade">
+        
+        {success && problems.data.map((item, index) => (
             <div>
               <Card detail={item} />
               </div>
+              
         ))}
           <Link to="/AddProblem">
             <div className="w-[85%] h-[450px] bg-bg-200 hover:bg-bg-300/70 rounded-[24px]  overflow-hidden shadow-xl flex flex-col  justify-center items-center">
@@ -58,6 +62,11 @@ const ManageProblems = () => {
             </div>
           </Link>
         </div>
+        }
+        {! success &&
+        
+          <Loading />
+        }
       </div>
     </div>
   );
