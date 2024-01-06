@@ -288,7 +288,6 @@ const Profile = () => {
           <Footer />
         </div>
       </div>
-      )
     </MyContext.Provider>
   );
 };
