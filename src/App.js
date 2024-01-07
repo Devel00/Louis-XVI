@@ -16,7 +16,8 @@ import IdeaCategory from "./Components/IdeaCategory";
 import IdeaDetail from "./Components/IdeaDetail";
 import AddIdea from "./Components/AddIdea";
 import ProblemDetail from "./Components/ProblemDetail";
-import CRUDProblem from "./Components/CRUD_problem";
+import CRUDProblem from "./Components/EditProblem";
+import Loading from "./Components/Loading";
 import Feet from "./Components/FootManagement";
 function App() {
   return (
@@ -41,7 +42,8 @@ function App() {
           <Route path="/AddIdea" element={<AddIdea />} />
           <Route path="/ProblemDetail/:id" element={<ProblemDetail />} />
           <Route path="/ideas/:id" element={<IdeaDetail />} />
-          <Route path="/CRUD" element={<CRUDProblem />} />
+          <Route path="/EditProblem/:id" element={<CRUDProblem />} />
+          <Route path="/Load" element={<Loading />} />
           <Route path="/feet" element={<Feet />} />
         </Routes>
       </BrowserRouter>
