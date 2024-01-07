@@ -20,7 +20,7 @@ const Filter = () => {
 
             <img
               className="w-[100%] rounded-[10px]  max-h-[300px] object-cover "
-              src={data[3].image}
+              src={data[17].image}
               alt=""
             ></img>
           </div>
@@ -37,7 +37,7 @@ const Filter = () => {
 
             <img
               className="w-[100%] rounded-[10px]  max-h-[300px] object-cover "
-              src={data[3].image}
+              src={data[19].image}
               alt=""
             ></img>
           </div>
@@ -71,7 +71,7 @@ const Filter = () => {
 
             <img
               className="w-[100%] rounded-[10px] max-h-[300px] object-cover "
-              src={data[3].image}
+              src={data[17].image}
               alt=""
             ></img>
           </div>
