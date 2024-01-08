@@ -4,14 +4,13 @@ import { AiOutlineLike } from "react-icons/ai";
 import { MdOutlineVolunteerActivism } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const Card = ({ detail }) => {
+const PCard = ({ detail }) => {
   const [Detail, setDetail] = useState(detail);
   const [like, setLike] = useState(0)
   const HandelLike = async () => {
 
 
   }
-  console.log(Detail);
   return (
     <Link to={detail.id ? `/ProblemDetail/${detail.id}` : `/`}>
       <div className="w-[85%] h-[450px] bg-bg-200 hover:bg-bg-300/70 rounded-[24px] shadow-xl flex flex-col  justify-center items-center">
@@ -43,4 +42,4 @@ const Card = ({ detail }) => {
   );
 };
 
-export default Card;
+export default PCard;

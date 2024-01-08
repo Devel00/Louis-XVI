@@ -15,6 +15,10 @@ const AddProblem = () => {
   const onChangeFile = (e) => {
     setImage([e.target.files[0]]);
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
+
   const onDeleteImage = (index) => {
     // Create a new array excluding the element at the specified index
     const updatedImages = image.filter((_, i) => i !== index);

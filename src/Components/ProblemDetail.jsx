@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,createContext} from "react";
 import Navbar from "./Navbar";
 import { data } from "../data/data";
 import Acordion from "./Acordion";
 import { Link, useParams , useNavigate } from "react-router-dom";
+import { HiOutlinePlus } from "react-icons/hi2";
 import Footer from "./Footer";
-import Loading from "./Loading"
+import Loading from "./Loading";
+import Delete from "./DeletePopup";
+const MyContext_1 = createContext();
 
 const ProblemDetail = () => {
+  const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
   const [problems, setProblems] = useState();
   const [success, setSuccess] = useState(false);
@@ -50,20 +54,21 @@ const ProblemDetail = () => {
   const navigate = useNavigate()
   async function HandelDeleteProblem()
   {
-    await fetch(`https://biglybigly.iran.liara.run/api/v1/problems/problems/${id}/`, {
-            method: "DELETE",
-            headers: {
-                Accept: "application/json",
-                Authorization: `${localStorage.getItem("token")}`,
-            },
-        })
-            .then(() => {
-                navigate("/Manager");
-                console.log("sucess");
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+    // await fetch(`https://biglybigly.iran.liara.run/api/v1/problems/problems/${id}/`, {
+    //         method: "DELETE",
+    //         headers: {
+    //             Accept: "application/json",
+    //             Authorization: `${localStorage.getItem("token")}`,
+    //         },
+    //     })
+    //         .then(() => {
+    //             navigate("/Manager");
+    //             console.log("sucess");
+    //         })
+    //         .catch((e) => {
+    //             console.log(e);
+    //         });
+    setShowModal(true);
   }
 
   async function HandelVolanteer()
@@ -85,7 +90,9 @@ const ProblemDetail = () => {
 
 
   return (
+    <MyContext_1.Provider value={[showModal, setShowModal]}>
     <div className="  w-full">
+      {showModal && <Delete />} 
       <Navbar />
       {success &&
       <div className="max-w-[1400px] mx-auto">
@@ -150,7 +157,7 @@ const ProblemDetail = () => {
             </Link>
             <button className="" onClick={HandelDeleteProblem} >
               <div className=" bg-accent-100 hover:bg-primary-100 hover:text-bg-100 hover:font-bold w-[100%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
-                <div className="">
+                <div className="" >
                   <span className="font-main text-[18px]">پاک کردن</span>
                 </div>
               </div>
@@ -192,7 +199,8 @@ const ProblemDetail = () => {
     }
       <Footer />
     </div>
+    </MyContext_1.Provider>
   );
 };
 
-export default ProblemDetail;
+export {MyContext_1,ProblemDetail};
