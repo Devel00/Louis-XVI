@@ -75,7 +75,7 @@ const Problems = () => {
       { success &&
       <Carousel
         showDots
-        className=" scale-90 ml-4 mt-10 h-[600px]"
+        className=" animate-fade scale-90 ml-4 mt-10 h-[600px]"
         responsive={responsive}
         dotListClass="custom-dot-list"
       >

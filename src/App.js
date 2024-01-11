@@ -20,6 +20,7 @@ import CRUDProblem from "./Components/EditProblem";
 import Loading from "./Components/Loading";
 import Feet from "./Components/FootManagement";
 import AddFoot from "./Components/AddFoot"
+import EditUser from "./Components/CRUDUser";
 function App() {
   return (
     <div className="App">
@@ -47,6 +48,7 @@ function App() {
           <Route path="/Load" element={<Loading />} />
           <Route path="/feet" element={<Feet />} />
           <Route path="/AddFoot" element={<AddFoot />} />
+          <Route path="/EditUser" element={<EditUser />} />
         </Routes>
       </BrowserRouter>
     </div>

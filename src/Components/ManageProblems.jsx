@@ -45,11 +45,11 @@ const ManageProblems = () => {
       <Navbar />
       <div>
         {success &&
-          <div className=" scale-90 m-2 grid grid-cols-3 gap-y-6 animate-fade ">
+          <div className=" scale-90 m-2 grid grid-cols-3 gap-y-6 animate-fade-up">
 
             {success && problems.data.map((item, index) => (
-                <div>
-                <Card detail={item} />
+                <div >
+                <Card detail={item}/>
               </div>
             ))
               

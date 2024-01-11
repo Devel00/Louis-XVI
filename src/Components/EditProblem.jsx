@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { data } from "../data/data";
-import {Link, useNavigate} from "react-router-dom"    ;
+import {Link, useNavigate} from "react-router-dom";
 import { useParams} from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 import Loading from "./Loading";
