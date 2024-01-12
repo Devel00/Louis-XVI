@@ -249,7 +249,7 @@ const Profile = () => {
                     </div>
                   </Link>
                   {/* add idea */}
-                  <Link to="/">
+                  <Link to="/addIdea">
                     <div className=" bg-bg-100 group hover:bg-accent-100 shadow-md  rounded-[8px]  mt-16 sm:mr-16 mr-6 w-[86%] gap-6 flex flex-col justify-center items-center">
                       <div className="  text-[18px] font-bold p-4 px-4 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
                         <span className=" text-[22px]">

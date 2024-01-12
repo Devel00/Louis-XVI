@@ -2,7 +2,7 @@ import "./App.css";
 //import Navbar from "./Components/Navbar";
 import Signup from "./Components/Signup";
 import { Login } from "./Components/Login";
-import Card from "./Components/Card";
+import PCard from "./Components/PCard";
 import Manager from "./Components/ManageProblems";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Navbar from "./Components/Navbar";
@@ -15,10 +15,12 @@ import Factor from "./Components/Factor";
 import IdeaCategory from "./Components/IdeaCategory";
 import IdeaDetail from "./Components/IdeaDetail";
 import AddIdea from "./Components/AddIdea";
-import ProblemDetail from "./Components/ProblemDetail";
+import {ProblemDetail} from "./Components/ProblemDetail";
 import CRUDProblem from "./Components/EditProblem";
 import Loading from "./Components/Loading";
 import Feet from "./Components/FootManagement";
+import AddFoot from "./Components/AddFoot"
+import EditUser from "./Components/CRUDUser";
 function App() {
   return (
     <div className="App">
@@ -45,6 +47,8 @@ function App() {
           <Route path="/EditProblem/:id" element={<CRUDProblem />} />
           <Route path="/Load" element={<Loading />} />
           <Route path="/feet" element={<Feet />} />
+          <Route path="/AddFoot" element={<AddFoot />} />
+          <Route path="/EditUser" element={<EditUser />} />
         </Routes>
       </BrowserRouter>
     </div>
