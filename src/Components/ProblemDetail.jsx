@@ -54,20 +54,6 @@ const ProblemDetail = () => {
   const navigate = useNavigate()
   async function HandelDeleteProblem()
   {
-    // await fetch(`https://biglybigly.iran.liara.run/api/v1/problems/problems/${id}/`, {
-    //         method: "DELETE",
-    //         headers: {
-    //             Accept: "application/json",
-    //             Authorization: `${localStorage.getItem("token")}`,
-    //         },
-    //     })
-    //         .then(() => {
-    //             navigate("/Manager");
-    //             console.log("sucess");
-    //         })
-    //         .catch((e) => {
-    //             console.log(e);
-    //         });
     setShowModal(true);
   }
 
@@ -76,7 +62,7 @@ const ProblemDetail = () => {
     const formdata = new FormData();
         formdata.append("problem", parseInt(id));
         formdata.append("amount", parseInt(amount));
-        // formdata.append("user", userInfo.id);
+          // formdata.append("user", userInfo.id);
         
     await fetch(`https://biglybigly.iran.liara.run/api/v1/problems/fund/`, {
             method: "POST",

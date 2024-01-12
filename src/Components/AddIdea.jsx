@@ -4,12 +4,12 @@ import { data } from "../data/data";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegFilePdf } from "react-icons/fa";
 import Loading from "./Loading";
-
 import {
     Accordion,
     AccordionHeader,
     AccordionBody,
 } from "@material-tailwind/react";
+
 const AddIdea = () => {
     const [open, setOpen] = useState(0);
     const [success, setSuccess] = useState(false)
@@ -34,8 +34,6 @@ const AddIdea = () => {
     const [fvideo, setFVideo] = useState("")
     const [cvideo, setCVideo] = useState("")
     const [doc, setDoc] = useState("")
-    // const [description, setDescription] = useState("")
-    // const [money, setMoney] = useState("")
     const [userInfo, setUserInfo] = useState(
         JSON.parse(localStorage.getItem("Info"))
     );
@@ -47,36 +45,17 @@ const AddIdea = () => {
     const onChangeFile = (e) => {
         setImage([e.target.files[0]]);
     };
-    // const onChangeFullVideo = (e) => {
-    //     setFVideo([e.target.files[0]]);
-    // };
     const onChangeCoverVideo = (e) => {
         setCVideo([e.target.files[0]]);
     };
     const onChangeDoc = (e) => {
         setDoc([e.target.files[0]]);
     };
-    const navigate = useNavigate(); //why????
-    // useEffect(() => {
-    //     console.log(image);
-    //     console.log("image");
-    // }, [image])
-    // useEffect(() => {
-    //     console.log(fvideo);
-    //     console.log("fvideo");
-    // }, [fvideo])
-    // useEffect(() => {
-    //     console.log(cvideo)
-    //     console.log("cvideo")
-    // }, [cvideo])
-    // useEffect(() => {
-    //     console.log(doc);
-    //     console.log("doc");
-    // }, [doc])
+    const navigate = useNavigate();
     async function handelCreateProblem() {
     }
     useEffect(() => {
-        // window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
     }, []);
     function Icon({ id, open }) {
         return (
@@ -94,6 +73,16 @@ const AddIdea = () => {
     }
 
     const handeladdIdea = async () => {
+        // const formdata = new FormData();
+        // formdata.append("name",techfield)
+        // await fetch("https://biglybigly.iran.liara.run/api/v1/idea/idea-category/", {
+        //     method: "POST",
+        //     headers: {
+        //         Accept: "application/json",
+        //         Authorization: `${localStorage.getItem("token")}`,
+        //     },
+        //     body: formdata
+        // })
         const formdata = new FormData();
         formdata.append("farsi_title", pertitle)
         formdata.append("english_title", engtitle)
@@ -121,9 +110,8 @@ const AddIdea = () => {
         formdata.append("cover_video", cvideo)
         formdata.append("image", image[0])
         formdata.append("proposal", doc)
-        // for (var pair of formdata.entries()) {
-        //     console.log(pair[0] + ": " + pair[1]);
-        // }
+        formdata.append("creator", userInfo.id)
+        formdata.append("category", 1)
         setSuccess(true)
         await fetch("https://biglybigly.iran.liara.run/api/v1/idea/idea/", {
             method: "POST",
@@ -601,12 +589,12 @@ const AddIdea = () => {
                 </div>
             </div>
             {success &&
-            <div>
-            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <Loading />
-            </div>
-            <div className="w-full h-full opacity-70  fixed inset-0 z-40 bg-text-100"></div>
-            </div>
+                <div>
+                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                        <Loading />
+                    </div>
+                    <div className="w-full h-full opacity-70  fixed inset-0 z-40 bg-text-100"></div>
+                </div>
             }
         </div>
     );
