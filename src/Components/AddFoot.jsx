@@ -2,34 +2,35 @@ import React, { useState, createContext, useEffect } from "react";
 import { data } from "../data/data";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
+import { IoIosArrowDown } from "react-icons/io";
 
-
-const CRUD_Problem = () => {
+const AddFoot = () => {
     const [title, setTitle] = useState("");
     const [file, setFile] = useState(null);
     const [image, setImage] = useState([]);
     const [description, setDescription] = useState("");
-    const [money, setMoney] = useState("");
+    const [category, setCategory] = useState("");
     const [userInfo, setUserInfo] = useState(
         JSON.parse(localStorage.getItem("Info"))
     );
     const onChangeFile = (e) => {
         setImage([e.target.files[0]]);
     };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const onDeleteImage = (index) => {
         // Create a new array excluding the element at the specified index
         const updatedImages = image.filter((_, i) => i !== index);
         setImage(updatedImages);
     };
-    const navigate = useNavigate(); //why????
-    useEffect(() => {
-        console.log(image);
-    }, [image]);
+    const navigate = useNavigate(); //why???
     async function handelCreateProblem() {
         const formdata = new FormData();
         formdata.append("title", title);
         formdata.append("description", description);
-        formdata.append("financial_amount", money);
+        formdata.append("category", category);
         formdata.append("main_image", image[0]);
         formdata.append("is_done", false);
         formdata.append("creator", userInfo.id);
@@ -88,18 +89,15 @@ const CRUD_Problem = () => {
                     </div>
                     <div className="sm:w-[100%] sm:h-max sm:flex sm:flex-row  flex-col  items-center justify-center ">
                         <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
-                            <label className="  font-main ">
-                                تخمین پول مورد نیاز برای حل مشکل :
+                            <label >
+                                دسته بندی :
                             </label>
-                            <input
-                                dir="rtl"
-                                className=" sm:w-[100%] px-2 font-main font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "
-                                type="number"
-                                rows="5"
-                                placeholder="به تومان"
-                                value={money}
-                                onChange={(e) => setMoney(e.target.value)}
-                            ></input>
+                            <select onChange={(e) => {setCategory(e.target.value)}} class="block appearance-auto w-full border py-3 px-2 pr-2 pe-2 rounded leading-tight">
+                                <option value={0} selected>یک مورد را انتخاب کنید</option>
+                                <option value={1}>New Mexico</option>
+                                <option value={2}>Missouri</option>
+                                <option value={3}>Texas</option>
+                            </select>
                         </div>
                     </div>
                     <div className="w-full h-full flex flex-col justify-center items-center gap-2">
@@ -152,4 +150,4 @@ const CRUD_Problem = () => {
         </div>
     );
 };
-export default CRUD_Problem;
+export default AddFoot;

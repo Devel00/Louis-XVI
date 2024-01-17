@@ -2,18 +2,22 @@ import React, { useState, createContext, useEffect } from "react";
 import { HiOutlinePlus } from "react-icons/hi2";
 import { data } from "../data/data";
 import { Link, useNavigate } from "react-router-dom";
+import { FaRegFilePdf } from "react-icons/fa";
+import Loading from "./Loading";
 import {
     Accordion,
     AccordionHeader,
     AccordionBody,
 } from "@material-tailwind/react";
+
 const AddIdea = () => {
     const [open, setOpen] = useState(0);
+    const [success, setSuccess] = useState(false)
     const [pertitle, setPerTitle] = useState("")
     const [engtitle, setEngTitle] = useState("")
     const [techfield, setTechField] = useState("")
     const [briefdesc, setBriefDesc] = useState("")
-    const [mybool, setMybool] = useState("")
+    const [mybool, setMybool] = useState(1)
     const [totcost, setTotCost] = useState("")
     const [timemonth, setTimeMonth] = useState("")
     const [costequipment, setCostEquipment] = useState("")
@@ -26,10 +30,10 @@ const AddIdea = () => {
     const [soldcostDomestic, setSoldCostDomestic] = useState("")
     const [incomedomestic, setIncomeDomestic] = useState("")
     const [description_2, setDescription_2] = useState("")
-    const [file, setFile] = useState(null)
     const [image, setImage] = useState([])
-    // const [description, setDescription] = useState("")
-    // const [money, setMoney] = useState("")
+    const [fvideo, setFVideo] = useState("")
+    const [cvideo, setCVideo] = useState("")
+    const [doc, setDoc] = useState("")
     const [userInfo, setUserInfo] = useState(
         JSON.parse(localStorage.getItem("Info"))
     );
@@ -38,18 +42,21 @@ const AddIdea = () => {
     const [arraow1, setArrow1] = useState(true);
     const [arraow2, setArrow2] = useState(true);
     const [arraow3, setArrow3] = useState(true);
-    const onChangeFile = e => {
-        // const test = []
-        // test.append(e.target.files[0])
-        // console.log(e.target.files)
-        // console.log("null",e.target.files[0])
-        setImage([...image, e.target.files[0]]);
-        // console.log(image);
+    const onChangeFile = (e) => {
+        setImage([e.target.files[0]]);
     };
-    const navigate = useNavigate(); //why????
-    useEffect(() => { console.log(image) }, [image])
+    const onChangeCoverVideo = (e) => {
+        setCVideo([e.target.files[0]]);
+    };
+    const onChangeDoc = (e) => {
+        setDoc([e.target.files[0]]);
+    };
+    const navigate = useNavigate();
     async function handelCreateProblem() {
     }
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     function Icon({ id, open }) {
         return (
             <svg
@@ -58,16 +65,74 @@ const AddIdea = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
                 stroke="currentColor"
-                className={`${id === open ? "rotate-180" : ""} h-5 w-5 transition-transform`}
+                className={`${id === open ? " rotate-180" : ""} h-5 w-5 transition-transform`}
             >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
         );
     }
 
+    const handeladdIdea = async () => {
+        // const formdata = new FormData();
+        // formdata.append("name",techfield)
+        // await fetch("https://biglybigly.iran.liara.run/api/v1/idea/idea-category/", {
+        //     method: "POST",
+        //     headers: {
+        //         Accept: "application/json",
+        //         Authorization: `${localStorage.getItem("token")}`,
+        //     },
+        //     body: formdata
+        // })
+        const formdata = new FormData();
+        formdata.append("farsi_title", pertitle)
+        formdata.append("english_title", engtitle)
+        formdata.append("tech_field", techfield)
+        formdata.append("summary", briefdesc)
+        if (mybool == 2) {
+            formdata.append("is_upgraded", true)
+        }
+        if (mybool == 3) {
+            formdata.append("is_upgraded", false)
+        }
+        formdata.append("total_investment", totcost)
+        formdata.append("equipment_cost", costequipment)
+        formdata.append("used_equipment_cost", consumcost)
+        formdata.append("hr_cost", humancost)
+        formdata.append("other_cost", othercost)
+        formdata.append("time_to_finish", timemonth)
+        formdata.append("fianancial_summary", description_1)
+        formdata.append("demostic_sold_unit", soldcostDomestic)
+        formdata.append("demostic_income", incomedomestic)
+        formdata.append("foreign_sold_unit", soldcostforeign)
+        formdata.append("foreign_income", incomeforiegn)
+        formdata.append("description", description_2)
+        formdata.append("complete_video", fvideo)
+        formdata.append("cover_video", cvideo)
+        formdata.append("image", image[0])
+        formdata.append("proposal", doc)
+        formdata.append("creator", userInfo.id)
+        formdata.append("category", 1)
+        setSuccess(true)
+        await fetch("https://biglybigly.iran.liara.run/api/v1/idea/idea/", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                Authorization: `${localStorage.getItem("token")}`,
+            },
+            body: formdata,
+        })
+            .then(() => {
+                navigate("/Profile");
+                console.log("sucess");
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
+
     return (
-        <div class="flex items-center justify-center p-5">
-            <div className="w-[55%] h-[100%] rounded-sm  flex flex-col items-center justify-center z-30 bg-primary-200 bg-opacity-60 shadow-[-18px_10px_80px_-5px_rgba(5,5,5,0.3)] shadow-text-200/60">
+        <div className="flex items-center justify-center p-5">
+            <div className="w-[55%] h-[100%] rounded-sm  flex flex-col items-center justify-center z-20 bg-primary-200 bg-opacity-60 shadow-[-18px_10px_80px_-5px_rgba(5,5,5,0.3)] shadow-text-200/60">
                 <div className="w-full flex justify-center items-center p-2 bg-primary-300 rounded-sm">
                     <img
                         className=" w-20"
@@ -133,8 +198,8 @@ const AddIdea = () => {
                         <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
                             <label className="  font-main ">آیا این طرح فاز یا نسخه جدیدی از یک طرح یا محصول قبلی است؟</label>
                             <div className=" justify-between bg-bg-100 gap-14 w-[100%] flex py-6 rounded-3xl ">
-                                <button className="  rounded-2xl border border-b-text-100  hover:bg-[#1b9100] hover:text-bg-100 hover:border-bg-100 hover:border font-bold  mx-6 px-24 py-3">بله</button>
-                                <button className="  rounded-2xl border border-b-text-100 hover:bg-[#ff0000] hover:text-bg-100 hover:border-bg-100 hover:border font-bold mx-6 px-24 py-3">خیر</button>
+                                <button onClick={() => { setMybool(2) }} className={`${mybool == 2 ? " bg-[#1b9100]" : ""}  rounded-2xl border border-b-text-100  hover:bg-[#1b9100] hover:text-bg-100 hover:border-bg-100 hover:border font-bold  mx-6 px-24 py-3`}>بله</button>
+                                <button onClick={() => { setMybool(3) }} className={` ${mybool == 3 ? "bg-[#ff0000]" : ""}  rounded-2xl border border-b-text-100 hover:bg-[#ff0000] hover:text-bg-100 hover:border-bg-100 hover:border font-bold mx-6 px-24 py-3`}>خیر</button>
                             </div>
                         </div>
                     </div>
@@ -254,9 +319,14 @@ const AddIdea = () => {
                             <div className=" justify-center bg-bg-200 flex flex-col   gap-14 w-[100%]  py-8 px-3 rounded-3xl ">
                                 <table>
                                     <tbody>
-                                        <tr className="  text-xl justify-start items-start flex">
+                                        <tr className="  text-xl justify-start items-start flex py-2">
                                             <th >
                                                 اطلاعات فروش
+                                            </th>
+                                        </tr>
+                                        <tr className="text-xl justify-start items-start flex">
+                                            <th >
+                                                فروش خارجی در بازار عمومی
                                             </th>
                                         </tr>
                                         <tr>
@@ -362,7 +432,7 @@ const AddIdea = () => {
                             </div>
                             <div className="rounded-lg flex h-[200px] gap-6 m-6 flex-col group shadow-lg hover:bg-accent-100 hover:cursor-pointer justify-center bg-bg-100   items-center ">
                                 <label
-                                    for="dropzone-file"
+                                    for="dropzone-video"
                                     class="flex flex-col items-center justify-center w-full h-44   rounded-lg cursor-pointer "
                                 >
                                     <div className=" group-hover:scale-125 mx-4 my-3 shadow-lg border-opacity-10 group-hover:bg-bg-100 rounded-full p-2 ">
@@ -372,16 +442,16 @@ const AddIdea = () => {
                                         اضافه کردن ویدیو
                                     </span>
                                     <input
-                                        id="dropzone-file"
+                                        id="dropzone-video"
                                         type="file"
                                         class="hidden"
-                                        onChange={onChangeFile}
+                                        onChange={(e) => { setFVideo(e.target.files[0]) }}
                                     />
                                 </label>
                             </div>
                             <div className="rounded-lg flex h-[200px] gap-6 m-6 flex-col group shadow-lg hover:bg-accent-100 hover:cursor-pointer justify-center bg-bg-100   items-center ">
                                 <label
-                                    for="dropzone-file"
+                                    for="dropzone-cover"
                                     class="flex flex-col items-center justify-center w-full h-44   rounded-lg cursor-pointer "
                                 >
                                     <div className=" group-hover:scale-125 mx-4 my-3 shadow-lg border-opacity-10 group-hover:bg-bg-100 rounded-full p-2 ">
@@ -391,16 +461,16 @@ const AddIdea = () => {
                                         اضافه کردن کاور
                                     </span>
                                     <input
-                                        id="dropzone-file"
+                                        id="dropzone-cover"
                                         type="file"
                                         class="hidden"
-                                        onChange={onChangeFile}
+                                        onChange={(e) => setCVideo(e.target.files[0])}
                                     />
                                 </label>
                             </div>
                             <div className="rounded-lg flex h-[200px] gap-6 m-6 flex-col group shadow-lg hover:bg-accent-100 hover:cursor-pointer justify-center bg-bg-100   items-center ">
                                 <label
-                                    for="dropzone-file"
+                                    for="dropzone-doc"
                                     class="flex flex-col items-center justify-center w-full h-44   rounded-lg cursor-pointer "
                                 >
                                     <div className=" group-hover:scale-125 mx-4 my-3 shadow-lg border-opacity-10 group-hover:bg-bg-100 rounded-full p-2 ">
@@ -410,26 +480,14 @@ const AddIdea = () => {
                                         اضافه کردن پروپوزال
                                     </span>
                                     <input
-                                        id="dropzone-file"
+                                        id="dropzone-doc"
                                         type="file"
                                         class="hidden"
-                                        onChange={onChangeFile}
+                                        onChange={(e) => { setDoc(e.target.files[0]); }}
                                     />
                                 </label>
                             </div>
                         </div>
-                        <ul className=" flex flex-col justify-between item-center">
-                            {image.map((x) => {
-                                return (
-                                    <li >
-                                        <div className=" px-10 py-10 border-spacing-3 border border-solid  justify-between flex">
-                                            <button className="" onClick={() => setImage([])}> delete</button>
-                                            <img className="w-[20%]  rounded-2xl" src={URL.createObjectURL(x)} alt="" />
-                                        </div>
-                                    </li>
-                                );
-                            })}
-                        </ul>
                     </div>
                     <div className=" gap-3 w-[90%] flex flex-col justify-center items-center mt-10">
                         <Accordion allowMultipleExpanded={true}
@@ -437,11 +495,18 @@ const AddIdea = () => {
                             className=" w-[100%] border-collapse"
                             icon={<Icon id={1} open={open} />}
                             open={open === 1}>
-                            <AccordionHeader className=" w-full bg-bg-100 hover:border-r-[4px]  p-6 font-black text-accent-200" onClick={() => handleOpen(1)}>What is Material Tailwind?</AccordionHeader>
+                            <AccordionHeader className=" w-full bg-bg-100 hover:border-r-[4px]  p-6 font-black text-accent-200" onClick={() => handleOpen(1)}>عکس</AccordionHeader>
                             <AccordionBody>
-                                We&apos;re not always in the position that we want to be at. We&apos;re constantly
-                                growing. We&apos;re constantly making mistakes. We&apos;re constantly trying to express
-                                ourselves and actualize our dreams.
+                                {image.map((x) => {
+                                    return (
+                                        <li>
+                                            <div className=" px-10 py-10 border-spacing-3 border border-dashed   justify-between flex">
+                                                <button className="" onClick={() => setImage([])}> delete</button>
+                                                <img className="w-[20%]  rounded-2xl" src={URL.createObjectURL(x)} alt="" />
+                                            </div>
+                                        </li>
+                                    );
+                                })}
                             </AccordionBody>
                         </Accordion>
                         <Accordion
@@ -451,12 +516,19 @@ const AddIdea = () => {
                             className=" w-[100%] border-collapse"
                             open={open === 2}>
                             <AccordionHeader className=" w-full bg-bg-100 hover:border-r-[4px]  p-6 font-black text-accent-200" onClick={() => handleOpen(2)}>
-                                How to use Material Tailwind?
+                                فیلم
                             </AccordionHeader>
                             <AccordionBody>
-                                We&apos;re not always in the position that we want to be at. We&apos;re constantly
-                                growing. We&apos;re constantly making mistakes. We&apos;re constantly trying to express
-                                ourselves and actualize our dreams.
+                                {fvideo &&
+                                    <li>
+                                        <div className=" px-10 py-10 border-spacing-3 border border-dashed   justify-between flex">
+                                            <button className="" onClick={() => setFVideo()}> delete</button>
+                                            <video className="w-[50%]  rounded-2xl" controls  >
+                                                <source src={URL.createObjectURL(fvideo)} alt="" />
+                                            </video>
+                                        </div>
+                                    </li>
+                                }
                             </AccordionBody>
                         </Accordion>
                         <Accordion
@@ -466,12 +538,19 @@ const AddIdea = () => {
                             className=" w-[100%] border-collapse"
                             open={open === 3}>
                             <AccordionHeader className=" w-full bg-bg-100 hover:border-r-[4px]  p-6 font-black text-accent-200" onClick={() => handleOpen(3)}>
-                                What can I do with Material Tailwind?
+                                کاور
                             </AccordionHeader>
                             <AccordionBody>
-                                We&apos;re not always in the position that we want to be at. We&apos;re constantly
-                                growing. We&apos;re constantly making mistakes. We&apos;re constantly trying to express
-                                ourselves and actualize our dreams.
+                                {cvideo &&
+                                    <li>
+                                        <div className=" px-10 py-10 border-spacing-3 border border-dashed   justify-between flex">
+                                            <button className="" onClick={() => setCVideo()}> delete</button>
+                                            <video className="w-[50%]  rounded-2xl" controls  >
+                                                <source src={URL.createObjectURL(cvideo)} alt="" />
+                                            </video>
+                                        </div>
+                                    </li>
+                                }
                             </AccordionBody>
                         </Accordion>
                         <Accordion
@@ -481,17 +560,25 @@ const AddIdea = () => {
                             icon={<Icon id={4} open={open} />}
                             open={open === 4}>
                             <AccordionHeader className=" w-full bg-bg-100 hover:border-r-[4px]  p-6 font-black text-accent-200" onClick={() => handleOpen(4)}>
-                                What can I do with Material Tailwind?
+                                پروپوزال
                             </AccordionHeader>
                             <AccordionBody>
-                                We&apos;re not always in the position that we want to be at. We&apos;re constantly
-                                growing. We&apos;re constantly making mistakes. We&apos;re constantly trying to express
-                                ourselves and actualize our dreams.
+                                {doc &&
+                                    <li>
+                                        <div className=" px-8 py-10 border-spacing-3 border border-dashed   justify-between flex">
+                                            <button className="" onClick={() => setDoc()}> delete</button>
+                                            <div className=" flex flex-col items-center gap-y-2">
+                                                <FaRegFilePdf size={60} />
+                                                <span className="w-[70%]">{doc.name}</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
                             </AccordionBody>
                         </Accordion>
                     </div>
                     <div className=" py-5 px-5 flex flex-col justify-center items-center ">
-                        <button className="" >
+                        <button className="" onClick={handeladdIdea} >
                             <div className=" bg-accent-100 hover:bg-primary-100 hover:text-bg-100 hover:font-bold w-[100%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
                                 <div className="">
                                     <span className="font-main text-[18px]">اضافه کردن</span>
@@ -501,6 +588,14 @@ const AddIdea = () => {
                     </div>
                 </div>
             </div>
+            {success &&
+                <div>
+                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                        <Loading />
+                    </div>
+                    <div className="w-full h-full opacity-70  fixed inset-0 z-40 bg-text-100"></div>
+                </div>
+            }
         </div>
     );
 

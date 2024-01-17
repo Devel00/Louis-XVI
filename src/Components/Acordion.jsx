@@ -46,16 +46,6 @@ const Acordion = () => {
                 src={data[20].image}
                 alt=""
               ></img>
-              <img
-                className=" m-2 w-[31.5%] h-[40%] "
-                src={data[21].image}
-                alt=""
-              ></img>
-              <img
-                className=" m-2 w-[31.5%] h-[40%] "
-                src={data[22].image}
-                alt=""
-              ></img>
             </div>
           </AccordionItemPanel>
         </AccordionItem>
