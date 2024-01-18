@@ -6,7 +6,7 @@ import { Link, useParams , useNavigate } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 import Footer from "./Footer";
 import Loading from "./Loading";
-import Delete from "./DeletePopup";
+import Delete from "./DeletePopupP";
 const MyContext_1 = createContext();
 
 const ProblemDetail = () => {

@@ -1,7 +1,7 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { HiOutlinePlus } from "react-icons/hi2";
 import { data } from "../data/data";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useParams , useNavigate } from "react-router-dom";
 import { FaRegFilePdf } from "react-icons/fa";
 import Loading from "./Loading";
 import {
@@ -72,17 +72,7 @@ const AddIdea = () => {
         );
     }
 
-    const handeladdIdea = async () => {
-        // const formdata = new FormData();
-        // formdata.append("name",techfield)
-        // await fetch("https://biglybigly.iran.liara.run/api/v1/idea/idea-category/", {
-        //     method: "POST",
-        //     headers: {
-        //         Accept: "application/json",
-        //         Authorization: `${localStorage.getItem("token")}`,
-        //     },
-        //     body: formdata
-        // })
+    const handeleditIdea = async () => {
         const formdata = new FormData();
         formdata.append("farsi_title", pertitle)
         formdata.append("english_title", engtitle)
@@ -578,7 +568,7 @@ const AddIdea = () => {
                         </Accordion>
                     </div>
                     <div className=" py-5 px-5 flex flex-col justify-center items-center ">
-                        <button className="" onClick={handeladdIdea} >
+                        <button className="" onClick={handeleditIdea} >
                             <div className=" bg-accent-100 hover:bg-primary-100 hover:text-bg-100 hover:font-bold w-[100%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
                                 <div className="">
                                     <span className="font-main text-[18px]">اضافه کردن</span>

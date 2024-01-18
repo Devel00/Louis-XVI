@@ -18,7 +18,7 @@ const Increase = () => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(update),
     })

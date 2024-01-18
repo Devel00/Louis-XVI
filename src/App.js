@@ -13,7 +13,7 @@ import Increase from "./Components/Increase";
 import AddProblem from "./Components/AddProblem";
 import Factor from "./Components/Factor";
 import IdeaCategory from "./Components/IdeaCategory";
-import IdeaDetail from "./Components/IdeaDetail";
+import {IdeaDetail} from "./Components/IdeaDetail";
 import AddIdea from "./Components/AddIdea";
 import {ProblemDetail} from "./Components/ProblemDetail";
 import CRUDProblem from "./Components/EditProblem";
@@ -21,6 +21,7 @@ import Loading from "./Components/Loading";
 import Feet from "./Components/FootManagement";
 import AddFoot from "./Components/AddFoot"
 import EditUser from "./Components/CRUDUser";
+import EditIdea from "./Components/EditIdea";
 function App() {
   return (
     <div className="App">
@@ -43,7 +44,8 @@ function App() {
           <Route path="/problems/:id" element={<ProblemDetail />} />
           <Route path="/AddIdea" element={<AddIdea />} />
           <Route path="/ProblemDetail/:id" element={<ProblemDetail />} />
-          <Route path="/ideas/:id" element={<IdeaDetail />} />
+          <Route path="/idea/:id" element={<IdeaDetail />} />
+          <Route path="/EditIdea/:id" element={<EditIdea />} />
           <Route path="/EditProblem/:id" element={<CRUDProblem />} />
           <Route path="/Load" element={<Loading />} />
           <Route path="/feet" element={<Feet />} />
