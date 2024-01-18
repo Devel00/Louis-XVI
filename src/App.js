@@ -13,7 +13,7 @@ import Increase from "./Components/User/Increase";
 import AddProblem from "./Components/Problem/AddProblem";
 import Factor from "./Components/User/Factor";
 import IdeaCategory from "./Components/Idea/IdeaCategory";
-import {IdeaDetail} from "./Components/Idea/IdeaDetail";
+import {{IdeaDetail}} from "./Components/Idea/IdeaDetail";
 import AddIdea from "./Components/Idea/AddIdea";
 import {ProblemDetail} from "./Components/Problem/ProblemDetail";
 import CRUDProblem from "./Components/Problem/EditProblem";
@@ -23,6 +23,7 @@ import AddFoot from "./Components/Foot/AddFoot"
 import EditUser from "./Components/User/CRUDUser";
 import EditIdea from "./Components/Idea/EditIdea";
 import IdeaManager from "./Components/Idea/IdeaManger";
+import EditIdea from "./Components/EditIdea";
 import EditIdea from "./Components/EditIdea";
 import EditIdea from "./Components/EditIdea";
 function App() {
