@@ -24,6 +24,7 @@ import EditUser from "./Components/User/CRUDUser";
 import EditIdea from "./Components/Idea/EditIdea";
 import IdeaManager from "./Components/Idea/IdeaManger";
 import EditIdea from "./Components/EditIdea";
+import EditIdea from "./Components/EditIdea";
 function App() {
   return (
     <div className="App">
