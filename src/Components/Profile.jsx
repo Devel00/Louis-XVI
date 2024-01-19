@@ -13,6 +13,7 @@ const Profile = () => {
   const [userInfo, setUserInfo] = useState(
     JSON.parse(localStorage.getItem("Info"))
   );
+
   const [showModal, setShowModal] = useState(false);
 
   return (
