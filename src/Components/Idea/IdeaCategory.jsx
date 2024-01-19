@@ -4,9 +4,9 @@ import {
   AiOutlineCustomerService,
   AiOutlineShop,
 } from "react-icons/ai";
-import Footer from "./Footer";
-import { data } from "../data/data";
-import Navbar from "./Navbar";
+import Footer from "../Global/Footer";
+import { data } from "../../data/data";
+import Navbar from "../Global/Navbar";
 
 const IdeaCategory = () => {
   return (

@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 import { IoIosArrowDown } from "react-icons/io";

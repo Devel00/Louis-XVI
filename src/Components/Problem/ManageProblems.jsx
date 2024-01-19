@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
+import Footer from "../Global/Footer";
+import Navbar from "../Global/Navbar";
 import Card from "./PCard";
 import { CiCirclePlus } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import Loading from "./Loading";
+import Loading from "../Global/Loading";
 
 const ManageProblems = () => {
   const [userInfo, setUserInfo] = useState(

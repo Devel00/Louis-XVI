@@ -1,7 +1,7 @@
 import React, { useState, createContext } from "react";
 import { IoHomeOutline } from "react-icons/io5";
-import { data } from "../data/data";
-import Footer from "./Footer";
+import { data } from "../../data/data";
+import Footer from "../Global/Footer";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";

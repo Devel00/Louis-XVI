@@ -1,10 +1,10 @@
 import React, { useContext, useNavigate, useState } from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../Global/Navbar";
+import Footer from "../Global/Footer";
 import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
-import { MyContext } from "../Components/Profile";
-import { data } from "../data/data";
+import { MyContext } from "./Profile";
+import { data } from "../../data/data";
 
 const Increase = () => {
   const [showModal, setShowModal] = useContext(MyContext);

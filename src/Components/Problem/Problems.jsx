@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../Components/Footer";
-import Navbar from "./Navbar";
-import MainCarousel from "../Components/carousel";
-import Filter from "./Filter";
+import Footer from "../Global/Footer";
+import Navbar from "../Global/Navbar";
+import MainCarousel from "./carousel";
+import Filter from "../Filter";
 import Card from "./PCard";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { LuMoreHorizontal } from "react-icons/lu";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 import { AiOutlineLike } from "react-icons/ai";
 import { MdOutlineVolunteerActivism } from "react-icons/md";
-import Loading from "./Loading";
+import Loading from "../Global/Loading";
 // import "src/style.css";
 
 const Problems = () => {

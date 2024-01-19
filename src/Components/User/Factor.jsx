@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 
 const Factor = () => {
   const navigate = useNavigate();

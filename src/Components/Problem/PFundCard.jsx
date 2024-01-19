@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 import { AiOutlineLike } from "react-icons/ai";
 import { MdOutlineVolunteerActivism } from "react-icons/md";
 

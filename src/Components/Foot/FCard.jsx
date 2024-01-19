@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 import { AiOutlineLike } from "react-icons/ai";
 import { MdOutlineVolunteerActivism } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const PCard = ({ detail}) => {
+const FCard = ({ detail }) => {
   const [Detail, setDetail] = useState(detail);
   const [like, setLike] = useState(0)
   const HandelLike = async () => {
@@ -13,8 +13,7 @@ const PCard = ({ detail}) => {
   }
   return (
     <Link to={detail.id ? `/ProblemDetail/${detail.id}` : `/`}>
-      <div
-      className={`w-[85%] h-[450px] bg-bg-200 hover:bg-bg-300/70 rounded-[24px] shadow-xl flex flex-col  justify-center items-center`}>
+      <div className="w-[85%] h-[450px] bg-bg-200 hover:bg-bg-300/70 rounded-[24px] shadow-xl flex flex-col  justify-center items-center">
         <img
           className="w-[100%] object-cover h-[70%] object-center rounded-ss-[24px] rounded-se-[24px]"
           src={`https://biglybigly.iran.liara.run/${Detail.main_image}`}
@@ -43,4 +42,4 @@ const PCard = ({ detail}) => {
   );
 };
 
-export default PCard;
+export default FCard;

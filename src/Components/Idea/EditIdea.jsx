@@ -1,9 +1,9 @@
 import React, { useState, createContext, useEffect } from "react";
 import { HiOutlinePlus } from "react-icons/hi2";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaRegFilePdf } from "react-icons/fa";
-import Loading from "./Loading";
+import Loading from "../Global/Loading";
 import {
     Accordion,
     AccordionHeader,

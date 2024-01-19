@@ -1,13 +1,12 @@
 import React, { useEffect, useState, createContext } from "react";
-import Navbar from "./Navbar";
-import { data } from "../data/data";
-import Acordion from "./Acordion";
+import Navbar from "../Global/Navbar";
+import { data } from "../../data/data";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
-import Footer from "./Footer";
-import Loading from "./Loading";
+import Footer from "../Global/Footer";
+import Loading from "../Global/Loading";
 import Delete from "./DeletePopupP";
-import Card from "./FundCard";
+import Card from "./PFundCard";
 const MyContext_1 = createContext();
 
 const ProblemDetail = () => {

@@ -3,7 +3,7 @@ import logo from "../Image/main_logo.png";
 import AvatarUser from "../Image/AvatarUser.png";
 import line from "../Image/line-1.svg";
 import tick from "../Image/blue_tick.png";
-import Problems from "../Components/Problems";
+import Problems from "../Components/Problem/Problems";
 import carousel_problem from "../Image/Problems/markus-winkler-aYPtEknQmXE-unsplash.jpg";
 import filter from "../Image/Problems/geojango-maps-Z8UgB80_46w-unsplash.jpg";
 import card_image from "../Image/card-top.jpg";
