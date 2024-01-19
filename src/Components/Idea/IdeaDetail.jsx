@@ -339,7 +339,7 @@ const IdeaDetail = () => {
           </div>
           {(showEdit) &&
             <div className=" py-5 px-5 gap-4 flex flex-row justify-center items-center ">
-              <Link to={id ? `/EditProblem/${id}` : `/`}>
+              <Link to={id ? `/EditIdea/${id}` : `/`}>
                 <button className="" >
                   <div className=" bg-accent-100 hover:bg-primary-100 hover:text-bg-100 hover:font-bold w-[100%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
                     <div className="">

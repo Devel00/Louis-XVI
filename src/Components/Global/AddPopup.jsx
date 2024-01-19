@@ -49,7 +49,7 @@ const AddPopup = () => {
               </div>
             </Link>
             {/* add 3 */}
-            <Link to="/">
+            <Link to="/AddFoot">
               <div className="animate-fade-up animate-delay-[600ms] animate-duration-150 rounded-lg flex h-[200px] gap-6 m-6 flex-col group shadow-lg hover:bg-accent-100 hover:cursor-pointer justify-center bg-bg-100   items-center ">
                 <div className="group-hover:scale-110 mx-4 shadow-lg group-hover:bg-bg-100 rounded-full p-2 ">
                   <HiOutlinePlus className="   text-accent-100 " size={40} />

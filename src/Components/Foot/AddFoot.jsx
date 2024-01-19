@@ -20,11 +20,10 @@ const AddFoot = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const onDeleteImage = (index) => {
-        // Create a new array excluding the element at the specified index
-        const updatedImages = image.filter((_, i) => i !== index);
-        setImage(updatedImages);
-    };
+    // const onDeleteImage = (index) => {
+    //     const updatedImages = image.filter((_, i) => i !== index);
+    //     setImage(updatedImages);
+    // };
     const navigate = useNavigate(); //why???
     async function handelCreateProblem() {
         const formdata = new FormData();

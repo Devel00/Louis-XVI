@@ -209,7 +209,7 @@ const EditIdea = () => {
             body: formdata,
         })
             .then(() => {
-                navigate("/Profile");
+                navigate("/IdeaManager");
                 console.log("sucess");
             })
             .catch((e) => {
