@@ -1,7 +1,7 @@
 import React, { useState, createContext } from "react";
 import { IoHomeOutline } from "react-icons/io5";
-import { data } from "../data/data";
-import Footer from "./Footer";
+import { data } from "../../data/data";
+import Footer from "../Global/Footer";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
@@ -113,7 +113,7 @@ const Profile = () => {
                     <div className=" bg-primary-100 sm:w-[75%] w-[25%] h-[1.5px]"></div>
                   </div>
                   {/* مدیریت کارت های ایده */}
-                  <Link to="/Problem">
+                  <Link to="/IdeaManager">
                     <div className=" bg-bg-100 w-[80%] group hover:bg-accent-100 sm:mr-12 mr-4  mb-10 mt-6 px-5 py-3 rounded-[8px] shadow-md">
                       <div className=" flex justify-between items-center ">
                         <span className=" group-hover:text-bg-100 sm:text-[16px] text-[10px] text-accent-200 font-bold">
@@ -153,7 +153,7 @@ const Profile = () => {
                     <div className=" bg-primary-100 sm:w-[75%] w-[25%] h-[1.5px]"></div>
                   </div>
                   {/*مدیریت کارت های هم پا*/}
-                  <Link to="/Problem">
+                  <Link to="/">
                     <div className=" bg-bg-100 w-[80%] group hover:bg-accent-100 sm:mr-12 mr-4  mb-10 mt-6 px-5 py-3 rounded-[8px] shadow-md">
                       <div className=" flex justify-between items-center ">
                         <span className=" group-hover:text-bg-100 sm:text-[16px] text-[10px] text-accent-200 font-bold">
@@ -266,7 +266,7 @@ const Profile = () => {
                     </div>
                   </Link>
                   {/* add foot */}
-                  <Link to="/">
+                  <Link to="/AddFoot">
                     <div className=" bg-bg-100 group hover:bg-accent-100 shadow-md  rounded-[8px]  mt-16 sm:mr-16 mr-6 sm:w-[86%] gap-6 flex flex-col justify-center items-center">
                       <div className="  text-[18px] font-bold p-4 px-4 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
                         <span className=" text-[22px]">

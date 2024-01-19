@@ -1,26 +1,28 @@
 import "./App.css";
 //import Navbar from "./Components/Navbar";
-import Signup from "./Components/Signup";
-import { Login } from "./Components/Login";
-import PCard from "./Components/PCard";
-import Manager from "./Components/ManageProblems";
+import Signup from "./Components/User/Signup";
+import { Login } from "./Components/User/Login";
+import PCard from "./Components/Problem/PCard";
+import Manager from "./Components/Problem/ManageProblems";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Navbar from "./Components/Navbar";
-import Problems from "./Components/Problems";
-import { HomePage } from "./Components/HomePage";
-import { Profile } from "./Components/Profile";
-import Increase from "./Components/Increase";
-import AddProblem from "./Components/AddProblem";
-import Factor from "./Components/Factor";
-import IdeaCategory from "./Components/IdeaCategory";
-import IdeaDetail from "./Components/IdeaDetail";
-import AddIdea from "./Components/AddIdea";
-import { ProblemDetail } from "./Components/ProblemDetail";
-import CRUDProblem from "./Components/EditProblem";
-import Loading from "./Components/Loading";
-import Feet from "./Components/FootManagement";
-import AddFoot from "./Components/AddFoot";
-import EditUser from "./Components/CRUDUser";
+import Navbar from "./Components/Global/Navbar";
+import Problems from "./Components/Problem/Problems";
+import { HomePage } from "./Components/Global/HomePage";
+import { Profile } from "./Components/User/Profile";
+import Increase from "./Components/User/Increase";
+import AddProblem from "./Components/Problem/AddProblem";
+import Factor from "./Components/User/Factor";
+import IdeaCategory from "./Components/Idea/IdeaCategory";
+import {IdeaDetail} from "./Components/Idea/IdeaDetail";
+import AddIdea from "./Components/Idea/AddIdea";
+import { ProblemDetail } from "./Components/Problem/ProblemDetail";
+import CRUDProblem from "./Components/Problem/EditProblem";
+import Loading from "./Components/Global/Loading";
+import Feet from "./Components/Foot/FootManagement";
+import AddFoot from "./Components/Foot/AddFoot";
+import EditUser from "./Components/User/CRUDUser";
+import EditIdea from "./Components/Idea/EditIdea";
+import IdeaManager from "./Components/Idea/IdeaManger";
 import IdeaShorts from "./Components/IdeasShort.jsx";
 function App() {
   return (
@@ -44,12 +46,14 @@ function App() {
           <Route path="/problems/:id" element={<ProblemDetail />} />
           <Route path="/AddIdea" element={<AddIdea />} />
           <Route path="/ProblemDetail/:id" element={<ProblemDetail />} />
+          <Route path="/idea/:id" element={<IdeaDetail />} />
+          <Route path="/EditIdea/:id" element={<EditIdea />} />
           <Route path="/EditProblem/:id" element={<CRUDProblem />} />
           <Route path="/Load" element={<Loading />} />
           <Route path="/feet" element={<Feet />} />
           <Route path="/AddFoot" element={<AddFoot />} />
           <Route path="/EditUser" element={<EditUser />} />
-          <Route path="/ideas" element={<IdeaShorts />} />
+          <Route path="/IdeaManager" element={<IdeaManager />} />
         </Routes>
       </BrowserRouter>
     </div>

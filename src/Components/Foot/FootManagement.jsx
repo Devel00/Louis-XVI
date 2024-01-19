@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
-import Filter from "./Filter";
+import Footer from "../Global/Footer";
+import Navbar from "../Global/Navbar";
+import Filter from "../Filter";
 import "react-multi-carousel/lib/styles.css"
-import { data } from "../data/data";
+import { data } from "../../data/data";
 
 const Feet = () => {
   const [feet, setProblems] = useState();

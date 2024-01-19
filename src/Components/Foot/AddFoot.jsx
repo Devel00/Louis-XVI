@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 import { IoIosArrowDown } from "react-icons/io";
@@ -20,11 +20,10 @@ const AddFoot = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const onDeleteImage = (index) => {
-        // Create a new array excluding the element at the specified index
-        const updatedImages = image.filter((_, i) => i !== index);
-        setImage(updatedImages);
-    };
+    // const onDeleteImage = (index) => {
+    //     const updatedImages = image.filter((_, i) => i !== index);
+    //     setImage(updatedImages);
+    // };
     const navigate = useNavigate(); //why???
     async function handelCreateProblem() {
         const formdata = new FormData();
@@ -62,7 +61,7 @@ const AddFoot = () => {
                 <div className="w-full h-full flex flex-col justify-center items-center gap-1">
                     <div className="sm:w-[100%] sm:flex sm:flex-row  flex-col  items-center justify-center ">
                         <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
-                            <label className="  font-main ">عنوان مشکل :</label>
+                            <label className="  font-main ">عنوان مسیر :</label>
                             <input
                                 dir="rtl"
                                 className=" sm:w-[100%] px-2 font-main font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "
