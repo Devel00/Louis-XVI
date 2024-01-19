@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { HiOutlinePlus } from "react-icons/hi2";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 import { Link, useParams , useNavigate } from "react-router-dom";
 import { FaRegFilePdf } from "react-icons/fa";
 import Loading from "../Global/Loading";
