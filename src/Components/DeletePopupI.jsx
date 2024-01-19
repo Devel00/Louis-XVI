@@ -18,7 +18,7 @@ const DeletePopup = () => {
             },
         })
             .then(() => {
-                navigate("/");
+                navigate("/IdeaManager");
                 console.log("sucess");
             })
             .catch((e) => {

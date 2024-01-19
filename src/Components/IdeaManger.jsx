@@ -16,6 +16,9 @@ const ManageIdea = () => {
     let i = 0;
     // console.log(localStorage.getItem("token"))
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    useEffect(() => {
         const ShowProblems = async () => {
             try {
                 const response = await fetch(
@@ -47,7 +50,7 @@ const ManageIdea = () => {
                 {success &&
                     <div className="w-full m-3 flex flex-col gap-y-6 justify-center items-center animate-fade-up">
                         {success && ideas.map((item, index) => (
-                            <div >
+                            <div className=" w-full justify-center items-center">
                                 <Card detail={item} />
                             </div>
                         ))
