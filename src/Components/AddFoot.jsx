@@ -62,7 +62,7 @@ const AddFoot = () => {
                 <div className="w-full h-full flex flex-col justify-center items-center gap-1">
                     <div className="sm:w-[100%] sm:flex sm:flex-row  flex-col  items-center justify-center ">
                         <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
-                            <label className="  font-main ">عنوان مشکل :</label>
+                            <label className="  font-main ">عنوان مسیر :</label>
                             <input
                                 dir="rtl"
                                 className=" sm:w-[100%] px-2 font-main font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "

@@ -22,6 +22,7 @@ import Feet from "./Components/FootManagement";
 import AddFoot from "./Components/AddFoot"
 import EditUser from "./Components/CRUDUser";
 import EditIdea from "./Components/EditIdea";
+import IdeaManager from "./Components/IdeaManger";
 function App() {
   return (
     <div className="App">
@@ -51,6 +52,7 @@ function App() {
           <Route path="/feet" element={<Feet />} />
           <Route path="/AddFoot" element={<AddFoot />} />
           <Route path="/EditUser" element={<EditUser />} />
+          <Route path="/IdeaManager" element={<IdeaManager />} />
         </Routes>
       </BrowserRouter>
     </div>
