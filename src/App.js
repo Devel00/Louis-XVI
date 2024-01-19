@@ -26,6 +26,7 @@ import IdeaManager from "./Components/Idea/IdeaManger";
 import EditIdea from "./Components/EditIdea";
 import EditIdea from "./Components/EditIdea";
 import EditIdea from "./Components/EditIdea";
+import IdeaManager from "./Components/IdeaManger";
 function App() {
   return (
     <div className="App">
