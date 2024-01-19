@@ -15,14 +15,15 @@ import Factor from "./Components/User/Factor";
 import IdeaCategory from "./Components/Idea/IdeaCategory";
 import {IdeaDetail} from "./Components/Idea/IdeaDetail";
 import AddIdea from "./Components/Idea/AddIdea";
-import {ProblemDetail} from "./Components/Problem/ProblemDetail";
+import { ProblemDetail } from "./Components/Problem/ProblemDetail";
 import CRUDProblem from "./Components/Problem/EditProblem";
 import Loading from "./Components/Global/Loading";
 import Feet from "./Components/Foot/FootManagement";
-import AddFoot from "./Components/Foot/AddFoot"
+import AddFoot from "./Components/Foot/AddFoot";
 import EditUser from "./Components/User/CRUDUser";
 import EditIdea from "./Components/Idea/EditIdea";
 import IdeaManager from "./Components/Idea/IdeaManger";
+import IdeaShorts from "./Components/IdeasShort.jsx";
 function App() {
   return (
     <div className="App">

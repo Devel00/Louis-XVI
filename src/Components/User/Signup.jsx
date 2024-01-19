@@ -3,6 +3,7 @@ import { data } from "../../data/data";
 import { useNavigate } from "react-router-dom";
 import { createContext } from "react";
 import { MdErrorOutline } from "react-icons/md";
+
 export const MyContext = createContext("");
 const Login = () => {
   const [firstName, setFirstName] = useState("");

@@ -45,7 +45,7 @@ const IdeaCategory = () => {
           <div className="font-bold  text-accent-200 text-[42px] pt-[400px] pb-[50px]">
             دسته‌بندی مورد نظرت رو انتخاب کن
           </div>
-          <div className="grid scale-90 grid-cols-2  gap-10 mb-[250px]">
+          <div className="grid scale-75 grid-cols-2  gap-10 mb-[250px]">
             <div className="shadow-lg flex p-5">
               <div>
                 <AiOutlineCar className="w-[100px] h-[100px] text-accent-200" />
