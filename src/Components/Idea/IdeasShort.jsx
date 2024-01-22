@@ -37,6 +37,7 @@ const Ideas = () => {
         );
         const result = await response.json();
         setideas(result);
+        // setCurrentVideoIndex(ideas[0].id);
         console.log(result);
         setSuccess(true);
         setSize(result.length);
@@ -47,7 +48,14 @@ const Ideas = () => {
     };
     ShowIdeas();
   }, []);
-
+  useEffect(() => {
+    const ShowIdeas = async () => {
+      if (ideas) {
+        setCurrentVideoIndex(ideas[0].id);
+      }
+    };
+    ShowIdeas();
+  }, [ideas]);
   const handleScroll = (event) => {
     let scrollPosition = window.scrollY;
     console.log("scrollPosition", scrollPosition);
@@ -66,7 +74,7 @@ const Ideas = () => {
   };
 
   return (
-    <div className={`w-full h-[2000px]`}>
+    <div className={`w-full h-[1000px]`}>
       <Navbar />
       {success ? (
         // <div className=" flex justify-center items-center flex-col">
@@ -86,7 +94,13 @@ const Ideas = () => {
           </div>
           <div className=" flex flex-col items-center gap-[400px] justify-center p-12 ">
             {currentVideoIndex == 0 ? (
-              ""
+              <Button
+                disabled
+                onClick={() => setCurrentVideoIndex(currentVideoIndex - 1)}
+                className="rounded-full bg-bg-200 p-4"
+              >
+                <IoIosArrowUp size={25} />
+              </Button>
             ) : (
               <Button
                 onClick={() => setCurrentVideoIndex(currentVideoIndex - 1)}
@@ -96,7 +110,13 @@ const Ideas = () => {
               </Button>
             )}
             {currentVideoIndex == size - 1 ? (
-              ""
+              <Button
+                disabled
+                onClick={() => setCurrentVideoIndex(currentVideoIndex + 1)}
+                className=" rounded-full bg-bg-200 p-4"
+              >
+                <IoIosArrowDown size={25} />
+              </Button>
             ) : (
               <Button
                 onClick={() => setCurrentVideoIndex(currentVideoIndex + 1)}

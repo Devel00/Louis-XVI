@@ -13,7 +13,7 @@ import Increase from "./Components/User/Increase";
 import AddProblem from "./Components/Problem/AddProblem";
 import Factor from "./Components/User/Factor";
 import IdeaCategory from "./Components/Idea/IdeaCategory";
-import {IdeaDetail} from "./Components/Idea/IdeaDetail";
+import { IdeaDetail } from "./Components/Idea/IdeaDetail";
 import AddIdea from "./Components/Idea/AddIdea";
 import { ProblemDetail } from "./Components/Problem/ProblemDetail";
 import CRUDProblem from "./Components/Problem/EditProblem";
@@ -24,7 +24,6 @@ import EditUser from "./Components/User/CRUDUser";
 import EditIdea from "./Components/Idea/EditIdea";
 import IdeaManager from "./Components/Idea/IdeaManger";
 import IdeaShorts from "./Components/Idea/IdeasShort.jsx";
-import MangaerFoot from "./Components/Foot/ManageFoot.jsx";
 import ManageFoot from "./Components/Foot/ManageFoot.jsx";
 import {DetailFoot} from "./Components/Foot/FootDetail.jsx";
 import EditFoot from "./Components/Foot/CRUDFoot.jsx";
@@ -62,6 +61,7 @@ function App() {
           <Route path="/MFoot" element={<ManageFoot />} />
           <Route path="/DetailFoot/:id" element={<DetailFoot />} />
           <Route path="/EditFoot/:id" element={<EditFoot />} />
+          <Route path="ideas" element={<IdeaShorts />} />
         </Routes>
       </BrowserRouter>
     </div>
