@@ -1,24 +1,30 @@
-import React, { useState, createContext } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { data } from "../data/data";
 import { Link } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 import AddPopup from "./AddPopup";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const MyContext = createContext();
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
+  useEffect(() => {
+    AOS.init({duration:1200 })  //animation on scroll
+  })
 
   return (
     <MyContext.Provider value={[showModal, setShowModal]}>
       <div className="">
         {showModal && <AddPopup />}
 
-        <Navbar />
+        <Navbar data-aos="fade-down"/>
         <div className=" scale-90  flex flex-col justify-center items-center">
           {/* item1 */}
-          <div className=" bg-bg-200 shadow-md hover:border hover:border-bg-300/60  hover:cursor-pointer  flex flex-col justify-center items-center">
+          <div className=" bg-bg-200 shadow-md hover:border hover:border-bg-300/60  hover:cursor-pointer  flex flex-col justify-center items-center" data-aos="fade-down" data-aos-anchor-placement="top-center">
             <div className="">
               <div className="absolute bg-text-100/20 z-30 w-[850px] h-[450px] flex justify-center items-center"></div>
               <img
@@ -50,7 +56,7 @@ const HomePage = () => {
             </div>
           </div>
           {/* item2 */}
-          <div className=" bg-bg-200 shadow-md flex hover:border hover:border-bg-300/60  hover:cursor-pointer flex-col mt-14  justify-center items-center">
+          <div className=" bg-bg-200 shadow-md flex hover:border hover:border-bg-300/60  hover:cursor-pointer flex-col mt-14  justify-center items-center" data-aos="fade-left" data-aos-anchor-placement="top-center">
             <div className="">
               <div className="absolute bg-text-100/20 z-30 w-[850px] h-[450px] flex justify-center items-center"></div>
               <img
@@ -74,7 +80,7 @@ const HomePage = () => {
                   حتما دوستای خوبی رو می تونی پیداکنی{" "}
                 </span>
               </div>
-              <Link to="/">
+              <Link to="/Feet">
                 <button className="font-bold py-3 px-20 mb-6 rounded-[8px] hover:scale-105 hover:duration-[900ms] bg-accent-100 text-bg-100">
                   ورود به صفحه هم مسیر{" "}
                 </button>
@@ -82,7 +88,7 @@ const HomePage = () => {
             </div>
           </div>
           {/* item3 */}
-          <div className=" bg-bg-200 shadow-md hover:border hover:border-bg-300/60  hover:cursor-pointer flex flex-col mt-14  justify-center items-center">
+          <div className=" bg-bg-200 shadow-md hover:border hover:border-bg-300/60  hover:cursor-pointer flex flex-col mt-14  justify-center items-center" data-aos="fade-right" data-aos-anchor-placement="top-center">
             <div className="">
               <div className="absolute bg-text-100/20 z-30 w-[850px] h-[450px] flex justify-center items-center"></div>
               <img
@@ -114,7 +120,7 @@ const HomePage = () => {
             </div>
           </div>
           {/* end */}
-          <Link to="/login">
+          <Link to="/login" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
             <button className="bg-accent-100 text-bg-100 hover:scale-105 hover:duration-[800ms] w-[500px] text-[20px] rounded-[8px] font-bold mt-16 py-4  px-4">
               ورود | ثبت نام
             </button>

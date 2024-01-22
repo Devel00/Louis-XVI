@@ -13,11 +13,14 @@ import { AiOutlineLike } from "react-icons/ai";
 import { MdOutlineVolunteerActivism } from "react-icons/md";
 import Loading from "./Loading";
 // import "src/style.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Problems = () => {
   const [problems, setProblems] = useState();
   const [success, setSuccess] = useState(false);
   useEffect(() => {
+    AOS.init({duration:1200 })  //animation on scroll
     const ShowProblems = async () => {
       try {
         const response = await fetch(
@@ -59,9 +62,10 @@ const Problems = () => {
 
   return (
     <div className="">
-      <Navbar />
-      <MainCarousel />
-      <Filter />
+      <div data-aos="fade-down" data-aos-anchor-placement="bottom-center"> <Navbar />
+      </div><div className="my-[50px] max-w-[1500px] mx-auto" data-aos="flip-left" data-aos-anchor-placement="top-bottom"><MainCarousel />
+      </div><div data-aos="fade-down" data-aos-anchor-placement="top-center"><Filter /></div>
+      <div data-aos="zoom-in-left" data-aos-anchor-placement="center-bottom">
       {success &&
       <div className=" pt-6 flex justify-start gap-4 items-center">
         <span className=" text-accent-200  text-[20px] pr-4">پرطرفدارها</span>
@@ -103,6 +107,7 @@ const Problems = () => {
       {! success &&
       <Loading/>
       }
+      </div>
       <Footer />
     </div>
   );

@@ -25,6 +25,7 @@ import problem1 from "../Image/Problem/problem1.webp";
 import problem2 from "../Image/Problem/problem2.jpeg";
 import problem3 from "../Image/Problem/problem3.webp";
 import footMain from "../Image/Foot/footMain.png";
+import GroupPhoto from "../Image/AboutUs/GroupPhoto.jpg";
 
 
 export const data = [
@@ -127,5 +128,9 @@ export const data = [
   {
     id: "footMain",
     image: footMain,
+  },
+  {
+    id: "GroupPhoto",
+    image: GroupPhoto,
   },
 ];

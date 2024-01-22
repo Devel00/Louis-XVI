@@ -152,20 +152,26 @@ const Navbar = () => {
               </li>
             </Link>
 
+            <Link to="/Feet">
             <li className="py-4 px-2 rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start  items-center gap-2">
               <PiHandshake size={25} />
               هم مسیر
             </li>
+            </Link>
+
             <Link to="/IdeaCategory">
               <li className="py-4 px-2 rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start items-center gap-2">
                 <PiPlant size={25} />
                 ایده
               </li>
             </Link>
+
+            <Link to="/AboutUs">
             <li className="py-4 px-2  rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start   items-center gap-2">
               <MdOutlineContactSupport size={22} />
               درباره ما
             </li>
+            </Link>
           </ul>
         </nav>
       </div>
