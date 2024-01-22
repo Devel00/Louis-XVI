@@ -15,7 +15,7 @@ import {
 } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 
 const Navbar = () => {
   const [user, setUser] = useState(false);

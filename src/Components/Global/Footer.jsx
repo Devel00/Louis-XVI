@@ -1,5 +1,5 @@
 import React from "react";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 import { FaTelegram } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
 import { AiOutlineYoutube } from "react-icons/ai";

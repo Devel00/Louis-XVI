@@ -1,7 +1,7 @@
 import React, { useState, createContext } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 import { Link } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 import AddPopup from "./AddPopup";

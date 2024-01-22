@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 
@@ -15,6 +15,10 @@ const AddProblem = () => {
   const onChangeFile = (e) => {
     setImage([e.target.files[0]]);
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
+
   const onDeleteImage = (index) => {
     // Create a new array excluding the element at the specified index
     const updatedImages = image.filter((_, i) => i !== index);

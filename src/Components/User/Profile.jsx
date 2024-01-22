@@ -1,11 +1,12 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { IoHomeOutline } from "react-icons/io5";
-import { data } from "../data/data";
-import Footer from "./Footer";
+import { data } from "../../data/data";
+import Footer from "../Global/Footer";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 import Increase from "./Increase";
+import Loading from "../Global/Loading";
 // import { InfoContext } from "./Login";
 
 const MyContext = createContext();
@@ -13,6 +14,49 @@ const Profile = () => {
   const [userInfo, setUserInfo] = useState(
     JSON.parse(localStorage.getItem("Info"))
   );
+  const [pCount, setPCount] = useState(0);
+  const [iCount, setICount] = useState(0);
+  const [pc, setPC] = useState(false);
+  const [ic, setIC] = useState(false);
+  useEffect(() => {
+    const GetInfo = async () => {
+
+      const response = await fetch(
+        `https://biglybigly.iran.liara.run/api/v1/problems/user-problems/${userInfo.id}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            Authorization: `${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const result = await response.json();
+      setPCount(result.data.length)
+      setPC(true)
+    }
+    GetInfo();
+  }, [])
+
+  useEffect(() => {
+    const GetInfo2 = async () => {
+      const response1 = await fetch(
+        `https://biglybigly.iran.liara.run/api/v1/idea/user-ideas/`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const result1 = await response1.json();
+      setICount(result1.length)
+      setIC(true)
+    }
+    GetInfo2()
+  }, [])
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -112,7 +156,7 @@ const Profile = () => {
                     <div className=" bg-primary-100 sm:w-[75%] w-[25%] h-[1.5px]"></div>
                   </div>
                   {/* مدیریت کارت های ایده */}
-                  <Link to="/Problem">
+                  <Link to="/IdeaManager">
                     <div className=" bg-bg-100 w-[80%] group hover:bg-accent-100 sm:mr-12 mr-4  mb-10 mt-6 px-5 py-3 rounded-[8px] shadow-md">
                       <div className=" flex justify-between items-center ">
                         <span className=" group-hover:text-bg-100 sm:text-[16px] text-[10px] text-accent-200 font-bold">
@@ -152,7 +196,7 @@ const Profile = () => {
                     <div className=" bg-primary-100 sm:w-[75%] w-[25%] h-[1.5px]"></div>
                   </div>
                   {/*مدیریت کارت های هم پا*/}
-                  <Link to="/Problem">
+                  <Link to="/">
                     <div className=" bg-bg-100 w-[80%] group hover:bg-accent-100 sm:mr-12 mr-4  mb-10 mt-6 px-5 py-3 rounded-[8px] shadow-md">
                       <div className=" flex justify-between items-center ">
                         <span className=" group-hover:text-bg-100 sm:text-[16px] text-[10px] text-accent-200 font-bold">
@@ -197,7 +241,14 @@ const Profile = () => {
                   {/* item1 */}
                   <div className=" bg-bg-100 shadow-md  rounded-[8px]  mt-16 sm:mr-16 mr-6 w-[80%] gap-4 flex flex-col justify-center items-center">
                     <div className=" bg-bg-200 text-[18px] font-bold p-2 px-5 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
-                      <span className=" text-[22px]">5+</span>
+                      {pc &&
+                        <span className=" text-[22px]">{pCount}</span>
+                      }
+                      {!pc &&
+                      <div className="w-[20%]">
+                        <Loading/>
+                        </div>
+                      }
                     </div>
                     <span className=" text-[18px] font-bold mb-2 text-accent-100">
                       کارت های مشکل من
@@ -215,7 +266,14 @@ const Profile = () => {
                   {/* item3 */}
                   <div className=" bg-bg-100 shadow-md   rounded-[8px]  mt-16 sm:mr-16 mr-6 w-[80%] gap-4 flex flex-col justify-center items-center">
                     <div className=" bg-bg-200 text-[18px] font-bold p-2 px-5 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
-                      <span className=" text-[22px]">5+</span>
+                    {ic &&
+                        <span className=" text-[22px]">{iCount}</span>
+                      }
+                      {!ic &&
+                        <div className="w-[20%]">
+                        <Loading/>
+                        </div>
+                      }
                     </div>
                     <span className=" text-[18px] font-bold mb-2 text-accent-100">
                       کارت های ایده من
@@ -249,7 +307,7 @@ const Profile = () => {
                     </div>
                   </Link>
                   {/* add idea */}
-                  <Link to="/">
+                  <Link to="/addIdea">
                     <div className=" bg-bg-100 group hover:bg-accent-100 shadow-md  rounded-[8px]  mt-16 sm:mr-16 mr-6 w-[86%] gap-6 flex flex-col justify-center items-center">
                       <div className="  text-[18px] font-bold p-4 px-4 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
                         <span className=" text-[22px]">
@@ -265,7 +323,7 @@ const Profile = () => {
                     </div>
                   </Link>
                   {/* add foot */}
-                  <Link to="/">
+                  <Link to="/AddFoot">
                     <div className=" bg-bg-100 group hover:bg-accent-100 shadow-md  rounded-[8px]  mt-16 sm:mr-16 mr-6 sm:w-[86%] gap-6 flex flex-col justify-center items-center">
                       <div className="  text-[18px] font-bold p-4 px-4 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
                         <span className=" text-[22px]">
@@ -288,7 +346,6 @@ const Profile = () => {
           <Footer />
         </div>
       </div>
-      )
     </MyContext.Provider>
   );
 };
