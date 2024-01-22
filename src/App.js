@@ -23,7 +23,11 @@ import AddFoot from "./Components/Foot/AddFoot";
 import EditUser from "./Components/User/CRUDUser";
 import EditIdea from "./Components/Idea/EditIdea";
 import IdeaManager from "./Components/Idea/IdeaManger";
-import IdeaShorts from "./Components/IdeasShort.jsx";
+import IdeaShorts from "./Components/Idea/IdeasShort.jsx";
+import MangaerFoot from "./Components/Foot/ManageFoot.jsx";
+import ManageFoot from "./Components/Foot/ManageFoot.jsx";
+import {DetailFoot} from "./Components/Foot/FootDetail.jsx";
+import EditFoot from "./Components/Foot/CRUDFoot.jsx";
 function App() {
   return (
     <div className="App">
@@ -54,6 +58,10 @@ function App() {
           <Route path="/AddFoot" element={<AddFoot />} />
           <Route path="/EditUser" element={<EditUser />} />
           <Route path="/IdeaManager" element={<IdeaManager />} />
+          <Route path="/IdeaShort" element={<IdeaShorts />} />
+          <Route path="/MFoot" element={<ManageFoot />} />
+          <Route path="/DetailFoot/:id" element={<DetailFoot />} />
+          <Route path="/EditFoot/:id" element={<EditFoot />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ShortVideo from "./ShortVideo";
-import Loading from "./Loading";
-import Navbar from "./Navbar";
+import Loading from "../Global/Loading";
+import Navbar from "../Global/Navbar";
 import { Button } from "@material-tailwind/react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
