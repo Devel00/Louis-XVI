@@ -1,6 +1,6 @@
 import React, { useState, createContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 const InfoContext = createContext();
 const Login = () => {
   const [username, setUsername] = useState("");

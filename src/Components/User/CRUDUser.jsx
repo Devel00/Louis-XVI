@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 import { Link, useNavigate, useResolvedPath } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
-import Loading from "./Loading";
+import Loading from "../Global/Loading";
 
 const EditUser = () => {
     const [title, setTitle] = useState("");

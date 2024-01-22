@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
-import Filter from "./Filter";
-import Card from "./FCard";
+import Footer from "../Global/Footer";
+import Navbar from "../Global/Navbar";
+import Filter from "../Filter";
 import "react-multi-carousel/lib/styles.css"
-import { data } from "../data/data";
+import { data } from "../../data/data";
+import Card from "./FCard";
 import { LuMoreHorizontal } from "react-icons/lu";
 import Carousel from "react-multi-carousel";
 import Loading from "./Loading";

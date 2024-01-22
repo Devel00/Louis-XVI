@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { data } from "../data/data";
+import { data } from "../../data/data";
 
 const MainCarousel = () => {
   const [current, setCurrent] = useState(data[2].image);
