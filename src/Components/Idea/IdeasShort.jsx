@@ -48,20 +48,20 @@ const Ideas = () => {
     };
     ShowIdeas();
   }, []);
-  useEffect(() => {
-    const ShowIdeas = async () => {
-      if (ideas) {
-        setCurrentVideoIndex(ideas[0].id);
-      }
-    };
-    ShowIdeas();
-  }, [ideas]);
+  // useEffect(() => {
+  //   const ShowIdeas = async () => {
+  //     if (ideas) {
+  //       setCurrentVideoIndex(ideas[0].id);
+  //     }
+  //   };
+  //   ShowIdeas();
+  // }, [ideas]);
   const handleScroll = (event) => {
     let scrollPosition = window.scrollY;
     console.log("scrollPosition", scrollPosition);
+    console.log("currentVideoIndex", currentVideoIndex);
     if (scrollPosition == 300) {
       setCurrentVideoIndex(currentVideoIndex + 1);
-      console.log("currentVideoIndex", currentVideoIndex);
     }
     if (scrollPosition >= 300) {
       window.scrollTo({
@@ -87,10 +87,7 @@ const Ideas = () => {
             onWheel={handleScroll}
             className=" felx justify-center items-center mr-20 w-[80%] h-[1000px] "
           >
-            <ShortVideo
-              video={currentVideoIndex >= size ? "" : ideas[currentVideoIndex]}
-              currentVideoIndex={currentVideoIndex}
-            />
+            <ShortVideo currentVideoIndex={ideas[currentVideoIndex]} />
           </div>
           <div className=" flex flex-col items-center gap-[400px] justify-center p-12 ">
             {currentVideoIndex == 0 ? (
