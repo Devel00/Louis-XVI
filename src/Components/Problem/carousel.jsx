@@ -6,20 +6,20 @@ const MainCarousel = () => {
 
   return (
     <div className=" scale-95 w-full flex justify-center items-center mx-auto p-4">
-      <div className="max-h-[500px] w-full flex justify-center relative">
+      <div className="max-h-[650px] w-full flex justify-center relative ">
         {/*Overlay */}
         <div
-          className=" absolute w-[70%] h-full max-h-[500px]
+          className=" absolute w-[80%] h-full max-h-[800px] rounded-[30px]
            bg-text-100/25 flex flex-col justify-center mr-20"
         >
           <span
-            className=" text-[24px] text-primary-300
+            className=" text-[50px] text-primary-300
            font-medium"
           >
             تو هم دوست داری مشکلاتی که
           </span>
           <span
-            className=" text-[24px] text-primary-300
+            className=" text-[50px] text-primary-300
            font-medium"
           >
             میبینی رو با بقیه به اشتراک بذاری!
@@ -27,7 +27,7 @@ const MainCarousel = () => {
         </div>
 
         <img
-          className="w-[70%]  max-h-[300px] object-cover mr-20"
+          className="w-[80%] max-h-[800px] object-cover mr-20 rounded-[30px]"
           src={current}
           alt=""
         ></img>
