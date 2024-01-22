@@ -7,7 +7,7 @@ import { data } from "../../data/data";
 import Card from "./FCard";
 import { LuMoreHorizontal } from "react-icons/lu";
 import Carousel from "react-multi-carousel";
-import Loading from "./Loading";
+import Loading from "../Global/Loading";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import AOS from "aos";
 import "aos/dist/aos.css";
