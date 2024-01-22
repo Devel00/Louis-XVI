@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ShortVideo from "./ShortVideo";
-import Loading from "./Loading";
-import Navbar from "./Navbar";
+import Loading from "../Global/Loading";
+import Navbar from "../Global/Navbar";
 import { Button } from "@material-tailwind/react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
@@ -11,24 +11,6 @@ const Ideas = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [size, setSize] = useState(0);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollPosition = window.scrollY;
-  //     const newIndex = Math.floor(scrollPosition / 800);
-  //     // console.log("scroll psoition: ", scrollPosition);
-  //     // console.log("newIdex : ", newIndex);
-  //     // console.log("Height : ", window.innerHeight);
-  //     if (newIndex !== currentVideoIndex) {
-  //       setCurrentVideoIndex(newIndex);
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, [currentVideoIndex]);
-
   useEffect(() => {
     const ShowIdeas = async () => {
       try {
@@ -37,8 +19,10 @@ const Ideas = () => {
         );
         const result = await response.json();
         setideas(result);
+        // setCurrentVideoIndex(ideas[0].id);
         console.log(result);
         setSuccess(true);
+
         setSize(result.length);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -47,6 +31,15 @@ const Ideas = () => {
     };
     ShowIdeas();
   }, []);
+
+  useEffect(() => {
+    const ShowIdeas = async () => {
+      if (ideas) {
+        setCurrentVideoIndex(ideas[0].id);
+      }
+    };
+    ShowIdeas();
+  }, [ideas]);
 
   const handleScroll = (event) => {
     let scrollPosition = window.scrollY;
@@ -66,7 +59,7 @@ const Ideas = () => {
   };
 
   return (
-    <div className={`w-full h-[2000px]`}>
+    <div className={`w-full h-[1000px]`}>
       <Navbar />
       {success ? (
         // <div className=" flex justify-center items-center flex-col">
@@ -86,7 +79,13 @@ const Ideas = () => {
           </div>
           <div className=" flex flex-col items-center gap-[400px] justify-center p-12 ">
             {currentVideoIndex == 0 ? (
-              ""
+              <Button
+                disabled
+                onClick={() => setCurrentVideoIndex(currentVideoIndex - 1)}
+                className="rounded-full bg-bg-200 p-4"
+              >
+                <IoIosArrowUp size={25} />
+              </Button>
             ) : (
               <Button
                 onClick={() => setCurrentVideoIndex(currentVideoIndex - 1)}
@@ -96,7 +95,13 @@ const Ideas = () => {
               </Button>
             )}
             {currentVideoIndex == size - 1 ? (
-              ""
+              <Button
+                disabled
+                onClick={() => setCurrentVideoIndex(currentVideoIndex + 1)}
+                className=" rounded-full bg-bg-200 p-4"
+              >
+                <IoIosArrowDown size={25} />
+              </Button>
             ) : (
               <Button
                 onClick={() => setCurrentVideoIndex(currentVideoIndex + 1)}

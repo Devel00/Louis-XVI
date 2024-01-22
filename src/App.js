@@ -54,6 +54,7 @@ function App() {
           <Route path="/AddFoot" element={<AddFoot />} />
           <Route path="/EditUser" element={<EditUser />} />
           <Route path="/IdeaManager" element={<IdeaManager />} />
+          <Route path="ideas" element={<IdeaShorts />} />
         </Routes>
       </BrowserRouter>
     </div>
