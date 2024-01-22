@@ -11,6 +11,24 @@ const Ideas = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [size, setSize] = useState(0);
 
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollPosition = window.scrollY;
+  //     const newIndex = Math.floor(scrollPosition / 800);
+  //     // console.log("scroll psoition: ", scrollPosition);
+  //     // console.log("newIdex : ", newIndex);
+  //     // console.log("Height : ", window.innerHeight);
+  //     if (newIndex !== currentVideoIndex) {
+  //       setCurrentVideoIndex(newIndex);
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, [currentVideoIndex]);
+
   useEffect(() => {
     const ShowIdeas = async () => {
       try {
@@ -22,7 +40,6 @@ const Ideas = () => {
         // setCurrentVideoIndex(ideas[0].id);
         console.log(result);
         setSuccess(true);
-
         setSize(result.length);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -31,7 +48,6 @@ const Ideas = () => {
     };
     ShowIdeas();
   }, []);
-
   useEffect(() => {
     const ShowIdeas = async () => {
       if (ideas) {
@@ -40,7 +56,6 @@ const Ideas = () => {
     };
     ShowIdeas();
   }, [ideas]);
-
   const handleScroll = (event) => {
     let scrollPosition = window.scrollY;
     console.log("scrollPosition", scrollPosition);

@@ -1,33 +1,104 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { data } from "../../data/data";
-import { Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
-import { IoIosArrowDown } from "react-icons/io";
+import Loading from "../Global/Loading";
 
-const AddFoot = () => {
+
+const EditFoot = () => {
     const [title, setTitle] = useState("");
-    const [file, setFile] = useState(null);
     const [image, setImage] = useState([]);
     const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("");
-    const [userInfo, setUserInfo] = useState(
-        JSON.parse(localStorage.getItem("Info"))
-    );
+    const [money, setMoney] = useState("");
+    const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem("Info")));
+    const { id } = useParams();
+    const [foots, setProblems]= useState();
+    const [success, setSuccess] = useState(false);
+    const [setimage1 , setSetImage] = useState(false);
     const [allCat , setAllCat] = useState();
     const [CatSucc , setCatSeccuss] = useState(false)
+    const [category, setCategory] = useState("");
     const onChangeFile = (e) => {
+        setSetImage(false)
         setImage([e.target.files[0]]);
     };
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
-    // const onDeleteImage = (index) => {
-    //     const updatedImages = image.filter((_, i) => i !== index);
-    //     setImage(updatedImages);
-    // };
-    const navigate = useNavigate(); //why???
-
+    const onDeleteImage = (index) => {
+        const updatedImages = image.filter((_, i) => i !== index);
+        setImage(updatedImages);
+    };
+    const navigate = useNavigate();
+    async function handelUpdateFoot() {
+        const formdata = new FormData();
+        formdata.append("title", title);
+        formdata.append("description", description);
+        formdata.append("category", category);
+        formdata.append("image", image[0]);
+        formdata.append("is_done", false);
+        formdata.append("creator", userInfo.id); 
+        
+        await fetch(`https://biglybigly.iran.liara.run/api/v1/foot/foot/${id}/`, {
+            method: "PUT",
+            headers: {
+                Accept: "application/json",
+                Authorization: `${localStorage.getItem("token")}`,
+            },
+            body: formdata,
+        })
+            .then(() => {
+                navigate("/MFoot");
+                console.log("sucess");
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
+    useEffect(() => {
+        const ShowProblems = async () => {
+            try {
+                const response = await fetch(
+                    `https://biglybigly.iran.liara.run/api/v1/foot/foot/${id}/`,
+                    {
+                        method: "GET",
+                        headers: {
+                            Accept: "application/json",
+                        },
+                    }
+                );
+                const result = await response.json();
+                console.log(result);
+                setProblems(result);
+                setSuccess(true);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+            }
+        };
+        ShowProblems();
+    }, [id]);
+    useEffect(() => {
+    const SetDefaultValues = () =>
+    {
+        if (success)
+        {
+            let tit = foots.title
+        setTitle(tit);
+        setDescription(foots.description);
+        setCategory(foots.category)
+        fetch(foots.image, {
+            method: 'GET',
+        })
+            .then(response => response.blob())
+            .then(data => {
+                setImage([data])
+            })
+        }
+    };
+    SetDefaultValues();
+    }, [foots]);
     useEffect(() => 
     {
         const GetCategory = async () => 
@@ -57,34 +128,9 @@ const AddFoot = () => {
         GetCategory();
     },[])
 
-
-    async function HandelCreateFoot() {
-        const formdata = new FormData();
-        formdata.append("title", title);
-        formdata.append("description", description);
-        formdata.append("category", category);
-        formdata.append("image", image[0]);
-        formdata.append("is_done", false);
-        formdata.append("creator", userInfo.id);    
-        await fetch("https://biglybigly.iran.liara.run/api/v1/foot/foot/", {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                Authorization: `${localStorage.getItem("token")}`,
-            },
-            body: formdata,
-        })
-            .then(() => {
-                navigate("/MFoot");
-                console.log("sucess");
-            })
-            .catch((e) => {
-                console.log(e);
-            });
-    }
-
     return (
         <div class="flex items-center justify-center p-5">
+        {success &&
             <div className="w-[55%] h-[100%] rounded-sm  flex flex-col items-center justify-center z-30 bg-primary-200 bg-opacity-60 shadow-[-18px_10px_80px_-5px_rgba(5,5,5,0.3)] shadow-text-200/60">
                 <div className="w-full flex justify-center items-center p-2 bg-primary-300 rounded-sm">
                     <img className=" w-20" src={data[1].image} alt=""></img>
@@ -92,7 +138,7 @@ const AddFoot = () => {
                 <div className="w-full h-full flex flex-col justify-center items-center gap-1">
                     <div className="sm:w-[100%] sm:flex sm:flex-row  flex-col  items-center justify-center ">
                         <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
-                            <label className="  font-main ">عنوان مسیر :</label>
+                            <label className="  font-main ">عنوان مشکل :</label>
                             <input
                                 dir="rtl"
                                 className=" sm:w-[100%] px-2 font-main font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "
@@ -119,17 +165,24 @@ const AddFoot = () => {
                     </div>
                     <div className="sm:w-[100%] sm:h-max sm:flex sm:flex-row  flex-col  items-center justify-center ">
                         <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
-                            <label >
+                            <label className="  font-main ">
                                 دسته بندی :
                             </label>
                             <select onChange={(e) => {setCategory(e.target.value)}} class="block appearance-auto w-full border py-3 px-2 pr-2 pe-2 rounded leading-tight">
-                                <option value={-1} selected>یک مورد را انتخاب کنید</option>
+                                <option value={-1} >یک مورد را انتخاب کنید</option>
                                 {CatSucc &&
                                 allCat.map((x) =>
                                 {
+                                    if (x.id == foots.category)
+                                    {
                                     return(
-                                        <option value={x.id}>{x.category}</option>
+                                        <option value={x.id} selected>{x.category}</option>
                                     );
+                                    }
+                                    else
+                                    {
+                                        <option value={x.id}>{x.category}</option>
+                                    }
                                 })}
                             </select>
                         </div>
@@ -158,30 +211,35 @@ const AddFoot = () => {
                             </label>
                         </div>
                         <ul className=" flex flex-col justify-between item-center">
-                            {image.map((x) => {
-                                return (
-                                    <li >
-                                        <div className=" px-10 py-10 border-spacing-3 border border-solid  justify-between flex">
-                                            <button className="" onClick={() => setImage([])}> delete</button>
-                                            <img className="w-[20%]  rounded-2xl" src={URL.createObjectURL(x)} alt="" />
-                                        </div>
-                                    </li>
-                                );
-                            })}
+                        {image.map((x) => {
+                                        return (
+                                            <li>
+                                                <div className=" px-10 py-10 border-spacing-3 border border-dashed   justify-between flex">
+                                                    <button className="" onClick={() => {setImage([]);setSetImage(true)}}> delete</button>
+                                                    <img className="w-[20%]  rounded-2xl" src={URL.createObjectURL(x)} alt="" />
+                                                </div>
+                                            </li>
+                                        );
+                                    })}
                         </ul>
                     </div>
                     <div className=" py-5 px-5 flex flex-col justify-center items-center ">
-                        <button className="" onClick={HandelCreateFoot}>
+                        <button className="" onClick={handelUpdateFoot}>
                             <div className=" bg-accent-100 hover:bg-primary-100 hover:text-bg-100 hover:font-bold w-[100%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
                                 <div className="">
-                                    <span className="font-main text-[18px]">اضافه کردن</span>
+                                    <span className="font-main text-[18px]">ویرایش اطلاعات</span>
                                 </div>
                             </div>
                         </button>
                     </div>
                 </div>
             </div>
+        }
+        {!success &&
+            <Loading />
+        }
         </div>
+
     );
 };
-export default AddFoot;
+export default EditFoot;
