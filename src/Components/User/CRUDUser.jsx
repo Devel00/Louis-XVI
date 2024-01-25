@@ -6,23 +6,20 @@ import { HiOutlinePlus } from "react-icons/hi2";
 import Loading from "../Global/Loading";
 
 const EditUser = () => {
-    const [title, setTitle] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [newPasword_1, setNewPassword_1] = useState("");
     const [newPasword_2, setNewPassword_2] = useState("");
     const [phonenumber, setPhoneNumber] = useState("");
     const [Password, setPassword] = useState("")
-    const [confirm, setConfirm] = useState(false)
+    const [confirm, setConfirm] = useState(true)
     const [user, setUser] = useState()
     const [image, setImage] = useState([]);
-    const [description, setDescription] = useState("");
-    const [money, setMoney] = useState("");
     const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem("Info")));
     const { id } = useParams();
-    const [problems, setProblems] = useState();
     const [success, setSuccess] = useState(false);
     const [setimage, setSetImage] = useState(false);
+    const [send, setSend] = useState(false)
     const onChangeFile = (e) => {
         setSetImage(false)
         setImage([e.target.files[0]]);
@@ -36,29 +33,37 @@ const EditUser = () => {
     };
     const navigate = useNavigate();
     async function handelUpdateUser() {
-        const formdata = new FormData();
-        formdata.append("title", title);
-        formdata.append("description", description);
-        formdata.append("financial_amount", money);
-        formdata.append("main_image", image[0]);
-        formdata.append("is_done", false);
-        formdata.append("creator", userInfo.id);
-
-        await fetch(`https://biglybigly.iran.liara.run/api/v1/problems/problems/${id}/`, {
-            method: "PUT",
-            headers: {
-                Accept: "application/json",
-                Authorization: `${localStorage.getItem("token")}`,
-            },
-            body: formdata,
-        })
-            .then(() => {
-                navigate("/Manager");
-                console.log("sucess");
+        if (confirm) {
+            const formdata = new FormData();
+            // formdata.append("title", title);
+            // formdata.append("description", description);
+            // formdata.append("financial_amount", money);
+            // formdata.append("main_image", image[0]);
+            // formdata.append("is_done", false);
+            // formdata.append("creator", userInfo.id);
+            formdata.append("first_name",firstName)
+            formdata.append("last_name",lastName)
+            formdata.append("phone_number",phonenumber)
+            if (newPasword_1 != "")
+            {
+                formdata.append("password",newPasword_1)
+            }
+            setSend(true)
+            const response = await fetch(`https://biglybigly.iran.liara.run/api/v1/user/${userInfo.id}/`, {
+                method: "PUT",
+                headers: {
+                    Accept: "application/json",
+                    Authorization: `${localStorage.getItem("token")}`,
+                },
+                body: formdata,
             })
-            .catch((e) => {
-                console.log(e);
-            });
+            if (response.status == 200) {
+                navigate("/Profile")
+            }
+            else {
+
+            }
+        }
     }
     useEffect(() => {
         const ShowUser = async () => {
@@ -83,26 +88,17 @@ const EditUser = () => {
         };
         ShowUser();
     }, [id]);
-    useEffect(() => 
-    {
-        const checkPass = () => 
-        {
-            if (success)
-            {
-            if (Password == user.password)
-            {
-                setConfirm(true);
-                console.log(Password)
+    useEffect(() => {
+        const checkPass = () => {
+            if (newPasword_1 == newPasword_2) {
+                setConfirm(true)
             }
-            else
-            {
-                setConfirm(false);
-                console.log(1)
-            }
+            else {
+                setConfirm(false)
             }
         };
         checkPass();
-    }, [Password])
+    }, [newPasword_2])
     useEffect(() => {
         const SetDefaultValues = () => {
             if (success) {
@@ -110,7 +106,7 @@ const EditUser = () => {
                 setFirstName(user.first_name)
                 setLastName(user.last_name)
                 setPhoneNumber(user.phone_number)
-                console.log(user.password)
+                // console.log(user.password)
                 // setDescription(problems.description);
                 // setMoney(problems.financial_amount)
                 // setSetImage(true)
@@ -266,6 +262,14 @@ const EditUser = () => {
             }
             {!success &&
                 <Loading />
+            }
+            {send &&
+                <div>
+                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                        <Loading />
+                    </div>
+                    <div className="w-full h-full opacity-70  fixed inset-0 z-40 bg-text-100"></div>
+                </div>
             }
         </div>
 

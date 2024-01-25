@@ -28,47 +28,43 @@ const ProblemDetail = () => {
   // console.log(localStorage.getItem("token"))
   useEffect(() => {
     const ShowProblems = async () => {
-      try {
-        const response = await fetch(
-          `https://biglybigly.iran.liara.run/api/v1/problems/problems/${id}/`,
-          {
-            method: "GET",
-            headers: {
-              Accept: "application/json",
-            },
-          }
-        );
-        const result = await response.json();
-        console.log(result);
-        setProblems(result);
-
-        if (result.creator.id == userInfo.id) {
-          setShowEdit(true)
-          setSuccess(true)
+      const response = await fetch(
+        `https://biglybigly.iran.liara.run/api/v1/problems/problems/${id}/`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
         }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-      }
+      );
+      const result = await response.json();
+      console.log(result);
+      setProblems(result);
 
-      try {
-        const response = await fetch(
-          `https://biglybigly.iran.liara.run/api/v1/problems/fund/?problem=${id}/`,
-          {
-            method: "GET",
-            headers: {
-              Accept: "application/json",
-            },
-          }
-        );
-        const result = await response.json();
-        setFunds(result)
-        console.log(result)
+      if (result.creator.id == userInfo.id) {
+        setShowEdit(true)
         setSuccess(true)
-        // setFSuccess(true);
       }
-      finally { }
-    };
+      const response1 = await fetch(
+        `https://biglybigly.iran.liara.run/api/v1/problems/fund/?problem=${id}/`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+      const result1 = await response1.json();
+      if (response1.status == 200) {
+        setFunds(result1)
+        console.log(result1)
+      }
+      else {
+        setFunds([])
+      }
+      setFSuccess(true);
+      setSuccess(true)
+    }
     ShowProblems();
   }, [id]);
   const navigate = useNavigate()
@@ -167,6 +163,19 @@ const ProblemDetail = () => {
                 </p>
               </div>
             </div>
+            <div className="flex flex-col justify-center items-center">
+              <div className="w-[60%] grid grid-cols-5 gap-2">
+                {fsuccess && (funds.length != 0) && funds.map((item, index) => (
+                  <div className=" w-full justify-center items-center">
+                    <Card detail={item} />
+                  </div>
+                ))
+                }
+              </div>
+              {!fsuccess &&
+                <Loading />
+              }
+            </div>
             {(showEdit) &&
               <div className=" py-5 px-5 gap-4 flex flex-row justify-center items-center ">
                 <Link to={id ? `/EditProblem/${id}` : `/`}>
@@ -187,19 +196,6 @@ const ProblemDetail = () => {
                 </button>
               </div>
             }
-            <div className="flex flex-col justify-center items-center">
-              <div className="w-[60%] grid grid-cols-5 gap-2">
-                {fsuccess && funds.map((item, index) => (
-                  <div className=" w-full justify-center items-center">
-                    <Card detail={item} />
-                  </div>
-                ))
-                }
-              </div>
-              {!fsuccess &&
-                <Loading />
-              }
-            </div>
             <div className="  gap-4 flex flex-col justify-center items-center w-[100%] " >
               {(!showEdit) &&
                 <div className="  gap-4 flex flex-col justify-center items-center w-[50%] ">
@@ -211,7 +207,6 @@ const ProblemDetail = () => {
                       dir="rtl"
                       className=" sm:w-[100%] px-2 font-main font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "
                       type="number"
-                      rows="5"
                       placeholder="به تومان"
                       value={amount}
                       onChange={(e) => setAmount(e.target.value)}
