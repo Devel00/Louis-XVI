@@ -37,14 +37,13 @@ const Navbar = () => {
   const [nav, setNav] = useState(false);
 
   return (
-    <div className=" w-full bg-bg-200/80 shadow-sm border border-b-2 border-bg-300/10 flex items-center justify-between mx-auto p-5">
+    <div className=" w-full bg-bg-200/80 shadow-lg border border-b-2 border-bg-300/10 flex items-center justify-between mx-auto p-5">
       {/* Left Side  */}
 
       <div className="flex items-center ">
         <div
           onClick={() => setNav(!nav)}
-          className=" rotate-180 cursor-pointer"
-        >
+          className=" rotate-180 cursor-pointer">
           {!nav && (
             <TfiMenuAlt
               size={27}
@@ -52,6 +51,11 @@ const Navbar = () => {
             />
           )}
         </div>
+        <Link to="/">
+        <span className="pr-5 ml-[-20px] text-primary-100 font-bold text-[28px]">
+          همپا
+        </span>
+        </Link>
       </div>
       {/* Search Input */}
 
@@ -152,20 +156,26 @@ const Navbar = () => {
               </li>
             </Link>
 
+            <Link to="/Feet">
             <li className="py-4 px-2 rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start  items-center gap-2">
               <PiHandshake size={25} />
               هم مسیر
             </li>
+            </Link>
+
             <Link to="/IdeaCategory">
               <li className="py-4 px-2 rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start items-center gap-2">
                 <PiPlant size={25} />
                 ایده
               </li>
             </Link>
+
+            <Link to="/AboutUs">
             <li className="py-4 px-2  rounded-full cursor-pointer  hover:bg-bg-300/30 flex text-[16px] justify-start   items-center gap-2">
               <MdOutlineContactSupport size={22} />
               درباره ما
             </li>
+            </Link>
           </ul>
         </nav>
       </div>

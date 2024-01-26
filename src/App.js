@@ -27,6 +27,8 @@ import IdeaShorts from "./Components/Idea/IdeasShort.jsx";
 import ManageFoot from "./Components/Foot/ManageFoot.jsx";
 import {DetailFoot} from "./Components/Foot/FootDetail.jsx";
 import EditFoot from "./Components/Foot/CRUDFoot.jsx";
+import AboutUS from "./Components/AboutUs";
+
 function App() {
   return (
     <div className="App">
@@ -62,6 +64,7 @@ function App() {
           <Route path="/DetailFoot/:id" element={<DetailFoot />} />
           <Route path="/EditFoot/:id" element={<EditFoot />} />
           <Route path="ideas" element={<IdeaShorts />} />
+          <Route path="/AboutUs" element={<AboutUS />} />
         </Routes>
       </BrowserRouter>
     </div>

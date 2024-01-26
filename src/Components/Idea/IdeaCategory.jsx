@@ -1,4 +1,4 @@
-import React,{ useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AiOutlineCar,
   AiOutlineCustomerService,
@@ -11,6 +11,13 @@ const IdeaCategory = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+const IdeaCategory = () => {
+  useEffect(() => {
+    AOS.init({duration:1200 })  //animation on scroll
+  })
   return (
     <div className="">
       {/* <<div className="bg-[#eeeeee] pt-8 pb-8">
@@ -29,25 +36,26 @@ const IdeaCategory = () => {
           </div>
         </div>
       </div>> */}
-      <Navbar></Navbar>
+      <Navbar/>
 
-      <div className=" scale-90">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="py-[50px] flex justify-center">
+      <div className= "scale-90">
+        <div className="max-w-[1500px] mx-auto">
+          <div className="pt-[30px] pb-[500px] flex justify-center" data-aos="flip-left" data-aos-anchor-placement="bottom-bottom">
             <img
-              className="absolute w-[1045px] h-[340px] object-cover"
+              className="absolute w-[1420px] h-[462px] object-cover rounded-[30px]"
               alt="Absolutvision"
               src={data[12].image}
             />
-            <div className="absolute w-[1047px] h-[346px] bg-[#89840a99]" />
-            <p className="font-bold text-[#ffffff] text-[50px] absolute pt-[140px]">
+            <div className="absolute w-[1420px] h-[462px] bg-[#89840a99] rounded-[30px]" />
+            <p className="font-bold text-[#ffffff] text-[50px] absolute pt-[190px]">
               تو هم ایده هایی داری و دوست داری عملیش کنی !
             </p>
           </div>
-          <div className="font-bold  text-accent-200 text-[42px] pt-[400px] pb-[50px]">
+          <div className="" data-aos="fade-down" data-aos-anchor-placement="top-center">
+          <div className="font-bold  text-accent-200 text-[42px] pb-[50px]" >
             دسته‌بندی مورد نظرت رو انتخاب کن
           </div>
-          <div className="grid scale-75 grid-cols-2  gap-10 mb-[250px]">
+          <div className="grid scale-90 grid-cols-2  gap-10 mb-[150px]">
             <div className="shadow-lg flex p-5">
               <div>
                 <AiOutlineCar className="w-[100px] h-[100px] text-accent-200" />
@@ -143,6 +151,7 @@ const IdeaCategory = () => {
                 </span>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
