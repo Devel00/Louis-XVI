@@ -52,9 +52,9 @@ const Login = () => {
           setEmpty(true);
         }
         console.log(empty);
-        if (json.status_code == 200) {
+        if (json.status_code === 200) {
           navigate("/login");
-        } else if (json.status_code == 400 && phone_number) {
+        } else if (json.status_code === 400 && phone_number) {
           setError(true);
         }
       })

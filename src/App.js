@@ -28,6 +28,7 @@ import ManageFoot from "./Components/Foot/ManageFoot.jsx";
 import {DetailFoot} from "./Components/Foot/FootDetail.jsx";
 import EditFoot from "./Components/Foot/CRUDFoot.jsx";
 import AboutUS from "./Components/AboutUs";
+import MyFundp from  "./Components/Problem/MyFunds.jsx";
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
           <Route path="/EditFoot/:id" element={<EditFoot />} />
           <Route path="ideas" element={<IdeaShorts />} />
           <Route path="/AboutUs" element={<AboutUS />} />
+          <Route path="/MyFundP" element={<MyFundp />} />
         </Routes>
       </BrowserRouter>
     </div>

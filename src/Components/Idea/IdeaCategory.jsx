@@ -7,10 +7,6 @@ import {
 import Footer from "../Global/Footer";
 import { data } from "../../data/data";
 import Navbar from "../Global/Navbar";
-const IdeaCategory = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -20,24 +16,7 @@ const IdeaCategory = () => {
   })
   return (
     <div className="">
-      {/* <<div className="bg-[#eeeeee] pt-8 pb-8">
-        <div className="max-w-[1700px] mx-auto flex justify-between items-center">
-          <div>
-            <img className="w-[50px] h-[50px]" src={data[13].image} />
-          </div>
-          <div>
-            <input
-              type="text"
-              className="w-[600px] h-[60px] rounded-full shadow-lg"
-            ></input>
-          </div>
-          <div>
-            <img className="w-[70px] h-[70px]" src={data[9].image} />
-          </div>
-        </div>
-      </div>> */}
       <Navbar/>
-
       <div className= "scale-90">
         <div className="max-w-[1500px] mx-auto">
           <div className="pt-[30px] pb-[500px] flex justify-center" data-aos="flip-left" data-aos-anchor-placement="bottom-bottom">
@@ -159,5 +138,6 @@ const IdeaCategory = () => {
     </div>
   );
 };
+
 
 export default IdeaCategory;
