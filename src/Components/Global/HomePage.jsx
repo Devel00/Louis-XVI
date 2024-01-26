@@ -37,10 +37,10 @@ const HomePage = () => {
         </div>
           <div className=" pt-[30px] pb-[50px] scale-90 flex flex-row mt-14  justify-center items-center" data-aos="fade-left" data-aos-anchor-placement="top-center">
             <div className=" w-[30%] mt-6 flex flex-col justify-center items-center">
-              <span className=" text-[28px] text-accent-200 font-bold">
+              <span className="ml-[65px] text-[28px] text-accent-200 font-bold">
               محل تحقق ایده ها
               </span>
-              <div className=" flex justify-center items-start flex-col">
+              <div className=" flex justify-right items-start flex-col">
                 <span className="text-[18px] mt-10 mr-20 text-accent-200 font-bold ">
                 هر ایده ای که به نظرت می رسه رو نذار از دست بره!
                 </span>
@@ -53,7 +53,7 @@ const HomePage = () => {
               </div>
 
               <Link to="/Problem">
-                <button className="font-bold py-3 px-20 mb-6 rounded-[8px] hover:scale-105 hover:duration-[900ms] bg-accent-100 text-bg-100">
+                <button className="font-bold py-3 px-20 mb-6 mr-[30px] rounded-[8px] hover:scale-105 hover:duration-[900ms] bg-accent-100 text-bg-100">
                 ورود به صفحه مشکلات
                 </button>
               </Link>
@@ -73,7 +73,7 @@ const HomePage = () => {
         {/* item2 */}
         <div className="overflow-hidden w-[100%] bg-[#fee6e655] py-[70px] shadow-[5px_3px_40px_-15px_rgba(0,0,0,0.3)]  ">
           <div className=" py-[30px] scale-90 flex flex-row mt-14  justify-center items-center" data-aos="fade-right" data-aos-anchor-placement="top-center">
-          <div className="mr-[100px]">
+          <div className="ml-[100px]">
               <div className=" flex justify-center items-center"></div>
               <img
                 src={data[26].image}
@@ -107,10 +107,10 @@ const HomePage = () => {
 
 
           {/* item3 */}
-          <div className=" w-[100%] bg-[#ffca6411] py-10 ">
+          <div className=" w-[100%] bg-[#ffca6422] py-10 ">
           <div className=" py-[30px] scale-90 flex flex-row mt-14  justify-center items-center" data-aos="fade-left" data-aos-anchor-placement="top-center">
-            <div className=" w-[30%] mt-6 flex flex-col justify-center items-center">
-              <span className=" text-[28px] text-accent-200 font-bold">
+            <div className=" w-[30%] mt-6 flex flex-col justify-right items-center">
+              <span className="ml-[65px] text-[28px] text-accent-200 font-bold ">
               محل جذب سرمایه{" "}
               </span>
               <div className=" flex justify-center items-start flex-col">
@@ -126,7 +126,7 @@ const HomePage = () => {
               </div>
 
               <Link to="/IdeaCategory">
-                <button className="font-bold py-3 px-20 mb-6 rounded-[8px] hover:scale-105 hover:duration-[900ms] bg-accent-100 text-bg-100">
+                <button className="font-bold py-3 px-20 mb-6 mr-[55px] rounded-[8px] hover:scale-105 hover:duration-[900ms] bg-accent-100 text-bg-100">
                 ورود به صفحه جذب سرمایه{" "}
                 </button>
               </Link>
