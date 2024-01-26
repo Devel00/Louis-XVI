@@ -7,6 +7,10 @@ import {
 import Footer from "../Global/Footer";
 import { data } from "../../data/data";
 import Navbar from "../Global/Navbar";
+const IdeaCategory = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -14,7 +18,6 @@ const IdeaCategory = () => {
   useEffect(() => {
     AOS.init({duration:1200 })  //animation on scroll
   })
-
   return (
     <div className="">
       {/* <<div className="bg-[#eeeeee] pt-8 pb-8">
