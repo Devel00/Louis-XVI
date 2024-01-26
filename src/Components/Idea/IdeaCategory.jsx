@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useEffect } from "react";
 import {
   AiOutlineCar,
   AiOutlineCustomerService,
@@ -7,8 +7,10 @@ import {
 import Footer from "../Global/Footer";
 import { data } from "../../data/data";
 import Navbar from "../Global/Navbar";
-
 const IdeaCategory = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="">
       {/* <<div className="bg-[#eeeeee] pt-8 pb-8">

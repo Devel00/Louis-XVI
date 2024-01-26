@@ -11,7 +11,7 @@ const MyContext_1 = createContext();
 
 const ProblemDetail = () => {
   const [showModal, setShowModal] = useState(false);
-  const [funds, setFunds] = useState();
+  const [funds, setFunds] = useState([]);
   const { id } = useParams();
   const [problems, setProblems] = useState();
   const [success, setSuccess] = useState(false);
@@ -21,9 +21,9 @@ const ProblemDetail = () => {
     JSON.parse(localStorage.getItem("Info"))
   );
   const [amount, setAmount] = useState()
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // console.log(id)
   // console.log(localStorage.getItem("token"))
   useEffect(() => {
@@ -56,8 +56,18 @@ const ProblemDetail = () => {
       );
       const result1 = await response1.json();
       if (response1.status == 200) {
-        setFunds(result1)
-        console.log(result1)
+        // console.log(result1)
+        let myarray = []
+        result1.forEach( object => {
+          console.log(object.problem)
+          if (object.problem === Number(id)) {
+            console.log(object)  // Log the specific object
+            myarray.push(object)  // Assuming funds is your state variable
+          }
+        }
+        )
+        setFunds(myarray)
+        console.log(myarray)
       }
       else {
         setFunds([])
