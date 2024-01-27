@@ -45,30 +45,23 @@ const ProblemDetail = () => {
         setShowEdit(true)
         setSuccess(true)
       }
-      const response1 = await fetch(
-        `https://biglybigly.iran.liara.run/api/v1/problems/fund/?problem=${id}/`,
-        {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-          },
-        }
-      );
-      const result1 = await response1.json();
-      if (response1.status == 200) {
-        // console.log(result1)
-        let myarray = []
-        result1.forEach( object => {
-          console.log(object.problem)
-          if (object.problem === Number(id)) {
-            console.log(object)  // Log the specific object
-            myarray.push(object)  // Assuming funds is your state variable
+      setFSuccess(false)
+          const response1 = await fetch(
+            `https://biglybigly.iran.liara.run/api/v1/problems/fund/?id=${id}/`,
+            {
+              method: "GET",
+              headers: {
+                Accept: "application/json",
+              },
+            }
+          );
+          const result1 = await response1.json();
+          if (result1.status = 200)
+          {
+          setFunds(result1)
+          console.log(result)
+          setFSuccess(true)
           }
-        }
-        )
-        setFunds(myarray)
-        console.log(myarray)
-      }
       else {
         setFunds([])
       }
@@ -99,8 +92,9 @@ const ProblemDetail = () => {
     })
       .then(async () => {
         try {
+          setFSuccess(false)
           const response = await fetch(
-            `https://biglybigly.iran.liara.run/api/v1/problems/fund/?problem=${id}/`,
+            `https://biglybigly.iran.liara.run/api/v1/problems/fund/?id=${id}/`,
             {
               method: "GET",
               headers: {

@@ -12,13 +12,41 @@ const AddProblem = () => {
   const [userInfo, setUserInfo] = useState(
     JSON.parse(localStorage.getItem("Info"))
   );
+  const [allCat, setAllCat] = useState();
+  const [CatSucc, setCatSeccuss] = useState(false);
+  const [category, setCategory] = useState("");
   const onChangeFile = (e) => {
     setImage([e.target.files[0]]);
   };
   useEffect(() => {
     window.scrollTo(0, 0);
-}, []);
+  }, []);
+  useEffect(() => {
+    const GetCategory = async () => {
+      try {
+        const response = await fetch(
+          `https://biglybigly.iran.liara.run/api/v1/problems/problem-categories/`,
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        );
+        console.log(response)
+        if (response.status != 404) {
+          const result = await response.json();
 
+          console.log(result);
+          setAllCat(result)
+          setCatSeccuss(true)
+        }
+      } catch (error) {
+      } finally {
+      }
+    };
+    GetCategory();
+  }, [])
   const onDeleteImage = (index) => {
     // Create a new array excluding the element at the specified index
     const updatedImages = image.filter((_, i) => i !== index);
@@ -34,6 +62,7 @@ const AddProblem = () => {
     formdata.append("description", description);
     formdata.append("financial_amount", money);
     formdata.append("main_image", image[0]);
+    formdata.append("problem_category",category);
     formdata.append("is_done", false);
     formdata.append("creator", userInfo.id);
     for (var pair of formdata.entries()) {
@@ -47,7 +76,7 @@ const AddProblem = () => {
       body: formdata,
     })
       .then(() => {
-        navigate("/Profile");
+        navigate("/Manager");
         console.log("sucess");
       })
       .catch((e) => {
@@ -105,21 +134,37 @@ const AddProblem = () => {
               ></input>
             </div>
           </div>
+          <div className="sm:w-[100%] sm:h-max sm:flex sm:flex-row  flex-col  items-center justify-center ">
+            <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
+              <label >
+                دسته بندی :
+              </label>
+              <select onChange={(e) => { setCategory(e.target.value) }} class="block appearance-auto w-full border py-3 px-2 pr-2 pe-2 rounded leading-tight">
+                <option value={-1} selected>یک مورد را انتخاب کنید</option>
+                {CatSucc &&
+                  allCat.map((x) => {
+                    return (
+                      <option value={x.id}>{x.category}</option>
+                    );
+                  })}
+              </select>
+            </div>
+          </div>
           <div className="w-full h-full flex flex-col justify-center items-center gap-2">
             <div className="w-[78%] h-full flex items-starts gap-2">
-              
+
             </div>
             <div className="rounded-lg flex h-[200px] gap-6 m-6 flex-col group shadow-lg hover:bg-accent-100 hover:cursor-pointer justify-center bg-bg-100   items-center ">
-                <label
-                  for="dropzone-file"
-                  class="flex flex-col items-center justify-center w-full h-44   rounded-lg cursor-pointer "
-                >
-                      <div className=" group-hover:scale-125 mx-4 my-3 shadow-lg border-opacity-10 group-hover:bg-bg-100 rounded-full p-2 ">
-                        <HiOutlinePlus className=" text-accent-100 " size={40} />
-                      </div>
-                      <span className="mx-4 font-bold text-[20px]  text-accent-200 group-hover:text-bg-100">
-                        اضافه کردن عکس
-                      </span>
+              <label
+                for="dropzone-file"
+                class="flex flex-col items-center justify-center w-full h-44   rounded-lg cursor-pointer "
+              >
+                <div className=" group-hover:scale-125 mx-4 my-3 shadow-lg border-opacity-10 group-hover:bg-bg-100 rounded-full p-2 ">
+                  <HiOutlinePlus className=" text-accent-100 " size={40} />
+                </div>
+                <span className="mx-4 font-bold text-[20px]  text-accent-200 group-hover:text-bg-100">
+                  اضافه کردن عکس
+                </span>
                 <input
                   id="dropzone-file"
                   type="file"

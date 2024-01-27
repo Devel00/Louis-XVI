@@ -15,12 +15,15 @@ import Loading from "../Global/Loading";
 // import "src/style.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import { Link } from "react-router-dom";
 const Problems = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [problems, setProblems] = useState();
   const [success, setSuccess] = useState(false);
   useEffect(() => {
-    AOS.init({duration:1200 })  //animation on scroll
+    AOS.init({ duration: 1200 })  //animation on scroll
     const ShowProblems = async () => {
       try {
         const response = await fetch(
@@ -66,47 +69,51 @@ const Problems = () => {
       </div><div className="my-[50px] max-w-[1500px] mx-auto" data-aos="flip-left" data-aos-anchor-placement="top-bottom"><MainCarousel />
       </div><div data-aos="fade-down" data-aos-anchor-placement="top-center"><Filter /></div>
       <div data-aos="zoom-in-left" data-aos-anchor-placement="center-bottom">
-      {success &&
-      <div className=" pt-6 flex justify-start gap-4 items-center">
-        <span className=" text-accent-200  text-[20px] pr-4">پرطرفدارها</span>
-        <div className=" border-b-2 border-bg-300/40 w-[80%]"></div>
-        <div className=" flex justify-center items-center">
-          <span className=" text-accent-200 pr-6">مشاهده همه</span>
-          <MdKeyboardArrowLeft size={25} />
-        </div>
-      </div>
-      }
-      { success &&
-      <Carousel
-        showDots
-        className=" animate-fade scale-90 ml-4 mt-10 h-[600px]"
-        responsive={responsive}
-        dotListClass="custom-dot-list"
-      >
         {success &&
-          problems.map((item, index) => (
-            <Card detail={item} />
-          ))}
-        <div className="w-[90%] hover:cursor-pointer bg-bg-200 hover:bg-bg-300/70 rounded-[24px] h-[450px] shadow-xl flex flex-col  justify-center items-center">
-          <LuMoreHorizontal className=" text-primary-100" size={90} />
-          <div className=" font-main font-bold mb-2 text-accent-200">
-            مشاهده همه کارت ها
+          <div className=" pt-6 flex justify-start gap-4 items-center">
+            <span className=" text-accent-200  text-[20px] pr-4">پرطرفدارها</span>
+            <div className=" border-b-2 border-bg-300/40 w-[80%]"></div>
+            <div className=" flex justify-center items-center">
+            <Link to={`/Problem/All`}>
+              <span className=" text-accent-200 pr-6">مشاهده همه</span>
+            </Link>
+              <MdKeyboardArrowLeft size={25} />
+            </div>
           </div>
-        </div>
-        
-        <style>
-          {`
+        }
+        {success &&
+          <Carousel
+            showDots
+            className=" animate-fade scale-90 ml-4 mt-10 h-[600px]"
+            responsive={responsive}
+            dotListClass="custom-dot-list"
+          >
+            {success &&
+              problems.map((item, index) => (
+                <Card detail={item} />
+              ))}
+            <Link to={`/Problem/All`}>
+              <div className="w-[90%] hover:cursor-pointer bg-bg-200 hover:bg-bg-300/70 rounded-[24px] h-[450px] shadow-xl flex flex-col  justify-center items-center">
+                <LuMoreHorizontal className=" text-primary-100" size={90} />
+                <div className=" font-main font-bold mb-2 text-accent-200">
+                  مشاهده همه کارت ها
+                </div>
+              </div>
+            </Link>
+
+            <style>
+              {`
           .${customDotListClass} {
             margin-bottom: 10px; 
           }
         `}
-        </style>
-      
-      </Carousel>
-      }
-      {! success &&
-      <Loading/>
-      }
+            </style>
+
+          </Carousel>
+        }
+        {!success &&
+          <Loading />
+        }
       </div>
       <Footer />
     </div>
