@@ -14,7 +14,7 @@ const Profile = () => {
   const [userInfo, setUserInfo] = useState(
     JSON.parse(localStorage.getItem("Info"))
   );
-  const [user, setUser] = useState("")
+  const [user, setUser] = useState("");
 
   const [pCount, setPCount] = useState(0);
   const [iCount, setICount] = useState(0);
@@ -79,7 +79,6 @@ const Profile = () => {
 
   useEffect(() => {
     const GetInfo = async () => {
-
       const response = await fetch(
         `https://biglybigly.iran.liara.run/api/v1/user/${userInfo.id}`,
         {
@@ -103,7 +102,7 @@ const Profile = () => {
         }
       );
       const result2 = await response2.json();
-      setPCount(result2.data.length)
+      setPCount(result2.data.length);
       const response1 = await fetch(
         `https://biglybigly.iran.liara.run/api/v1/idea/user-ideas/`,
         {
@@ -116,19 +115,20 @@ const Profile = () => {
         }
       );
       const result1 = await response1.json();
-      setICount(result1.length)
+      // console.log(result1);
+      setICount(result1.length);
       setSuccess(true);
-    }
+    };
 
     GetInfo();
-  }, [])
+  }, []);
   const [showModal, setShowModal] = useState(false);
 
   return (
     <MyContext.Provider value={[showModal, setShowModal]}>
       <div className="">
         {showModal && <Increase />}
-        {success &&
+        {success && (
           <div>
             <div className=" bg-bg-200 w-full h-[10%] ">
               <div className="flex flex-col  justify-center items-center">
@@ -396,10 +396,8 @@ const Profile = () => {
             </div>
             <Footer />
           </div>
-        }
-        {!success &&
-          <Loading />
-        }
+        )}
+        {!success && <Loading />}
       </div>
     </MyContext.Provider>
   );
