@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { data } from "../../data/data";
 import { useNavigate } from "react-router-dom";
 import { createContext } from "react";
-import { MdErrorOutline } from "react-icons/md";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const MyContext = createContext("");
 const Login = () => {
@@ -50,18 +51,28 @@ const Login = () => {
         setAcount();
         if (!(firstName && lastName && phone_number && password)) {
           setEmpty(true);
+          toast.error("لطفا همه فیلد ها را پر کنید");
         }
         console.log(empty);
         if (json.status_code === 200) {
           navigate("/login");
         } else if (json.status_code === 400 && phone_number) {
           setError(true);
+          toast.error("این شماره همراه قبلا ثبت شده است ");
         }
       })
       .catch((e) => {
         console.log("login erorr ==>>> ", e);
       });
   }
+
+  // toast.configure({
+  //   bodyClassName: css({
+  //     backgroundColor: "blue",
+  //     height: "100%",
+  //     width: "100%",
+  //   }),
+  // });
 
   return (
     <div className="h-screen bg-white font-main flex flex-col  justify-center items-center ">
@@ -133,30 +144,31 @@ const Login = () => {
               ></input>
             </div>
           </div>
-
-          <button onClick={handleSignup} className="hover:cursor-pointer">
-            <div className=" px-10 ml-12 bg-accent-100 text-bg-100 hover:scale-105 duration-700 w-[61%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
-              <div className="">
-                <span className=" text-[18px]">ثبت</span>
+          <div>
+            <button onClick={handleSignup} className="hover:cursor-pointer">
+              <div className=" px-10 ml-12 bg-accent-100 text-bg-100 hover:scale-105 duration-700 w-[61%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
+                <div className="">
+                  <span className=" text-[18px]">ثبت</span>
+                </div>
               </div>
-            </div>
-          </button>
-          {error && (
-            <div className="flex gap-2 mt-10 rounded-md py-2 px-4 ">
-              <MdErrorOutline size={25} className=" text-[#ff3333]" />
-              <span className=" text-[16px] font-medium text-[#ff3333]">
-                این شماره همراه قبلا ثبت شده است{" "}
-              </span>
-            </div>
-          )}
-          {empty && (
-            <div className="flex gap-2 mb-10 mt-4 rounded-md py-2 px-4 ">
-              <MdErrorOutline size={25} className=" text-[#ff3333]" />
-              <span className=" text-[16px] font-medium text-[#ff3333]">
-                لطفا همه فیلد ها را پر کنید{" "}
-              </span>
-            </div>
-          )}
+            </button>
+            <ToastContainer
+              className="font-bold"
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={true}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+              bodyClassName={() =>
+                " font-main flex justify-between items-center"
+              }
+            />
+          </div>
         </div>
       </MyContext.Provider>
     </div>

@@ -1,11 +1,12 @@
-import React, { useState, createContext } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { data } from "../../data/data";
-const InfoContext = createContext();
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [userInfo, setUserInfo] = useState(null);
 
   const navigate = useNavigate();
 
@@ -26,37 +27,21 @@ const Login = () => {
       .then((json) => {
         localStorage.setItem("token", "JWT " + json.data.access);
         localStorage.setItem("ID", json.data.id);
-        // const Id = localStorage.getItem("ID");
-        // console.log(Id);
-        // console.log(json.data.id);
-        // console.log("token: ", json.data.access);
-        // console.log(json.data);
+        if (json.status_code === 200) {
+          toast.success("ورود با موفقیت انجام شد ");
+        } else if (json.status_code === 401)
+          // json.data.access && navigate("/");
+          toast.error("شماره همراه یا رمز عبور اشتباه است ");
 
-        json.data.access && navigate("/");
+        setTimeout(() => {
+          json.data.access && navigate("/");
+        }, 1000);
+        console.log(json);
       })
       .catch((e) => {
         console.log("login erorr ==>>> ", e);
       });
     getUserInformation();
-
-    // try {
-    //   const response = await fetch(
-    //     `https://biglybigly.iran.liara.run/api/v1/user/${localStorage.getItem(
-    //       "ID"
-    //     )}/`
-    //   );
-    //   const result = await response.json();
-    //   // console.log(result);
-    //   setUserInfo(result.id);
-    //   localStorage.setItem("Info", result);
-    //   console.log(localStorage.getItem("Info"));
-    //   console.log(userInfo);
-    //   // setUserInfo(result);
-    //   // setSuccess(true);
-    // } catch (error) {
-    //   console.error("Error fetching data:", error);
-    // } finally {
-    // }
   }
 
   async function getUserInformation() {
@@ -75,8 +60,21 @@ const Login = () => {
   }
 
   return (
-    // <InfoContext.Provider value={[userInfo, setUserInfo]}>
     <div className="h-screen bg-white font-main flex flex-col justify-center items-center ">
+      <ToastContainer
+        className="font-bold"
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={true}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        bodyClassName={() => " font-main flex justify-between items-center"}
+      />
       <div className="w-[35%] h-screen left-0 top-0 absolute bg-accent-100/80" />
       <div className="w-[55%] h-[65%]  flex flex-col items-center justify-center z-30  bg-bg-100 bg-opacity-0 shadow-[-18px_10px_80px_-5px_rgba(5,5,5,0.3)] shadow-text-200/60">
         <div className="w-[14.5%] flex-col items-end  h-[65%] left-[20.5%] top-[17.5%] absolute bg-accent-100  ">
@@ -141,7 +139,6 @@ const Login = () => {
         </div>
       </div>
     </div>
-    // </InfoContext.Provider>
   );
 };
 
