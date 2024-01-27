@@ -197,7 +197,7 @@ const Profile = () => {
                       </div>
                     </Link>
                     {/* مدیریت مشارکت های من */}
-                    <Link to="/Problem">
+                    <Link to="/MyFundP">
                       <div className=" bg-bg-100 w-[80%] sm:mr-12 mr-4  group hover:bg-accent-100  mt-6 px-5 py-3 rounded-[8px] shadow-md">
                         <div className=" flex justify-between items-center ">
                           <span className=" group-hover:text-bg-100 sm:text-[16px] text-[10px] text-accent-200 font-bold">

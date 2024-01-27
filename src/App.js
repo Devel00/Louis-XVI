@@ -29,6 +29,8 @@ import {DetailFoot} from "./Components/Foot/FootDetail.jsx";
 import EditFoot from "./Components/Foot/CRUDFoot.jsx";
 import AboutUS from "./Components/AboutUs";
 import MyFundp from  "./Components/Problem/MyFunds.jsx";
+import ProblemAll from "./Components/Problem/ProblemAll.jsx"
+import ProblemCat from "./Components/Problem/ProblemCat.jsx";
 
 function App() {
   return (
@@ -40,6 +42,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<HomePage />} />
           <Route path="/Problem" exact element={<Problems />} />
+          <Route path="/Problem/All" exact element={<ProblemAll />} />
           <Route path="/Profile" exact element={<Profile />} />
           <Route path="/Login" exact element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
@@ -67,6 +70,7 @@ function App() {
           <Route path="ideas" element={<IdeaShorts />} />
           <Route path="/AboutUs" element={<AboutUS />} />
           <Route path="/MyFundP" element={<MyFundp />} />
+          <Route path="/ProblemCat/:id" element={<ProblemCat />} />
         </Routes>
       </BrowserRouter>
     </div>
