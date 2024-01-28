@@ -7,6 +7,9 @@ import Footer from "../Global/Footer";
 import Loading from "../Global/Loading";
 import Delete from "./DeletePopupP";
 import Card from "./PFundCard";
+import defaultImage from '../../Image/default_problem.jpg'
+
+
 const MyContext_1 = createContext();
 
 const ProblemDetail = () => {
@@ -123,9 +126,9 @@ const ProblemDetail = () => {
           <div className="max-w-[1400px] mx-auto pb-8">
             <div className="pt-[50px] flex justify-center w-50 y-50">
               <img
-                className="h-68 w-auto rounded-lg mt-5"
+                className="max-h-64 w-auto rounded-lg mt-5"
                 alt="ProblemImage"
-                src={`https://biglybigly.iran.liara.run/${problems.main_image}`}
+                src={problems.main_image ? `https://biglybigly.iran.liara.run/${problems.main_image}` : defaultImage}
               />
             </div>
             <div className="pt-[50px] flex justify-center">
