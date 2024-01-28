@@ -71,29 +71,7 @@ const ProblemDetail = () => {
     }
     ShowProblems();
   }, [id]);
-  // useEffect(() => {
-  //   const Showproblem = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `https://biglybigly.iran.liara.run/api/v1/problem/problem-category/${problems.problem_category}/`,
-  //         {
-  //           method: "GET",
-  //           headers: {
-  //             Accept: "application/json",
-  //           },
-  //         }
-  //       );
-  //       const result = await response.json();
-  //       console.log(result);
-  //       setCat(result);
-  //       setCatSeccuss(true)
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     } finally {
-  //     }
-  //   };
-  //   Showproblem();
-  // }, [problems]);
+
   const navigate = useNavigate()
   async function HandelDeleteProblem() {
     setShowModal(true);
@@ -138,14 +116,14 @@ const ProblemDetail = () => {
 
   return (
     <MyContext_1.Provider value={[showModal, setShowModal]}>
-      <div className="  w-full">
+      <div className="w-full">
         {showModal && <Delete />}
         <Navbar />
         {success &&
-          <div className="max-w-[1400px] mx-auto">
-            <div className="pt-[50px] flex justify-center">
+          <div className="max-w-[1400px] mx-auto pb-8">
+            <div className="pt-[50px] flex justify-center w-50 y-50">
               <img
-                className=" w-[60%]  rounded-lg mt-10 "
+                className="h-68 w-auto rounded-lg mt-5"
                 alt="ProblemImage"
                 src={`https://biglybigly.iran.liara.run/${problems.main_image}`}
               />
