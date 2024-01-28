@@ -34,6 +34,9 @@ const AddIdea = () => {
     const [fvideo, setFVideo] = useState("")
     const [cvideo, setCVideo] = useState("")
     const [doc, setDoc] = useState("")
+    const [allCat , setAllCat] = useState();
+    const [CatSucc , setCatSeccuss] = useState(false)
+    const [category, setCategory] = useState("");
     const [userInfo, setUserInfo] = useState(
         JSON.parse(localStorage.getItem("Info"))
     );
@@ -54,6 +57,34 @@ const AddIdea = () => {
     const navigate = useNavigate();
     async function handelCreateProblem() {
     }
+    useEffect(() => 
+    {
+        const GetCategory = async () => 
+        {
+            try {
+                const response = await fetch(
+                    `https://biglybigly.iran.liara.run/api/v1/idea/idea-category/`,
+                    {
+                        method: "GET",
+                        headers: {
+                            Accept: "application/json",
+                        },
+                    }
+                );
+                console.log(response)
+                if (response.status != 404) {
+                    const result = await response.json();
+
+                    console.log(result);
+                    setAllCat(result)
+                    setCatSeccuss(true)
+                }
+            } catch (error) {
+            } finally {
+            }
+        };
+        GetCategory();
+    },[])
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -101,7 +132,7 @@ const AddIdea = () => {
         formdata.append("image", image[0])
         formdata.append("proposal", doc)
         formdata.append("creator", userInfo.id)
-        formdata.append("category", 1)
+        formdata.append("category", category)
         setSuccess(true)
         await fetch("https://biglybigly.iran.liara.run/api/v1/idea/idea/", {
             method: "POST",
@@ -168,6 +199,23 @@ const AddIdea = () => {
                                 value={techfield}
                                 onChange={(e) => setTechField(e.target.value)}
                             ></input>
+                        </div>
+                    </div>
+                    <div className="sm:w-[100%] sm:h-max sm:flex sm:flex-row  flex-col  items-center justify-center ">
+                        <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
+                            <label >
+                                دسته بندی :
+                            </label>
+                            <select onChange={(e) => {setCategory(e.target.value)}} class="block appearance-auto w-full border py-3 px-2 pr-2 pe-2 rounded leading-tight">
+                                <option value={-1} selected>یک مورد را انتخاب کنید</option>
+                                {CatSucc &&
+                                allCat.map((x) =>
+                                {
+                                    return(
+                                        <option value={x.id}>{x.name}</option>
+                                    );
+                                })}
+                            </select>
                         </div>
                     </div>
                     <div className="sm:w-[100%] sm:h-max sm:flex sm:flex-row  flex-col  items-center justify-center ">

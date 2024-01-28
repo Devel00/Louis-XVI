@@ -6,9 +6,11 @@ import {
 } from "react-icons/ai";
 import Footer from "../Global/Footer";
 import { data } from "../../data/data";
+import { Link } from "react-router-dom";
 import Navbar from "../Global/Navbar";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 
 const IdeaCategory = () => {
   useEffect(() => {
@@ -38,6 +40,7 @@ const IdeaCategory = () => {
               دسته‌بندی مورد نظرت رو انتخاب کن
             </div>
             <div className="grid scale-90 grid-cols-2  gap-10 mb-[150px]">
+            <Link>
               <div className="shadow-lg flex p-5">
                 <div>
                   <AiOutlineCar className="w-[100px] h-[100px] text-accent-200" />
@@ -49,7 +52,8 @@ const IdeaCategory = () => {
                   </span>
                 </div>
               </div>
-
+              </Link>
+              <Link>
               <div className="shadow-lg flex p-5">
                 <div>
                   <AiOutlineCustomerService className="w-[100px] h-[100px] text-accent-200" />
@@ -61,7 +65,8 @@ const IdeaCategory = () => {
                   </span>
                 </div>
               </div>
-
+              </Link>
+              <Link>
               <div className="shadow-lg flex p-5">
                 <div>
                   <AiOutlineShop className="w-[100px] h-[100px] text-accent-200" />
@@ -73,7 +78,8 @@ const IdeaCategory = () => {
                   </span>
                 </div>
               </div>
-
+              </Link>
+              <Link>
               <div className="shadow-lg flex p-5">
                 <div>
                   <AiOutlineCar className="w-[100px] h-[100px] text-accent-200" />
@@ -85,6 +91,7 @@ const IdeaCategory = () => {
                   </span>
                 </div>
               </div>
+              </Link>
 
               {/* <div className="shadow-lg flex p-5">
                 <div>
@@ -138,7 +145,7 @@ const IdeaCategory = () => {
         </div>
       </div>
       <Footer />
-    </div>
+    </div >
   );
 };
 

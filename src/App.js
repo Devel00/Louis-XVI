@@ -27,7 +27,7 @@ import IdeaShorts from "./Components/Idea/IdeasShort.jsx";
 import ManageFoot from "./Components/Foot/ManageFoot.jsx";
 import {DetailFoot} from "./Components/Foot/FootDetail.jsx";
 import EditFoot from "./Components/Foot/CRUDFoot.jsx";
-import AboutUS from "./Components/AboutUs";
+import AboutUS from "./Components/Global/AboutUs";
 import MyFundp from  "./Components/Problem/MyFunds.jsx";
 import ProblemAll from "./Components/Problem/ProblemAll.jsx"
 import ProblemCat from "./Components/Problem/ProblemCat.jsx";
