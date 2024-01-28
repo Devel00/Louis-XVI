@@ -64,7 +64,7 @@ const Problems = () => {
   const customDotListClass = "custom-dot-list";
 
   return (
-    <div className="">
+    <div className="overflow-hidden">
       <div data-aos="fade-down" data-aos-anchor-placement="bottom-center"> <Navbar />
       </div><div className="my-[50px] max-w-[1500px] mx-auto" data-aos="flip-left" data-aos-anchor-placement="top-bottom"><MainCarousel />
       </div><div data-aos="fade-down" data-aos-anchor-placement="top-center"><Filter /></div>
