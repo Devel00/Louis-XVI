@@ -3,7 +3,8 @@ import { data } from "../../data/data";
 import { AiOutlineLike } from "react-icons/ai";
 import { MdOutlineVolunteerActivism } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-
+import { Progress } from "@material-tailwind/react";
+import defaultImage from '../../Image/default_problem.jpg'
 
 const PCard = ({ detail }) => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const PCard = ({ detail }) => {
           body: JSON.stringify(payload),
         }
       ).then(res => res.json());
-      console.log('response: ', response.data)
+      console.log('detail: ', detail)
       setLike(response.data.likes)
     }
     catch (e) {
@@ -49,7 +50,7 @@ const PCard = ({ detail }) => {
         <img
           onClick={goToPath}
           className="w-[100%] object-cover h-[70%] object-center rounded-ss-[24px] rounded-se-[24px]"
-          src={`https://biglybigly.iran.liara.run/${Detail.main_image}`}
+          src={Detail.main_image ? `https://biglybigly.iran.liara.run/${Detail.main_image}` : defaultImage}
           alt="library"
         />
         <div className="px-6 py-4">
@@ -61,7 +62,7 @@ const PCard = ({ detail }) => {
             </button>
             <div className=" bg-bg-100 p-2 gap-4 rounded-lg flex justify-between items-center ">
               <span className="font-main font-bold">
-                {detail.financial_amount}
+                {detail.funded_amount || 0}
               </span>
               <MdOutlineVolunteerActivism
                 className=" text-primary-100"
@@ -69,6 +70,7 @@ const PCard = ({ detail }) => {
               />
             </div>
           </div>
+          <Progress value={50} />
         </div>
       </div>
   );
