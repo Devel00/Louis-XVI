@@ -12,12 +12,15 @@ import "aos/dist/aos.css";
 
 const IdeaCategory = () => {
   useEffect(() => {
-    AOS.init({duration:1200 })  //animation on scroll
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    AOS.init({ duration: 1200 })  //animation on scroll
   })
   return (
     <div className="">
-      <Navbar/>
-      <div className= "scale-90">
+      <Navbar />
+      <div className="scale-90">
         <div className="max-w-[1500px] mx-auto">
           <div className="pt-[30px] pb-[500px] flex justify-center" data-aos="flip-left" data-aos-anchor-placement="bottom-bottom">
             <img
@@ -31,106 +34,106 @@ const IdeaCategory = () => {
             </p>
           </div>
           <div className="" data-aos="fade-down" data-aos-anchor-placement="top-center">
-          <div className="font-bold  text-accent-200 text-[42px] pb-[50px]" >
-            دسته‌بندی مورد نظرت رو انتخاب کن
-          </div>
-          <div className="grid scale-90 grid-cols-2  gap-10 mb-[150px]">
-            <div className="shadow-lg flex p-5">
-              <div>
-                <AiOutlineCar className="w-[100px] h-[100px] text-accent-200" />
-              </div>
-              <div className="text-right mr-10">
-                <span className="text-[32px] font-semibold block">طبیعت</span>
-                <span className="text-[28px] block text-[#aaaaaa]">
-                  ایده های مربوط به طبیعت
-                </span>
-              </div>
+            <div className="font-bold  text-accent-200 text-[42px] pb-[50px]" >
+              دسته‌بندی مورد نظرت رو انتخاب کن
             </div>
+            <div className="grid scale-90 grid-cols-2  gap-10 mb-[150px]">
+              <div className="shadow-lg flex p-5">
+                <div>
+                  <AiOutlineCar className="w-[100px] h-[100px] text-accent-200" />
+                </div>
+                <div className="text-right mr-10">
+                  <span className="text-[32px] font-semibold block">طبیعت</span>
+                  <span className="text-[28px] block text-[#aaaaaa]">
+                    ایده های مربوط به طبیعت
+                  </span>
+                </div>
+              </div>
 
-            <div className="shadow-lg flex p-5">
-              <div>
-                <AiOutlineCustomerService className="w-[100px] h-[100px] text-accent-200" />
+              <div className="shadow-lg flex p-5">
+                <div>
+                  <AiOutlineCustomerService className="w-[100px] h-[100px] text-accent-200" />
+                </div>
+                <div className="text-right mr-10">
+                  <span className="text-[32px] font-semibold block">تفریحی</span>
+                  <span className="text-[28px] block text-[#aaaaaa]">
+                    ایده های مربوط به تفریحی
+                  </span>
+                </div>
               </div>
-              <div className="text-right mr-10">
-                <span className="text-[32px] font-semibold block">تفریحی</span>
-                <span className="text-[28px] block text-[#aaaaaa]">
-                  ایده های مربوط به تفریحی
-                </span>
-              </div>
-            </div>
 
-            <div className="shadow-lg flex p-5">
-              <div>
-                <AiOutlineShop className="w-[100px] h-[100px] text-accent-200" />
+              <div className="shadow-lg flex p-5">
+                <div>
+                  <AiOutlineShop className="w-[100px] h-[100px] text-accent-200" />
+                </div>
+                <div className="text-right mr-10">
+                  <span className="text-[32px] font-semibold block">آموزشی</span>
+                  <span className="text-[28px] block text-[#aaaaaa]">
+                    ایده های مربوط به آموزشی
+                  </span>
+                </div>
               </div>
-              <div className="text-right mr-10">
-                <span className="text-[32px] font-semibold block">آموزشی</span>
-                <span className="text-[28px] block text-[#aaaaaa]">
-                  ایده های مربوط به آموزشی
-                </span>
-              </div>
-            </div>
 
-            <div className="shadow-lg flex p-5">
-              <div>
-                <AiOutlineCar className="w-[100px] h-[100px] text-accent-200" />
+              <div className="shadow-lg flex p-5">
+                <div>
+                  <AiOutlineCar className="w-[100px] h-[100px] text-accent-200" />
+                </div>
+                <div className="text-right mr-10">
+                  <span className="text-[32px] font-semibold block">تحلیل و طراحی سیستم ها</span>
+                  <span className="text-[28px] block text-[#aaaaaa]">
+                    ایده های مربوط به تحلیل و طراحی
+                  </span>
+                </div>
               </div>
-              <div className="text-right mr-10">
-                <span className="text-[32px] font-semibold block">طبیعت</span>
-                <span className="text-[28px] block text-[#aaaaaa]">
-                  ایده های مربوط به طبیعت
-                </span>
-              </div>
-            </div>
 
-            <div className="shadow-lg flex p-5">
-              <div>
-                <AiOutlineCar className="w-[100px] h-[100px] text-accent-200" />
+              {/* <div className="shadow-lg flex p-5">
+                <div>
+                  <AiOutlineCar className="w-[100px] h-[100px] text-accent-200" />
+                </div>
+                <div className="text-right mr-10">
+                  <span className="text-[32px] font-semibold block">طبیعت</span>
+                  <span className="text-[28px] block text-[#aaaaaa]">
+                    ایده های مربوط به طبیعت
+                  </span>
+                </div>
               </div>
-              <div className="text-right mr-10">
-                <span className="text-[32px] font-semibold block">طبیعت</span>
-                <span className="text-[28px] block text-[#aaaaaa]">
-                  ایده های مربوط به طبیعت
-                </span>
-              </div>
-            </div>
 
-            <div className="shadow-lg flex p-5">
-              <div>
-                <AiOutlineCustomerService className="w-[100px] h-[100px] text-accent-200" />
+              <div className="shadow-lg flex p-5">
+                <div>
+                  <AiOutlineCustomerService className="w-[100px] h-[100px] text-accent-200" />
+                </div>
+                <div className="text-right mr-10">
+                  <span className="text-[32px] font-semibold block">تفریحی</span>
+                  <span className="text-[28px] block text-[#aaaaaa]">
+                    ایده های مربوط به تفریحی
+                  </span>
+                </div>
               </div>
-              <div className="text-right mr-10">
-                <span className="text-[32px] font-semibold block">تفریحی</span>
-                <span className="text-[28px] block text-[#aaaaaa]">
-                  ایده های مربوط به تفریحی
-                </span>
-              </div>
-            </div>
 
-            <div className="shadow-lg flex p-5">
-              <div>
-                <AiOutlineShop className="w-[100px] h-[100px] text-accent-200" />
+              <div className="shadow-lg flex p-5">
+                <div>
+                  <AiOutlineShop className="w-[100px] h-[100px] text-accent-200" />
+                </div>
+                <div className="text-right mr-10">
+                  <span className="text-[32px] font-semibold block">آموزشی</span>
+                  <span className="text-[28px] block text-[#aaaaaa]">
+                    ایده های مربوط به آموزشی
+                  </span>
+                </div>
               </div>
-              <div className="text-right mr-10">
-                <span className="text-[32px] font-semibold block">آموزشی</span>
-                <span className="text-[28px] block text-[#aaaaaa]">
-                  ایده های مربوط به آموزشی
-                </span>
-              </div>
-            </div>
 
-            <div className="shadow-lg flex p-5">
-              <div>
-                <AiOutlineCar className="w-[100px] h-[100px] text-accent-200" />
-              </div>
-              <div className="text-right mr-10">
-                <span className="text-[32px] font-semibold block">طبیعت</span>
-                <span className="text-[28px] block text-[#aaaaaa]">
-                  ایده های مربوط به طبیعت
-                </span>
-              </div>
+              <div className="shadow-lg flex p-5">
+                <div>
+                  <AiOutlineCar className="w-[100px] h-[100px] text-accent-200" />
+                </div>
+                <div className="text-right mr-10">
+                  <span className="text-[32px] font-semibold block">طبیعت</span>
+                  <span className="text-[28px] block text-[#aaaaaa]">
+                    ایده های مربوط به طبیعت
+                  </span>
+                </div>
+              </div> */}
             </div>
-          </div>
           </div>
         </div>
       </div>

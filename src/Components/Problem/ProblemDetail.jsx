@@ -21,6 +21,8 @@ const ProblemDetail = () => {
     JSON.parse(localStorage.getItem("Info"))
   );
   const [amount, setAmount] = useState()
+  const [cat, setCat] = useState()
+  const [catsuc, setCatSeccuss] = useState(false)
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -46,22 +48,21 @@ const ProblemDetail = () => {
         setSuccess(true)
       }
       setFSuccess(false)
-          const response1 = await fetch(
-            `https://biglybigly.iran.liara.run/api/v1/problems/fund/?id=${id}/`,
-            {
-              method: "GET",
-              headers: {
-                Accept: "application/json",
-              },
-            }
-          );
-          const result1 = await response1.json();
-          if (result1.status = 200)
-          {
-          setFunds(result1)
-          console.log(result)
-          setFSuccess(true)
-          }
+      const response1 = await fetch(
+        `https://biglybigly.iran.liara.run/api/v1/problems/fund/?problem=${id}`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+      const result1 = await response1.json();
+      if (result1.status = 200) {
+        setFunds(result1)
+        console.log(result)
+        setFSuccess(true)
+      }
       else {
         setFunds([])
       }
@@ -70,6 +71,29 @@ const ProblemDetail = () => {
     }
     ShowProblems();
   }, [id]);
+  // useEffect(() => {
+  //   const Showproblem = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `https://biglybigly.iran.liara.run/api/v1/problem/problem-category/${problems.problem_category}/`,
+  //         {
+  //           method: "GET",
+  //           headers: {
+  //             Accept: "application/json",
+  //           },
+  //         }
+  //       );
+  //       const result = await response.json();
+  //       console.log(result);
+  //       setCat(result);
+  //       setCatSeccuss(true)
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     } finally {
+  //     }
+  //   };
+  //   Showproblem();
+  // }, [problems]);
   const navigate = useNavigate()
   async function HandelDeleteProblem() {
     setShowModal(true);
@@ -94,7 +118,7 @@ const ProblemDetail = () => {
         try {
           setFSuccess(false)
           const response = await fetch(
-            `https://biglybigly.iran.liara.run/api/v1/problems/fund/?id=${id}/`,
+            `https://biglybigly.iran.liara.run/api/v1/problems/fund/?problem=${id}`,
             {
               method: "GET",
               headers: {
@@ -151,6 +175,18 @@ const ProblemDetail = () => {
                         <div>
                           {problems.financial_amount} تومان
                         </div>}
+                    </span>
+                  </div>
+                </div>
+                <div className=" m-12 pt-[10px] flex justify-start items-center gap-7">
+                  <span className=" text-[30px] text-accent-200 font-bold">
+                    دسته بندی :
+                  </span>
+                  <div className=" gap-1 flex flex-col justify-center items-center">
+                    <span className=" text-[30px] text-200 ">
+                        <div>
+                          {problems.problem_category}
+                        </div>
                     </span>
                   </div>
                 </div>
@@ -231,7 +267,7 @@ const ProblemDetail = () => {
         {!success &&
           <Loading />
         }
-        <Footer />
+        <problemer />
       </div>
     </MyContext_1.Provider>
   );

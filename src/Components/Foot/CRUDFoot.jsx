@@ -181,7 +181,9 @@ const EditFoot = () => {
                                     }
                                     else
                                     {
+                                        return (
                                         <option value={x.id}>{x.category}</option>
+                                        )
                                     }
                                 })}
                             </select>

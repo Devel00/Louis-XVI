@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../Global/Footer";
 import Navbar from "../Global/Navbar";
-import Filter from "../Filter";
+import Filter from "./FFilter";
 import "react-multi-carousel/lib/styles.css"
 import { data } from "../../data/data";
 import Card from "./FCard";
@@ -9,6 +9,7 @@ import { LuMoreHorizontal } from "react-icons/lu";
 import Carousel from "react-multi-carousel";
 import Loading from "../Global/Loading";
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -82,10 +83,12 @@ const Feet = () => {
       <div className=" pt-6 flex justify-start gap-4 items-center">
         <span className=" text-accent-200  text-[20px] pr-4">پرطرفدارها</span>
         <div className=" border-b-2 border-bg-300/40 w-[80%]"></div>
+        <Link to={'/FootAll'}>
         <div className=" flex justify-center items-center">
           <span className=" text-accent-200 pr-6">مشاهده همه</span>
           <MdKeyboardArrowLeft size={25} />
         </div>
+        </Link>
       </div>
       }
       { success &&
@@ -99,12 +102,14 @@ const Feet = () => {
           feet.map((item, index) => (
             <Card detail={item} />
           ))}
+        <Link to={'/FootAll'}>
         <div className="w-[90%] hover:cursor-pointer bg-bg-200 hover:bg-bg-300/70 rounded-[24px] h-[450px] shadow-xl flex flex-col  justify-center items-center">
           <LuMoreHorizontal className=" text-primary-100" size={90} />
           <div className=" font-main font-bold mb-2 text-accent-200">
             مشاهده همه کارت ها
           </div>
         </div>
+        </Link>
         
         <style>
           {`

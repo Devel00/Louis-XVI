@@ -261,7 +261,7 @@ const Profile = () => {
                       <div className=" bg-primary-100 sm:w-[75%] w-[25%] h-[1.5px]"></div>
                     </div>
                     {/*مدیریت کارت های هم پا*/}
-                    <Link to="/">
+                    <Link to="/MFoot">
                       <div className=" bg-bg-100 w-[80%] group hover:bg-accent-100 sm:mr-12 mr-4  mb-10 mt-6 px-5 py-3 rounded-[8px] shadow-md">
                         <div className=" flex justify-between items-center ">
                           <span className=" group-hover:text-bg-100 sm:text-[16px] text-[10px] text-accent-200 font-bold">
@@ -308,7 +308,7 @@ const Profile = () => {
                       <div className=" bg-bg-200 text-[18px] font-bold p-2 px-5 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
                         <span className=" text-[22px]">{pCount}</span>
                       </div>
-                      <span className=" text-[18px] font-bold mb-2 text-accent-100">
+                      <span className=" text-[18px] font-bold mb-2 text-accent-200">
                         کارت های مشکل من
                       </span>
                     </div>
@@ -317,7 +317,7 @@ const Profile = () => {
                       <div className=" bg-bg-200 text-[18px] font-bold p-2 px-5 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
                         <span className=" text-[22px]">5+</span>
                       </div>
-                      <span className=" text-[18px] font-bold mb-2 text-accent-100">
+                      <span className=" text-[18px] font-bold mb-2 text-accent-200">
                         مشارکت های من
                       </span>
                     </div>
@@ -326,7 +326,7 @@ const Profile = () => {
                       <div className=" bg-bg-200 text-[18px] font-bold p-2 px-5 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
                         <span className=" text-[22px]">{iCount}</span>
                       </div>
-                      <span className=" text-[18px] font-bold mb-2 text-accent-100">
+                      <span className=" text-[18px] font-bold mb-2 text-accent-200">
                         کارت های ایده من
                       </span>
                     </div>
@@ -335,7 +335,7 @@ const Profile = () => {
                       <div className=" bg-bg-200 text-[18px] font-bold p-2 px-5 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
                         <span className=" text-[22px]">{user.balance}</span>
                       </div>
-                      <span className=" text-[18px] font-bold mb-2 text-accent-100">
+                      <span className=" text-[18px] font-bold mb-2 text-accent-200">
                         موجودی
                       </span>
                     </div>
@@ -352,7 +352,7 @@ const Profile = () => {
                             />
                           </span>
                         </div>
-                        <span className=" text-[18px] group-hover:text-bg-100 font-bold mb-2 text-accent-100">
+                        <span className=" text-[18px] group-hover:text-bg-100 font-bold mb-2 text-accent-200">
                           اضافه کردن کارت مشکل
                         </span>
                       </div>
@@ -368,7 +368,7 @@ const Profile = () => {
                             />
                           </span>
                         </div>
-                        <span className=" text-[18px] group-hover:text-bg-100 font-bold mb-2 text-accent-100">
+                        <span className=" text-[18px] group-hover:text-bg-100 font-bold mb-2 text-accent-200">
                           اضافه کردن کارت ایده
                         </span>
                       </div>
@@ -384,7 +384,7 @@ const Profile = () => {
                             />
                           </span>
                         </div>
-                        <span className=" text-[18px] group-hover:text-bg-100 font-bold mb-2 text-accent-100">
+                        <span className=" text-[18px] group-hover:text-bg-100 font-bold mb-2 text-accent-200">
                           اضافه کردن کارت هم پا
                         </span>
                       </div>

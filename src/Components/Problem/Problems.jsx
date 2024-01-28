@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../Global/Footer";
 import Navbar from "../Global/Navbar";
 import MainCarousel from "./carousel";
-import Filter from "../Filter";
+import Filter from "./Filter";
 import Card from "./PCard";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import Carousel from "react-multi-carousel";
