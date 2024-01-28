@@ -66,7 +66,7 @@ const AddProblem = () => {
     formdata.append("is_done", false);
     formdata.append("creator", userInfo.id);
     for (var pair of formdata.entries()) {
-      console.log(pair[0] + ": " + pair[1]);
+      // console.log(pair[0] + ": " + pair[1]);
     }
     await fetch("https://biglybigly.iran.liara.run/api/v1/problems/problems/", {
       method: "POST",

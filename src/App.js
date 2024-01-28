@@ -27,10 +27,12 @@ import IdeaShorts from "./Components/Idea/IdeasShort.jsx";
 import ManageFoot from "./Components/Foot/ManageFoot.jsx";
 import {DetailFoot} from "./Components/Foot/FootDetail.jsx";
 import EditFoot from "./Components/Foot/CRUDFoot.jsx";
-import AboutUS from "./Components/AboutUs";
+import AboutUS from "./Components/Global/AboutUs";
 import MyFundp from  "./Components/Problem/MyFunds.jsx";
 import ProblemAll from "./Components/Problem/ProblemAll.jsx"
 import ProblemCat from "./Components/Problem/ProblemCat.jsx";
+import FootAll from  "./Components/Foot/AllFoot.jsx";
+import FootCat from  "./Components/Foot/FootCat.jsx";
 
 function App() {
   return (
@@ -60,6 +62,7 @@ function App() {
           <Route path="/EditProblem/:id" element={<CRUDProblem />} />
           <Route path="/Load" element={<Loading />} />
           <Route path="/feet" element={<Feet />} />
+          <Route path="/FootAll" element={<FootAll />} />
           <Route path="/AddFoot" element={<AddFoot />} />
           <Route path="/EditUser" element={<EditUser />} />
           <Route path="/IdeaManager" element={<IdeaManager />} />
@@ -67,10 +70,11 @@ function App() {
           <Route path="/MFoot" element={<ManageFoot />} />
           <Route path="/DetailFoot/:id" element={<DetailFoot />} />
           <Route path="/EditFoot/:id" element={<EditFoot />} />
-          <Route path="ideas" element={<IdeaShorts />} />
+          <Route path="/Ideas" element={<IdeaShorts />} />
           <Route path="/AboutUs" element={<AboutUS />} />
           <Route path="/MyFundP" element={<MyFundp />} />
           <Route path="/ProblemCat/:id" element={<ProblemCat />} />
+          <Route path="/FootCat/:id" element={<FootCat />} />
         </Routes>
       </BrowserRouter>
     </div>

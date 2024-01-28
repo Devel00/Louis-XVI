@@ -45,6 +45,9 @@ const EditIdea = () => {
     const [userInfo, setUserInfo] = useState(
         JSON.parse(localStorage.getItem("Info"))
     );
+    const [allCat, setAllCat] = useState();
+    const [CatSucc, setCatSeccuss] = useState(false)
+    const [category, setCategory] = useState("");
     const handleOpen = (value) => setOpen(open === value ? 0 : value);
     const [arraow, setArrow] = useState(true);
     const [arraow1, setArrow1] = useState(true);
@@ -83,6 +86,7 @@ const EditIdea = () => {
                 setPerTitle(idea.farsi_title)
                 setEngTitle(idea.english_title)
                 setTechField(idea.tech_field)
+                setCategory(idea.category)
                 setBriefDesc(idea.summary)
                 if (idea.is_upgrade == 'true') {
                     setMybool(2)
@@ -158,6 +162,32 @@ const EditIdea = () => {
         };
         ShowIdea();
     }, [id]);
+    useEffect(() => {
+        const GetCategory = async () => {
+            try {
+                const response = await fetch(
+                    `https://biglybigly.iran.liara.run/api/v1/idea/idea-category/`,
+                    {
+                        method: "GET",
+                        headers: {
+                            Accept: "application/json",
+                        },
+                    }
+                );
+                console.log(response)
+                if (response.status != 404) {
+                    const result = await response.json();
+
+                    console.log(result);
+                    setAllCat(result)
+                    setCatSeccuss(true)
+                }
+            } catch (error) {
+            } finally {
+            }
+        };
+        GetCategory();
+    }, [])
 
 
     const handeleditIdea = async () => {
@@ -266,6 +296,29 @@ const EditIdea = () => {
                                     value={techfield}
                                     onChange={(e) => setTechField(e.target.value)}
                                 ></input>
+                            </div>
+                        </div>
+                        <div className="sm:w-[100%] sm:h-max sm:flex sm:flex-row  flex-col  items-center justify-center ">
+                            <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
+                                <label className="  font-main ">
+                                    دسته بندی :
+                                </label>
+                                <select onChange={(e) => { setCategory(e.target.value) }} class="block appearance-auto w-full border py-3 px-2 pr-2 pe-2 rounded leading-tight">
+                                    <option value={-1} >یک مورد را انتخاب کنید</option>
+                                    {CatSucc &&
+                                        allCat.map((x) => {
+                                            if (x.id == idea.category) {
+                                                return (
+                                                    <option value={x.id} selected>{x.name}</option>
+                                                );
+                                            }
+                                            else {
+                                                return (
+                                                    <option value={x.id}>{x.name}</option>
+                                                )
+                                            }
+                                        })}
+                                </select>
                             </div>
                         </div>
                         <div className="sm:w-[100%] sm:h-max sm:flex sm:flex-row  flex-col  items-center justify-center ">
@@ -589,7 +642,7 @@ const EditIdea = () => {
                                         return (
                                             <li>
                                                 <div className=" px-10 py-10 border-spacing-3 border border-dashed   justify-between flex">
-                                                    <button className="" onClick={() => {setImage([]);setSetImage(true)}}> delete</button>
+                                                    <button className="" onClick={() => { setImage([]); setSetImage(true) }}> delete</button>
                                                     <img className="w-[20%]  rounded-2xl" src={URL.createObjectURL(x)} alt="" />
                                                 </div>
                                             </li>

@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
-import Navbar from "./Global/Navbar";
-import Footer from "./Global/Footer";
-import { data } from "../data/data";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import { data } from "../../data/data";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
