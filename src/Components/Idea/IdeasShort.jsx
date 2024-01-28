@@ -4,12 +4,15 @@ import Loading from "../Global/Loading";
 import Navbar from "../Global/Navbar";
 import { Button } from "@material-tailwind/react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { useParams } from "react-router-dom";
+import BlankPage from "./BlankPage";
 
 const Ideas = () => {
   const [ideas, setideas] = useState();
   const [success, setSuccess] = useState(false);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [size, setSize] = useState(0);
+  const { id } = useParams();
 
   // useEffect(() => {
   //   const handleScroll = () => {
@@ -35,7 +38,8 @@ const Ideas = () => {
         const response = await fetch(
           "https://biglybigly.iran.liara.run/api/v1/idea/idea/"
         );
-        const result = await response.json();
+        let result = await response.json();
+        result = result.filter((res) => res.category == id);
         setideas(result);
         // setCurrentVideoIndex(ideas[0].id);
         console.log(result);
@@ -76,7 +80,11 @@ const Ideas = () => {
   return (
     <div className={`w-full h-[1000px]`}>
       <Navbar />
-      {success ? (
+      {size === 0 ? (
+        <div className=" flex justify-center items-center w-full h-[60%]">
+          <BlankPage />
+        </div>
+      ) : success ? (
         // <div className=" flex justify-center items-center flex-col">
         //   {ideas.map((video, index) => (
         //     <ShortVideo key={index} video={video} />
