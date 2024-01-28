@@ -1,6 +1,5 @@
 import React, { useEffect, useState, createContext } from "react";
 import Navbar from "../Global/Navbar";
-import { data } from "../../data/data";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 import Footer from "../Global/Footer";
@@ -8,6 +7,7 @@ import Loading from "../Global/Loading";
 import Delete from "./DeletePopupP";
 import Card from "./PFundCard";
 import defaultImage from '../../Image/default_problem.jpg'
+import { ToastContainer, toast } from "react-toastify";
 
 
 const MyContext_1 = createContext();
@@ -75,7 +75,6 @@ const ProblemDetail = () => {
     ShowProblems();
   }, [id]);
 
-  const navigate = useNavigate()
   async function HandelDeleteProblem() {
     setShowModal(true);
   }
@@ -112,13 +111,43 @@ const ProblemDetail = () => {
           console.log(result)
           setFSuccess(true)
         }
-        finally { }
+        catch(e) {
+          console.log('error: ', e)
+        }
+        finally {
+          const problem = await fetch(
+            `https://biglybigly.iran.liara.run/api/v1/problems/problems/${id}/`,
+            {
+              method: "GET",
+              headers: {
+                Accept: "application/json",
+              },
+            }
+          )
+          const result = await problem.json();
+          console.log(result);
+          setProblems(result);
+        }
       })
   }
 
 
   return (
     <MyContext_1.Provider value={[showModal, setShowModal]}>
+      <ToastContainer
+        className="font-bold"
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={true}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        bodyClassName={() => " font-main flex justify-between items-center"}
+      />
       <div className="w-full">
         {showModal && <Delete />}
         <Navbar />
@@ -148,13 +177,26 @@ const ProblemDetail = () => {
                 </div>
                 <div className=" m-12 pt-[10px] flex justify-start items-center gap-7">
                   <span className=" text-[30px] text-accent-200 font-bold">
-                    قیمت :
+                    سرمایه مورد نیاز :
                   </span>
                   <div className=" gap-1 flex flex-col justify-center items-center">
                     <span className=" text-[30px] text-200 ">
                       {success &&
                         <div>
                           {problems.financial_amount} تومان
+                        </div>}
+                    </span>
+                  </div>
+                </div>
+                <div className=" m-12 pt-[10px] flex justify-start items-center gap-7">
+                  <span className=" text-[30px] text-accent-200 font-bold">
+                    سرمایه جمع شده :
+                  </span>
+                  <div className=" gap-1 flex flex-col justify-center items-center">
+                    <span className=" text-[30px] text-200 ">
+                      {success &&
+                        <div>
+                          {problems.funded_amount || 0} تومان
                         </div>}
                     </span>
                   </div>
