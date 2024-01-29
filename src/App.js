@@ -33,6 +33,7 @@ import ProblemAll from "./Components/Problem/ProblemAll.jsx";
 import ProblemCat from "./Components/Problem/ProblemCat.jsx";
 import FootAll from "./Components/Foot/AllFoot.jsx";
 import FootCat from "./Components/Foot/FootCat.jsx";
+import Search from "./Components/Global/Search.jsx"
 
 function App() {
   return (
@@ -75,6 +76,7 @@ function App() {
           <Route path="/MyFundP" element={<MyFundp />} />
           <Route path="/ProblemCat/:id" element={<ProblemCat />} />
           <Route path="/FootCat/:id" element={<FootCat />} />
+          <Route path="/Search/:id" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </div>
