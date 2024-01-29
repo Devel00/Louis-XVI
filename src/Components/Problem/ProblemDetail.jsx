@@ -1,12 +1,15 @@
 import React, { useEffect, useState, createContext } from "react";
 import Navbar from "../Global/Navbar";
-import { data } from "../../data/data";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { HiOutlinePlus } from "react-icons/hi2";
 import Footer from "../Global/Footer";
 import Loading from "../Global/Loading";
 import Delete from "./DeletePopupP";
 import Card from "./PFundCard";
+import defaultImage from '../../Image/default_problem.jpg'
+import { ToastContainer, toast } from "react-toastify";
+
+
 const MyContext_1 = createContext();
 
 const ProblemDetail = () => {
@@ -71,30 +74,7 @@ const ProblemDetail = () => {
     }
     ShowProblems();
   }, [id]);
-  // useEffect(() => {
-  //   const Showproblem = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `https://biglybigly.iran.liara.run/api/v1/problem/problem-category/${problems.problem_category}/`,
-  //         {
-  //           method: "GET",
-  //           headers: {
-  //             Accept: "application/json",
-  //           },
-  //         }
-  //       );
-  //       const result = await response.json();
-  //       console.log(result);
-  //       setCat(result);
-  //       setCatSeccuss(true)
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     } finally {
-  //     }
-  //   };
-  //   Showproblem();
-  // }, [problems]);
-  const navigate = useNavigate()
+
   async function HandelDeleteProblem() {
     setShowModal(true);
   }
@@ -114,6 +94,19 @@ const ProblemDetail = () => {
       },
       body: formdata,
     })
+      .then(res => res.json())
+      .then(json => {
+        console.log('json: ', json)
+        if (json.status_code === 201) {
+          toast.success("مبلغ شما با موفقیت به این مشکل اهدا شد");
+        } else if (json.message === 'amount is more than problem amount') {
+          toast.error("مبلغ از سرمایه مورد نیاز مشکل بیشتر است");
+        } else if (json.message === 'user is not authenticated') {
+          toast.error("لطفا در سایت ورود کنید");
+        } else if (json.message === 'user balance is not enough') {
+          toast.error("متاسفانه موجودی لازم را ندارید");
+        }
+      })
       .then(async () => {
         try {
           setFSuccess(false)
@@ -131,23 +124,53 @@ const ProblemDetail = () => {
           console.log(result)
           setFSuccess(true)
         }
-        finally { }
+        catch(e) {
+          console.log('error: ', e)
+        }
+        finally {
+          const problem = await fetch(
+            `https://biglybigly.iran.liara.run/api/v1/problems/problems/${id}/`,
+            {
+              method: "GET",
+              headers: {
+                Accept: "application/json",
+              },
+            }
+          )
+          const result = await problem.json();
+          console.log(result);
+          setProblems(result);
+        }
       })
   }
 
 
   return (
     <MyContext_1.Provider value={[showModal, setShowModal]}>
-      <div className="  w-full">
+      <ToastContainer
+        className="font-bold"
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={true}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        bodyClassName={() => " font-main flex justify-between items-center"}
+      />
+      <div className="w-full">
         {showModal && <Delete />}
         <Navbar />
         {success &&
-          <div className="max-w-[1400px] mx-auto">
-            <div className="pt-[50px] flex justify-center">
+          <div className="max-w-[1400px] mx-auto pb-8">
+            <div className="pt-[50px] flex justify-center w-50 y-50">
               <img
-                className=" w-[60%]  rounded-lg mt-10 "
+                className="max-h-64 w-auto rounded-lg mt-5"
                 alt="ProblemImage"
-                src={`https://biglybigly.iran.liara.run/${problems.main_image}`}
+                src={problems.main_image ? `https://biglybigly.iran.liara.run/${problems.main_image}` : defaultImage}
               />
             </div>
             <div className="pt-[50px] flex justify-center">
@@ -167,13 +190,26 @@ const ProblemDetail = () => {
                 </div>
                 <div className=" m-12 pt-[10px] flex justify-start items-center gap-7">
                   <span className=" text-[30px] text-accent-200 font-bold">
-                    قیمت :
+                    سرمایه مورد نیاز :
                   </span>
                   <div className=" gap-1 flex flex-col justify-center items-center">
                     <span className=" text-[30px] text-200 ">
                       {success &&
                         <div>
                           {problems.financial_amount} تومان
+                        </div>}
+                    </span>
+                  </div>
+                </div>
+                <div className=" m-12 pt-[10px] flex justify-start items-center gap-7">
+                  <span className=" text-[30px] text-accent-200 font-bold">
+                    سرمایه جمع شده :
+                  </span>
+                  <div className=" gap-1 flex flex-col justify-center items-center">
+                    <span className=" text-[30px] text-200 ">
+                      {success &&
+                        <div>
+                          {problems.funded_amount || 0} تومان
                         </div>}
                     </span>
                   </div>
@@ -239,7 +275,7 @@ const ProblemDetail = () => {
             <div className="  gap-4 flex flex-col justify-center items-center w-[100%] " >
               {(!showEdit) &&
                 <div className="  gap-4 flex flex-col justify-center items-center w-[50%] ">
-                  <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
+                  <div className=" sm:w-[80%] px-2  pt-8 pb-2 flex flex-col items-start gap-2">
                     <label className=" font-bold font-main ">
                       میزان مشارکت برای حل مشکل :
                     </label>
