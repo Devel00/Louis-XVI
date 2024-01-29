@@ -27,7 +27,7 @@ const Problems = () => {
     const ShowProblems = async () => {
       try {
         const response = await fetch(
-          "https://biglybigly.iran.liara.run/api/v1/problems/problems/"
+          "https://biglybigly.iran.liara.run/api/v1/problems/fav-problem/"
         );
         const result = await response.json();
         setProblems(result);
@@ -84,7 +84,7 @@ const Problems = () => {
         {success &&
           <Carousel
             showDots
-            className=" animate-fade scale-90 ml-4 mt-10 h-[600px]"
+            className=" animate-fade scale-90 ml-4 h-[600px]"
             responsive={responsive}
             dotListClass="custom-dot-list"
           >
