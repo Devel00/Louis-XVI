@@ -18,6 +18,7 @@ const Profile = () => {
 
   const [pCount, setPCount] = useState(0);
   const [iCount, setICount] = useState(0);
+  const [fCount, setFCount] = useState(0);
   const [success, setSuccess] = useState(false);
   // useEffect(() => {
   //   const GetInfo = async () => {
@@ -117,6 +118,20 @@ const Profile = () => {
       const result1 = await response1.json();
       // console.log(result1);
       setICount(result1.length);
+      const response3 = await fetch(
+        `https://biglybigly.iran.liara.run/api/v1/foot/foot-ideas/`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const result3 = await response3.json();
+      // console.log(result1);
+      setFCount(result3.length);
       setSuccess(true);
     };
 
@@ -315,10 +330,10 @@ const Profile = () => {
                     {/* item2 */}
                     <div className=" bg-bg-100 shadow-md  rounded-[8px]  mt-16 mr-6 w-[80%] gap-4 flex flex-col justify-center items-center">
                       <div className=" bg-bg-200 text-[18px] font-bold p-2 px-5 shadow-md flex justify-center items-center mt-2 text-accent-100 rounded-full ">
-                        <span className=" text-[22px]">5+</span>
+                        <span className=" text-[22px]">{fCount}</span>
                       </div>
                       <span className=" text-[18px] font-bold mb-2 text-accent-200">
-                        مشارکت های من
+                        کارت های هم مسیر
                       </span>
                     </div>
                     {/* item3 */}

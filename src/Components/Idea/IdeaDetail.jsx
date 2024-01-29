@@ -4,6 +4,7 @@ import { data } from "../../data/data";
 import { FaRegFilePdf } from "react-icons/fa";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Delete from "./DeletePopupI";
+import Card from "./IFundCard"
 import {
   Accordion,
   AccordionHeader,
@@ -22,8 +23,11 @@ const IdeaDetail = () => {
   const [showEdit, setShowEdit] = useState(false);
   const [userInfo, setUserInfo] = useState(
     JSON.parse(localStorage.getItem("Info")));
-    const [cat, setCat] = useState()
-    const [catsuc, setCatSeccuss] = useState(false)
+  const [cat, setCat] = useState()
+  const [catsuc, setCatSeccuss] = useState(false)
+  const [amount, setAmount] = useState("")
+  const [fsuccess, setFSuccess] = useState(false);
+  const [funds, setFunds] = useState([]);
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
   const [arraow, setArrow] = useState(true);
   const [arraow1, setArrow1] = useState(true);
@@ -48,27 +52,27 @@ const IdeaDetail = () => {
   }
   useEffect(() => {
     const ShowFoot = async () => {
-        try {
-            const response = await fetch(
-                `https://biglybigly.iran.liara.run/api/v1/idea/idea-category/${idea.category}/`,
-                {
-                    method: "GET",
-                    headers: {
-                        Accept: "application/json",
-                    },
-                }
-            );
-            const result = await response.json();
-            console.log(result);
-            setCat(result);
-            setCatSeccuss(true)
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        } finally {
-        }
+      try {
+        const response = await fetch(
+          `https://biglybigly.iran.liara.run/api/v1/idea/idea-category/${idea.category}/`,
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        );
+        const result = await response.json();
+        console.log(result);
+        setCat(result);
+        setCatSeccuss(true)
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+      }
     };
     ShowFoot();
-}, [idea]);
+  }, [idea]);
   useEffect(() => {
     const ShowIdea = async () => {
       try {
@@ -91,6 +95,27 @@ const IdeaDetail = () => {
             setShowEdit(true)
           }
           setSuccess(true)
+          setFSuccess(false)
+          const response1 = await fetch(
+            `https://biglybigly.iran.liara.run/api/v1/idea/investment-record/?idea=${id}`,
+            {
+              method: "GET",
+              headers: {
+                Accept: "application/json",
+              },
+            }
+          );
+          const result1 = await response1.json();
+          if (result1.status = 200 || result1.status == 201) {
+            setFunds(result1)
+            console.log(result)
+            setFSuccess(true)
+          }
+          else {
+            setFunds([])
+          }
+          setFSuccess(true);
+          setSuccess(true)
         }
       } catch (error) {
       } finally {
@@ -98,6 +123,42 @@ const IdeaDetail = () => {
     };
     ShowIdea();
   }, [id]);
+
+  async function HandelVolanteer() {
+    // setFSuccess(false)
+    const formdata = new FormData();
+    formdata.append("idea", parseInt(id));
+    formdata.append("amount", parseInt(amount));
+    formdata.append("user", userInfo.id);
+
+    await fetch(`https://biglybigly.iran.liara.run/api/v1/idea/investment-record/`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `${localStorage.getItem("token")}`,
+      },
+      body: formdata,
+    })
+      .then(async () => {
+        try {
+          setFSuccess(false)
+          const response = await fetch(
+            `https://biglybigly.iran.liara.run/api/v1/idea/investment-record/?idea=${id}`,
+            {
+              method: "GET",
+              headers: {
+                Accept: "application/json",
+              },
+            }
+          );
+          const result = await response.json();
+          setFunds(result)
+          console.log(result)
+          setFSuccess(true)
+        }
+        finally { }
+      })
+  }
 
   return (
     <MyContext_2.Provider value={[showModal, setShowModal]}>
@@ -373,6 +434,19 @@ const IdeaDetail = () => {
                 </AccordionBody>
               </Accordion>
             </div>
+            <div className="flex flex-col justify-center items-center">
+              <div className="w-[60%] grid grid-cols-5 gap-2">
+                {fsuccess && (funds.length != 0) && funds.map((item, index) => (
+                  <div className=" w-full justify-center items-center">
+                    <Card detail={item} />
+                  </div>
+                ))
+                }
+              </div>
+              {!fsuccess &&
+                <Loading />
+              }
+            </div>
             {(showEdit) &&
               <div className=" py-5 px-5 gap-4 flex flex-row justify-center items-center ">
                 <Link to={id ? `/EditIdea/${id}` : `/`}>
@@ -393,8 +467,33 @@ const IdeaDetail = () => {
                 </button>
               </div>
             }
+            <div className="  gap-4 flex flex-col justify-center items-center w-[100%] " >
+              {(!showEdit) &&
+                <div className="  gap-4 flex flex-col justify-center items-center w-[50%] ">
+                  <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
+                    <label className=" font-bold font-main ">
+                      میزان مشارکت برای حل مشکل :
+                    </label>
+                    <input
+                      dir="rtl"
+                      className=" sm:w-[100%] px-2 font-main font-normal placeholder:text-[15px] placeholder:text-bg-300 text-[20px] rounded-[8px] py-2 border border-bg-200 shadow-md "
+                      type="number"
+                      placeholder="به تومان"
+                      value={amount}
+                      onChange={(e) => setAmount(e.target.value)}
+                    ></input>
+                  </div>
+                  <button className="" onClick={HandelVolanteer} >
+                    <div className=" bg-accent-100 hover:bg-primary-100 hover:text-bg-100 hover:font-bold w-[100%] sm:w-[450px] pt-3 pb-3 flex rounded-[8px] flex-col items-center gap-2">
+                      <div className="">
+                        <span className="font-main text-[18px]">مشارکت کردن</span>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              }
+            </div>
           </div>
-
         }
         {!success &&
           <Loading />
