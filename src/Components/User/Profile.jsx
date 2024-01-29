@@ -119,7 +119,7 @@ const Profile = () => {
       // console.log(result1);
       setICount(result1.length);
       const response3 = await fetch(
-        `https://biglybigly.iran.liara.run/api/v1/foot/foot-ideas/`,
+        `https://biglybigly.iran.liara.run/api/v1/foot/foot-user/`,
         {
           method: "GET",
           headers: {
