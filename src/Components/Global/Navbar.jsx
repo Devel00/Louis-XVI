@@ -3,7 +3,7 @@ import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { RiEqualizerFill } from "react-icons/ri";
 import { MdOutlineErrorOutline } from "react-icons/md";
-
+import { Link, useNavigate } from "react-router-dom";
 import { BsChat } from "react-icons/bs";
 import { PiHandshake } from "react-icons/pi";
 import { PiPlant } from "react-icons/pi";
@@ -14,15 +14,16 @@ import {
   MdOutlineContactSupport,
 } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
-import { Link } from "react-router-dom";
 import { data } from "../../data/data";
 
 const Navbar = () => {
   const [user, setUser] = useState(false);
+  const [search , setSearch] = useState("");
 
   // if (localStorage.getItem("ID")) {
   //   setUser(true);
   // }
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleuser = () => {
@@ -33,7 +34,14 @@ const Navbar = () => {
     handleuser();
   }, []);
   // User = localStorage.getItem();
-
+  async function handelSearch(e)
+  {
+    if (e.key === 'Enter')
+    {
+      navigate(`/Search/${search}`)
+      setSearch("")
+    }
+  }
   const [nav, setNav] = useState(false);
 
   return (
@@ -68,9 +76,12 @@ const Navbar = () => {
           className=" cursor-pointer mr-2   text-primary-100"
         />
         <input
+          value={search}
           className=" w-[150px] sm:w-[400px] lg:w-[500px] p-2 text-text-100 placeholder:text-text-200/40 placeholder:font-main rounded-full bg-bg-100 focus:outline-none"
           type="search"
           placeholder="جستجو ..."
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={(e)=> handelSearch(e)}
         ></input>
         <div
           className="group border-bg-300/30 hover:transform hover:duration-[500ms] 
