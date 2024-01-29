@@ -94,6 +94,19 @@ const ProblemDetail = () => {
       },
       body: formdata,
     })
+      .then(res => res.json())
+      .then(json => {
+        console.log('json: ', json)
+        if (json.status_code === 201) {
+          toast.success("مبلغ شما با موفقیت به این مشکل اهدا شد");
+        } else if (json.message === 'amount is more than problem amount') {
+          toast.error("مبلغ از سرمایه مورد نیاز مشکل بیشتر است");
+        } else if (json.message === 'user is not authenticated') {
+          toast.error("لطفا در سایت ورود کنید");
+        } else if (json.message === 'user balance is not enough') {
+          toast.error("متاسفانه موجودی لازم را ندارید");
+        }
+      })
       .then(async () => {
         try {
           setFSuccess(false)
@@ -137,7 +150,7 @@ const ProblemDetail = () => {
       <ToastContainer
         className="font-bold"
         position="top-center"
-        autoClose={1000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -262,7 +275,7 @@ const ProblemDetail = () => {
             <div className="  gap-4 flex flex-col justify-center items-center w-[100%] " >
               {(!showEdit) &&
                 <div className="  gap-4 flex flex-col justify-center items-center w-[50%] ">
-                  <div className=" sm:w-[80%] px-2  pt-4 pb-2 flex flex-col items-start gap-2">
+                  <div className=" sm:w-[80%] px-2  pt-8 pb-2 flex flex-col items-start gap-2">
                     <label className=" font-bold font-main ">
                       میزان مشارکت برای حل مشکل :
                     </label>
