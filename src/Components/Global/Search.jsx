@@ -4,8 +4,9 @@ import Navbar from "./Navbar";
 import PCard from "../Problem/PCard";
 import FCard from "../Foot/FCard";
 import { CiCirclePlus } from "react-icons/ci";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loading from "./Loading";
+import Blank from "../Idea/BlankPage";
 
 const Search = () => {
     const [userInfo, setUserInfo] = useState(
@@ -23,10 +24,13 @@ const Search = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
     // console.log(localStorage.getItem("token"))
     useEffect(() => {
         const ShowProblems = async () => {
             try {
+                setPSuccess(false)
+                setProblems([])
                 const response = await fetch(
                     `https://biglybigly.iran.liara.run/api/v1/problems/problems/?search=${id}`,
                     {
@@ -47,10 +51,12 @@ const Search = () => {
             }
         };
         ShowProblems();
-    }, []);
+    }, [id]);
     useEffect(() => {
         const ShowFoots = async () => {
             try {
+                setFSuccess(false)
+                setFoots([])
                 const response = await fetch(
                     `https://biglybigly.iran.liara.run/api/v1/foot/foot/?search=${id}`,
                     {
@@ -71,31 +77,7 @@ const Search = () => {
             }
         };
         ShowFoots();
-    }, []);
-    useEffect(() => {
-        const ShowProblems = async () => {
-            try {
-                const response = await fetch(
-                    `https://biglybigly.iran.liara.run/api/v1/idea/idea/?search=${id}`,
-                    {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Accept: "application/json",
-                        },
-                    }
-                );
-                const result = await response.json();
-                console.log(result);
-                setIdea(result);
-                setISuccess(true);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            } finally {
-            }
-        };
-        ShowProblems();
-    }, []);
+    }, [id]);
     return (
         <div className="">
             <Navbar />
@@ -105,13 +87,16 @@ const Search = () => {
             </div>
             <div>
                 {psuccess &&
-                    <div className=" scale-90 mt-4 grid grid-cols-3 gap-y-4 m-4 animate-fade-up">
+                    <div >
 
-                        {psuccess && problems.map((item, index) => (
-                            <div >
+                        <div className=" scale-90 mt-4 grid grid-cols-3 gap-y-4 m-4 animate-fade-up">
+                            {psuccess && problems.map((item, index) => (
                                 <PCard detail={item} />
-                            </div>
-                        ))
+                            ))
+                            }
+                        </div>
+                        {(problems.length == 0) &&
+                            <Blank />
                         }
                     </div>
                 }
@@ -126,12 +111,15 @@ const Search = () => {
             </div>
             <div>
                 {fsuccess &&
-                    <div className=" scale-90 mt-4 grid grid-cols-3 gap-y-4 m-4 animate-fade-up">
+                    <div >
+                        <div className=" scale-90 mt-4 grid grid-cols-3 gap-y-4 m-4 animate-fade-up">
                         {fsuccess && foots.map((item, index) => (
-                            <div >
                                 <FCard detail={item} />
-                            </div>
-                        ))
+                                ))
+                            }
+                        </div>
+                        {(foots.length == 0) &&
+                            <Blank />
                         }
                     </div>
                 }
