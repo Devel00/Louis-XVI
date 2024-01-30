@@ -13,7 +13,7 @@ import landing2 from "../Image/landing/photo_2023-12-08_21-36-12.jpg";
 import landing3 from "../Image/landing/photo_2023-12-08_21-36-15.jpg";
 import bulb from "../Image/IdeaCategory/bulb.png";
 import vector from "../Image/IdeaCategory/vector.png";
-import video from "../v1.mp4";
+// import video from "../v1.mp4";
 // import video1 from "../Image/idea_detail/sohrabi.mp4";
 import problemImage from "../Image/Problems/mosala.jpg";
 import idea1 from "../Image/Idea/idea1.webp";
@@ -87,10 +87,6 @@ export const data = [
   {
     id: "vector",
     image: vector,
-  },
-  {
-    id: "video_idea_detail",
-    image: video,
   },
   {
     id: "problemImage",
