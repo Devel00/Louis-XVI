@@ -111,12 +111,15 @@ const Search = () => {
             </div>
             <div>
                 {fsuccess &&
-                    <div className=" scale-90 mt-4 grid grid-cols-3 gap-y-4 m-4 animate-fade-up">
+                    <div >
+                        <div className=" scale-90 mt-4 grid grid-cols-3 gap-y-4 m-4 animate-fade-up">
                         {fsuccess && foots.map((item, index) => (
-                            <div >
                                 <FCard detail={item} />
-                            </div>
-                        ))
+                                ))
+                            }
+                        </div>
+                        {(foots.length == 0) &&
+                            <Blank />
                         }
                     </div>
                 }

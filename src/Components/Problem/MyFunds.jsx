@@ -75,7 +75,7 @@ const ManageFund = () => {
                     <Loading />
                 }
             </div>
-            <div className="bottom-0">
+            <div className="bottom-0 absolute">
             <Footer />
             </div>
         </div>
