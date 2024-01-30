@@ -27,7 +27,7 @@ const Problems = () => {
     const ShowProblems = async () => {
       try {
         const response = await fetch(
-          "https://biglybigly.iran.liara.run/api/v1/problems/problems/"
+          "https://biglybigly.iran.liara.run/api/v1/problems/fav-problem/"
         );
         const result = await response.json();
         setProblems(result);
